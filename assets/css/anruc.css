@@ -1,0 +1,200 @@
+#myLogBackground {
+    background: url('../images/background/anruc.png');
+}
+
+/* .myLg img {
+    width: 250px;
+} */
+
+.MYmainLoad {
+    position: fixed;
+    z-index: 1000000000000000;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: none;
+}
+
+.MYmainLoad img {
+    position: fixed;
+    z-index: 100001;
+    width: 250px;
+    height: 250px;
+    top: 50%;
+    margin-top: -125px;
+    left: 50%;
+    margin-left: -125px;
+    /* background: #fff; */
+    border-radius: 100%;
+    box-shadow: 0 10px 47px 0 rgba(0, 0, 0, .12), 0 5px 14px 0 rgba(0, 0, 0, .2) !important;
+    transition: 0.3s;
+    transform: scale(1.0)
+}
+
+
+.sidebar-menu li a {
+    cursor: pointer;
+}
+
+.card-circle {
+    cursor: pointer;
+    display: inline-flex;
+    text-align: center;
+    border-radius: 50%;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    height: 45px;
+    width: 45px;
+    box-shadow: 0 4px 20px 0 rgba(0, 0, 0, 0.14), 0 7px 10px -5px rgba(76, 175, 80, 0.4)
+}
+
+.card-circle i {
+    font-size: 15px
+}
+
+.overlayForm,
+.overlayNotifDelete {
+    position: fixed;
+    z-index: 10000000000000;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, .52);
+    display: none;
+}
+
+.overlayForm .overlayFormContainer {
+    box-shadow: 0 10px 47px 0 rgba(0, 0, 0, .12), 0 5px 14px 0 rgba(0, 0, 0, .2) !important;
+    border-radius: 5px;
+    background: #fafbfc;
+    transition: 0.3s;
+    position: fixed;
+    width: 900px;
+    /* height: 700px; */
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: none;
+}
+
+.overlayForm .overlayFormContainer .overlayFormHeader {
+    box-shadow: 0 10px 47px 0 rgba(0, 0, 0, .05), 0 5px 14px 0 rgba(0, 0, 0, .1) !important;
+    width: 100%;
+    height: 60px;
+    /* background-color: aqua; */
+
+    display: none;
+    /* display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 10px; */
+}
+
+.overlayForm .overlayFormContainer .btnCloseOverlay {
+    width: 35px;
+    height: 35px;
+    /* background: darkgoldenrod; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+.overlayForm .overlayFormContainer .btnCloseOverlay i {
+    font-size: 16px;
+
+}
+
+.overlayForm .overlayFormContainer .overlayFormBody {
+    width: 100%;
+    background: transparent;
+    overflow-y: auto;
+    overflow-x: hidden;
+    height: calc(100% - 105px);
+    /* padding: 10px; */
+    /* background-color: salmon; */
+    display: none;
+}
+
+.overlayForm .overlayFormContainer .overlayFormFooter {
+    box-shadow: 0 10px 47px 0 rgba(0, 0, 0, .05), 0 5px 14px 0 rgba(0, 0, 0, .1) !important;
+    width: 100%;
+    height: 45px;
+    cursor: pointer;
+
+    /* background-color: rgb(58, 109, 109); */
+
+
+    display: none;
+    /* display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding: 0 10px; */
+}
+
+
+
+
+
+.overlayNotifDelete .overlayContainerDelete {
+    box-shadow: 0 10px 47px 0 rgba(0, 0, 0, .12), 0 5px 14px 0 rgba(0, 0, 0, .2) !important;
+    border-radius: 5px;
+    background: #fafbfc;
+    transition: 0.3s;
+    position: fixed;
+    width: 510px;
+    height: 200px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: none;
+}
+
+.overlayNotifDelete .overlayContainerDelete .overlayHeaderDelete {
+    box-shadow: 0 10px 47px 0 rgba(0, 0, 0, .05), 0 5px 14px 0 rgba(0, 0, 0, .1) !important;
+    /* width: 100%; */
+    height: 50px;
+    display: none;
+}
+
+.overlayNotifDelete .overlayContainerDelete .overlayBodyDelete {
+    width: 100%;
+    background: transparent;
+    overflow-y: auto;
+    overflow-x: hidden;
+    /* height: calc(100% - 80px); */
+    /* background: #355d85; */
+
+    /* padding: 10px; */
+    /* background-color: salmon; */
+    display: none;
+}
+
+.overlayNotifDelete .overlayContainerDelete .overlayFooterDelete {
+    box-shadow: 0 10px 47px 0 rgba(0, 0, 0, .05), 0 5px 14px 0 rgba(0, 0, 0, .1) !important;
+    background: transparent;
+    display: none;
+}
+
+.isBtnDel {
+    position: absolute;
+    bottom: 5px;
+}
+
+.normalizeBorderRadius {
+    border-radius: 0 !important;
+}
+
+.myCardCustumize {
+    background: rgb(0, 3, 36);
+    background: -moz-linear-gradient(90deg, rgba(0, 3, 36, 1) 0%, rgba(13, 203, 191, 0.9528186274509804) 0%, rgba(105, 152, 171, 1) 100%);
+    background: -webkit-linear-gradient(90deg, rgba(0, 3, 36, 1) 0%, rgba(13, 203, 191, 0.9528186274509804) 0%, rgba(105, 152, 171, 1) 100%);
+    background: linear-gradient(90deg, rgba(0, 3, 36, 1) 0%, rgba(13, 203, 191, 0.9528186274509804) 0%, rgba(105, 152, 171, 1) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#000324", endColorstr="#6998ab", GradientType=1);
+}
