@@ -4,7 +4,7 @@ var globalBigData = [],
     globalIdKriteria = '',
     globalIsKriteria = '',
     globalSelectCriteria = '',
-    boilerForm = {},
+    boilerForm = {}, 
 
     roomObjekForm = {
         isForm: 5,

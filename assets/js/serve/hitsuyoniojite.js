@@ -3,7 +3,7 @@ class NetworkError extends Error {
         super(message);
         this.name = 'NetworkError';
     }
-}
+} 
 
 const fetching = (origin, e) => {
     return new Promise((resolve, reject) => {

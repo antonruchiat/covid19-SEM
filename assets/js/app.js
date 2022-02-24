@@ -1,7 +1,7 @@
 // API BASE URL
 const BASE_URL = "https://corona.lmao.ninja/";
 
-/**
+/** 
  *  Function for Fetch Data
  * @param url
  * @returns {Promise<any>}
