@@ -1,2 +1,12 @@
 #Ignore Folder DocPNG
 /DocPNG
+
+#Ignore Folder DocPNG
+/anton
+
+#Ignore Folder DocPNG
+*.backup
+
+#Ignore Folder DocPNG
+map.html
+
