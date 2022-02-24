@@ -1,7 +1,7 @@
 // API BASE URL
 const BASE_URL = "https://corona.lmao.ninja/";
 
-/**
+/** 
  *  Function for Fetch Data
  * @param url
  * @returns {Promise<any>}
@@ -766,3 +766,5 @@ const miniChart = async () => {
     const recovered_chart = document.getElementById('recovered_chart');
     recovered_chart && monthlyChart(recovered_chart, recovered);
 }
+
+function Mapsss() {}
