@@ -8,7 +8,7 @@
 "use strict";
 
 $(document).ready(function (e) {
-    gettingMenuAsync(meinKosu, 'meinKosu');
+    // gettingMenuAsync(meinKosu, 'meinKosu');
 });
 
 // $(document).on('input', '#searchText', ':text', () => {
@@ -30,30 +30,6 @@ $("#meinKosu1").click(() => {
 
 $("#meinKosu2").click(() => {
     selectMenu('meinKosu2');
-});
-
-$("#meinKosu3").click(() => {
-    selectMenu('meinKosu3');
-});
-
-$("#meinKosu4").click(() => {
-    selectMenu('meinKosu4');
-});
-
-$("#meinKosu5").click(() => {
-    selectMenu('meinKosu5');
-});
-
-$("#meinKosu6").click(() => {
-    selectMenu('meinKosu6');
-});
-
-$("#meinKosu7").click(() => {
-    selectMenu('meinKosu7');
-});
-
-$("#meinKosu8").click(() => {
-    selectMenu('meinKosu8');
 });
 
 

@@ -766,3 +766,5 @@ const miniChart = async () => {
     const recovered_chart = document.getElementById('recovered_chart');
     recovered_chart && monthlyChart(recovered_chart, recovered);
 }
+
+function Mapsss() {}

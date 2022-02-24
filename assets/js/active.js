@@ -79,22 +79,3 @@ if (chartID) {
  */
 
 worldwidrWithPieChart();
-
-/*
- **  Map Report Activation
- */
-
-const mapReports = document.querySelectorAll('.map-report');
-
-if (mapReports) {
-    mapReports.forEach((item, indx) => {
-        mapReport(item, 'BD');
-    })
-}
-
-
-/*
- **  Mini Chart Activation
- */
-
-miniChart();
