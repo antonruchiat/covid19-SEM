@@ -1,0 +1,5 @@
+1. Memperbaiki layout aplikasi
+2. Menghapus card/konten yang tidak dibutuhkan
+3. mengubah tema warna
+4. Mengganti tulisan logo
+5. Memperbaiki font-size
