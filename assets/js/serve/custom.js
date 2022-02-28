@@ -5,7 +5,7 @@
  * 
  */
 
-"use strict"; 
+"use strict";
 
 $(document).ready(function (e) {
     // gettingMenuAsync(meinKosu, 'meinKosu');
@@ -30,6 +30,10 @@ $("#meinKosu1").click(() => {
 
 $("#meinKosu2").click(() => {
     selectMenu('meinKosu2');
+});
+
+$("#meinKosu3").click(() => {
+    selectMenu('meinKosu3');
 });
 
 

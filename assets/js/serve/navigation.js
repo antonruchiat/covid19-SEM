@@ -3,7 +3,7 @@
  * You can write your code anywhere but dont just claim this project
  * because it will make it harder for you. Dont Forget that. anruc
  * 
- */ 
+ */
 
 "use strict";
 
@@ -46,6 +46,44 @@ function selectMenu(idmenu) {
         gettingMenuAsync(meinKosu2, 'meinKosu2');
     } else if (idmenu == 'meinKosu3') {
         // gettingMenuAsync(meinKosu3, 'meinKosu3');
+        // let data = getDataCOVID19anruc();
+        // console.log(data);
+        // return data;
+        // async () => {
+        //     try {
+        //         var requestOptions = {
+        //             method: 'GET',
+        //             redirect: 'follow'
+        //         };
+        //         let data = (await fetch("https://data.covid19.go.id/public/api/prov.json")).json();
+        //         console.log(data);
+        //         return data;
+        //     } catch (error) {
+        //         console.log("error");
+        //     }
+        // }
+
+        // var requestOptions = {
+        //     method: 'GET',
+        //     redirect: 'follow'
+        // };
+
+        // fetch("https://data.covid19.go.id/public/api/prov.json", requestOptions)
+        //     .then(response => response.json())
+        //     .then(result => console.log(result))
+        // .catch(error => console.log('error', error));
+
+
+        var requestOptions = {
+            method: 'GET',
+            redirect: 'follow'
+        };
+
+        // fetch("https://data.covid19.go.id/public/api/prov_detail_DKI_JAKARTA.json", requestOptions)
+        fetch("https://data.covid19.go.id/public/api/prov_list.json", requestOptions)
+            .then(response => response.json())
+            .then(result => console.log(result))
+            .catch(error => console.log('error', error));
     }
 }
 

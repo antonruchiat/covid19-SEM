@@ -1,6 +1,6 @@
 var main = 'mainPages',
     globalDomOverlay = '',
-    dataTabel = []; 
+    dataTabel = [];
 
 const meinKosu = (data, order) => {
     return new Promise((resolve) => {
