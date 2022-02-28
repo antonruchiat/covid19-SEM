@@ -197,7 +197,7 @@ Header Style
         transform: translateY(120%);
     }
 
-    
+
 }
 
 .last-update-wrap {
@@ -319,7 +319,7 @@ Tracker Block Style
 .tracker-block__content h4 {
     color: #4D4D4D;
     font-size: 17px;
-    font-weight:700;
+    font-weight: 700;
 }
 
 .tracker-block__content h2 {
@@ -337,8 +337,9 @@ Tracker Block Style
 }
 
 .minus {
-    color:#00E396;
+    color: #00E396;
 }
+
 .plus {
     color: #FE616A;
 }
@@ -352,7 +353,8 @@ Tracker Block Style
     border-radius: 12px;
 }
 
-.today-timeline .card-title, .today-timeline .tracker-block__top-total-cases{
+.today-timeline .card-title,
+.today-timeline .tracker-block__top-total-cases {
     color: #ffff;
 }
 
@@ -520,7 +522,7 @@ only screen and (min-width: 768px) and (max-width: 991.98px) {
     padding: 37px 40px 30px;
 }
 
-.tracker-block--3  {
+.tracker-block--3 {
     padding-bottom: 14px;
 }
 
@@ -648,7 +650,7 @@ only screen and (min-width: 768px) and (max-width: 991.98px) {
     margin-right: 0;
 }
 
-.tracker-block--4 .tracker-block__body .track-item{
+.tracker-block--4 .tracker-block__body .track-item {
     margin-bottom: 23px;
     padding-bottom: 25px;
     border-bottom: 1px solid #ffffff;
@@ -689,7 +691,7 @@ only screen and (max-width: 767.98px) {
     .tracker-block--5 {
         border-radius: 10px;
     }
-    
+
 }
 
 @media only screen and (max-width: 767.98px) {
@@ -948,15 +950,18 @@ only screen and (min-width: 768px) and (max-width: 991.98px) {
     overflow-y: auto;
 }
 
-.cases-country-lists::-webkit-scrollbar, html::-webkit-scrollbar {
+.cases-country-lists::-webkit-scrollbar,
+html::-webkit-scrollbar {
     width: 8px;
 }
 
-.cases-country-lists::-webkit-scrollbar-track, html::-webkit-scrollbar-track {
+.cases-country-lists::-webkit-scrollbar-track,
+html::-webkit-scrollbar-track {
     background: #f1f1f1;
 }
 
-.cases-country-lists::-webkit-scrollbar-thumb, html::-webkit-scrollbar-thumb {
+.cases-country-lists::-webkit-scrollbar-thumb,
+html::-webkit-scrollbar-thumb {
     background: #008FFB;
     border-radius: 20px;
 }
@@ -1102,7 +1107,7 @@ only screen and (min-width: 768px) and (max-width: 991.98px) {
     font-size: 14px;
     text-align: center;
     color: #8898AA;
-} 
+}
 
 .list-view-ses tr td {
     text-align: center;
@@ -1940,24 +1945,43 @@ only screen and (max-width: 767.98px) {
 
 .vector-title {
     font-size: 1rem;
-    font-weight:700;
+    font-weight: 700;
     margin-left: 4rem;
 }
 
-.card-header{border:none; background-color: #ffff; padding: 2rem 0 0 4rem;}
-.card .card-header h4{font-size: 1rem;font-weight:700}
+.card-header {
+    border: none;
+    background-color: #ffff;
+    padding: 2rem 0 0 4rem;
+}
+
+.card .card-header h4 {
+    font-size: 1rem;
+    font-weight: 700
+}
+
 /* .card-header p{font-size:.8rem} */
-.card .card-header~.card-body{padding-top:0; padding-left: 3rem;}
+.card .card-header~.card-body {
+    padding-top: 0;
+    padding-left: 3rem;
+}
 
 #borderRmv {
     border: none;
 }
 
-#removePadding {padding-right: 0;}
-#rmvBottom {padding: 1.25rem 0 0 3rem;}
+#removePadding {
+    padding-right: 0;
+}
+
+#rmvBottom {
+    padding: 1.25rem 0 0 3rem;
+}
 
 .content-section-2,
-.content-section-3,  .content-section-4, .content-section-5 {
+.content-section-3,
+.content-section-4,
+.content-section-5 {
     margin-top: 50px;
 }
 
@@ -1970,14 +1994,14 @@ only screen and (min-width: 768px) and (max-width: 991.98px) {
 
 .report-item h4 {
     font-size: 1rem;
-    font-weight:700;
+    font-weight: 700;
     color: #555555;
     margin-bottom: 25px;
 }
 
 .report-item h3 {
     font-size: 1.2rem;
-    font-weight:700;
+    font-weight: 700;
     color: #555555;
     margin-bottom: 5px;
 }
@@ -1986,7 +2010,8 @@ only screen and (min-width: 768px) and (max-width: 991.98px) {
     font-size: 26px;
 }
 
-.fa-arrow-trend-down,  .fa-arrow-trend-up {
+.fa-arrow-trend-down,
+.fa-arrow-trend-up {
     padding-bottom: 2rem;
 }
 
@@ -1999,7 +2024,7 @@ only screen and (min-width: 768px) and (max-width: 991.98px) {
 }
 
 .timelines {
-    width: 143px;
+    width: 100%;
 }
 
 .row {
@@ -2011,7 +2036,7 @@ only screen and (min-width: 768px) and (max-width: 991.98px) {
 }
 
 .padding-sett {
-   justify-content: space-between;
+    justify-content: space-between;
 }
 
 .date-timeline {
@@ -2078,7 +2103,7 @@ only screen and (min-width: 768px) and (max-width: 991.98px) {
 }
 
 .mapMap {
-  overflow-y: hidden;
+    overflow-y: hidden;
 }
 
 .maps-right {
@@ -2092,7 +2117,7 @@ only screen and (min-width: 768px) and (max-width: 991.98px) {
     height: 87vh;
 }
 
-.map-status-colors{
+.map-status-colors {
     margin-left: 4rem;
 }
 
