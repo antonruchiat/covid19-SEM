@@ -1,6 +1,6 @@
 /* 
  ** Get Last Update Date Activation
- */ 
+ */
 
 const updateDate = document.querySelectorAll('.last-update-wrap');
 if (updateDate) {

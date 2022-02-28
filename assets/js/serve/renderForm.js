@@ -1,5 +1,5 @@
 function rowsPagination() {
-    return `<div class="row"> 
+    return `<div class="row">
                 <div class="col-sm-12 col-md-5">
                     <div class="dataTables_info" id="dataTables_infoEE" role="status" aria-live="polite">
                         Showing 1 to 6 of 6 entries
