@@ -1,5 +1,7 @@
 1. Memperbaiki layout aplikasi
-2. Menghapus card/konten yang tidak dibutuhkan
-3. mengubah tema warna
-4. Mengganti tulisan logo
-5. Memperbaiki font-size
+==> perbaiki combinasi warna pada halaman SES
+2. Menghapus card/konten yang tidak dibutuhkan (Done)
+3. mengubah tema warna 
+==> perlu ditinjau kembali
+4. Mengganti tulisan logo (Done)
+5. Memperbaiki font-size (Done)
