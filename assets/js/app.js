@@ -624,7 +624,8 @@ const mapStatus = async function (selectorID) {
 
     countriesData.map(async (country) => {
         if (country.countryInfo.iso2) {
-            const countryCode = country.countryInfo.iso2.toLowerCase();
+            // const countryCode = country.countryInfo.iso2.toLowerCase();
+            const countryCode = "id";
             if (country.cases >= 0 && country.cases <= 50000) {
                 mapColors[countryCode] = minCases;
             } else if (country.cases > 50000 && country.cases <= 100000) {
@@ -636,8 +637,8 @@ const mapStatus = async function (selectorID) {
     })
 
     jQuery(map).vectorMap({
-        map: 'world_en',
-        backgroundColor: null,
+        map: 'id_en',
+        backgroundColor: "transparent",
         borderColor: '#fff',
         borderOpacity: 0.1,
         borderWidth: 1,
