@@ -2,6 +2,7 @@
  ** Get Last Update Date Activation
  */
 
+
 const updateDate = document.querySelectorAll('.last-update-wrap');
 if (updateDate) {
     updateDate.forEach((item, indx) => {
