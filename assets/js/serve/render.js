@@ -178,8 +178,8 @@ const meinKosu2 = (data, order) => {
                     <div class="col-lg-12 m-auto">
     
                         <div class="badge-tracker-item">
-                            <div class="title-top" style="margin-top: 80px;">
-                                <h2>Forecasting COVID-19 Using Single Exponential Smoothing</h2>
+                            <div class="title-top" style="margin-top: 30px;">
+                                <h4>Forecasting COVID-19 Using Single Exponential Smoothing Method</h4>
                             </div>
     
     
@@ -200,7 +200,7 @@ const meinKosu2 = (data, order) => {
                                                     <tr>
                                                         <th>Cases Date</th>
                                                         <th>Confirmed Cases</th>
-                                                        <th>Forecasting Using Alpha 0.1</th>
+                                                        <th>Forecasting Using Alpha X</th>
                                                     </tr>
                                                 </thead>
     

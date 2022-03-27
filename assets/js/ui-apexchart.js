@@ -1,16 +1,54 @@
-var areaOptions = {
-    series: [
+let defaultChart = {
+  series: [
+    {
+      name: "Actual Data",
+      data: [31, 40, 28, 51],
+    },
+    {
+      name: "SES",
+      data: [11, 32, 45, 32],
+    },
+  ],
+  chart: {
+    id: "default",
+    height: 420,
+    type: "area",
+  },
+  dataLabels: {
+    enabled: false,
+  },
+  stroke: {
+    curve: "smooth",
+  },
+  xaxis: {
+    type: "month",
+    categories: [
+      "January",
+      "February",
+      "March",
+      "April",
+    ],
+  },
+  tooltip: {
+    x: {
+      format: "dd/MM/yy HH:mm",
+    },
+  },    
+}
+
+let areaOptionsMonth = {
+series: [
       {
-        name: "Real Time",
-        data: [31, 40, 28, 51, 42, 109, 100],
+        name: "Actual Data",
+        data: [31, 40, 28, 51],
       },
       {
         name: "SES",
-        data: [11, 32, 45, 32, 34, 52, 41],
+        data: [11, 32, 45, 32],
       },
     ],
     chart: {
-      height: 390,
+      height: 420,
       type: "area",
     },
     dataLabels: {
@@ -20,24 +58,86 @@ var areaOptions = {
       curve: "smooth",
     },
     xaxis: {
-      type: "datetime",
+      type: "month",
       categories: [
-        "2018-09-19T00:00:00.000Z",
-        "2018-09-19T01:30:00.000Z",
-        "2018-09-19T02:30:00.000Z",
-        "2018-09-19T03:30:00.000Z",
-        "2018-09-19T04:30:00.000Z",
-        "2018-09-19T05:30:00.000Z",
-        "2018-09-19T06:30:00.000Z",
+        "January",
+        "February",
+        "March",
+        "April",
       ],
     },
     tooltip: {
       x: {
         format: "dd/MM/yy HH:mm",
       },
-    },
+    },    
 };
 
-var area = new ApexCharts(document.querySelector("#area"), areaOptions);
+let areaOptionsYear = {
+  series: [
+    {
+      name: "Actual Data",
+      data: [51, 40, 28],
+    },
+    {
+      name: "SES",
+      data: [32, 45, 11],
+    },
+  ],
+  chart: {
+    height: 420,
+    type: "area",
+  },
+  dataLabels: {
+    enabled: false,
+  },
+  stroke: {
+    curve: "smooth",
+  },
+  xaxis: {
+    type: "year",
+    categories: [
+      "2020",
+      "2021",
+      "2022",
+    ],
+  },
+  tooltip: {
+    x: {
+      format: "dd/MM/yy HH:mm",
+    },
+  },
+};
 
-area.render();
+let areaMonthly = new ApexCharts(document.getElementById("area"), defaultChart);
+// let areaYearly = new ApexCharts(document.querySelector("#area"), areaOptionsYear);
+areaMonthly.render();
+let defaultBtn1 = document.querySelector(".month-btn");
+let defaultBtn2 = document.querySelector(".year-btn");
+defaultBtn1.classList.add("chart-active");
+
+function showChart(e) {
+  let checkElClass = e.classList;
+
+  if(checkElClass.contains("month-btn")){
+    if(checkElClass.contains("chart-active")) {
+      areaMonthly.updateOptions(areaOptionsMonth);
+    } else {
+      areaMonthly.updateOptions(areaOptionsMonth);
+      e.classList.add("chart-active");
+      defaultBtn2.classList.remove("chart-active");
+
+    }
+  } else if(checkElClass.contains("year-btn")) {
+    if(checkElClass.contains("chart-active")){
+      areaMonthly.updateOptions(areaOptionsYear);
+    } else {
+      areaMonthly.updateOptions(areaOptionsYear);
+      e.classList.add("chart-active");
+      defaultBtn1.classList.remove("chart-active");
+    }   
+
+  } else {
+    alert("maybe there is an error")
+  }
+}
