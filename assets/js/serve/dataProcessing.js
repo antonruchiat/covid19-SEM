@@ -582,7 +582,6 @@ async function deleteItem(order, action) {
     }
 }
 
-
 function processExportingData(params, order) {
     return new Promise((resolve) => {
         params = params.split('.');
@@ -775,3 +774,23 @@ async function resetApp(order) {
         return toastr.error('Error NetWork');
     }
 }
+
+
+// const contSec1 = () => {
+//     return new Promise((resolve) => {
+//         let dataProvinces = province();
+//         console.log(dataProvinces);
+//         resolve(dataProvinces);
+//     });
+// }
+
+// const gettingChart = async () => {
+//     try {
+//         let currentTime = currentYearMonth();
+//         await 
+//         return dataForecast;
+//     } catch (rejectedReason) {
+//         console.log(rejectedReason);
+//         return toastr.error('Error NetWork');
+//     }
+// }

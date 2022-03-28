@@ -22,12 +22,15 @@
     <link href="./assets/css/anruc.css" rel="stylesheet">
     <link href="./assets/css/kiya.css" rel="stylesheet">
     <link rel="stylesheet" href="assets/vendors/apexchart/apexcharts.css">
+    <link href="./assets/css/anruc.css" rel="stylesheet" />
+    <link href="./assets/vendors/apexchart/apexcharts.css" rel="stylesheet" />
+    <link href="./assets/js/toastr/build/toastr.css" rel="stylesheet" />
     <script src="https://kit.fontawesome.com/ba7bdeb3ee.js" crossorigin="anonymous"></script>
 </head>
 
 <body>
     <div class="MYmainLoad">
-        <img src="./assets/img/coolloading.gif">
+        <img src="./assets/img/loading.gif">
     </div>
 
 
@@ -40,18 +43,23 @@
                     </div>
                 </div>
 
+
                 <!-- <div class="col-md-4">
+                 <div class="col-md-4 col-lg-4">
                     <div class="last-update-wrap">
                         <p class="mb-0">Update: <span class="last-update"></span></p>
                     </div>
                 </div> -->
 
+
                 <div class="col" >
+                <div class="col-md-6 col-lg-6">
                     <div class="navbar-wrap">
                         <nav class="menubar">
                             <ul class="nav">
                                 <li id="meinKosu">
-                                    <a href="./">Dashboard</a>
+                                    <!-- <a href="./">Dashboard</a> -->
+                                    <a href="javascript:void(0)">Dashboard</a>
                                 </li>
                                 <li id="meinKosu1">
                                     <a href="javascript:void(0)">Map</a>
@@ -82,6 +90,25 @@
                                     <div class="cases-card dashboard-cases">
                                         <div class="tracker-block border-card">
                                             <!-- <div class="tracker-block" id="minMarginFirst"> -->
+
+                    <div class="col-xl-9" id="forecastChart">
+                        <div class="map-status-wrap">
+                            <div class="map-status-colors">
+                                <h4>Using SES Line Area Chart</h4>
+                            </div>
+
+                            <div class="map-status" id="area"></div>
+                        </div>
+                    </div>
+
+
+                    <div class="col-xl-3">
+                        <div class="row">
+                            <div class="col-12 country-choose-stats">
+                                <div class="tracker-block tracker-block--2">
+                                    <div class="col-md-12">
+                                        <div class="tracker-block-style-1">
+                                            <div class="tracker-block">
                                                 <div class="tracker-block__icon">
                                                     <img src="assets/img/Group 1.svg" alt="corona-icon" />
                                                 </div>
@@ -323,7 +350,6 @@
                 </div>
             </div>
         </div>
-
 
         <div class="content-section-3">
             <div class="container">
@@ -2972,7 +2998,6 @@
             </div>
         </div>
 
-
         <div class="content-section-5 add-height">
             <div class="container">
                 <div class="row">
@@ -3015,6 +3040,9 @@
             </div>
         </div>
     </main>
+
+
+
 
     <div class="overlayForm">
         <div class="overlayFormContainer radius-15 border-lg-top-primary">
@@ -3080,14 +3108,18 @@
     <script src="./assets/js/chart.min.js"></script>
     <script src="./assets/js/jquery.vmap.min.js"></script>
     <script src="./assets/js/jquery.vmap.world.js"></script>
+    <script src="./assets/js/toastr/build/toastr.min.js"></script>
     <script src="./assets/js/app.js"></script>
     <script src="./assets/js/active.js" defer></script>
+    <script src="./assets/vendors/apexchart/apexcharts.js"></script>
+    <script src="./assets/js/ui-apexchart.js"></script>
     <script src="./assets/js/serve/custom.js"></script>
     <script src="./assets/js/serve/navigation.js"></script>
     <script src="./assets/js/serve/render.js"></script>
-    <script src="./assets/js/serve/dataProcessing.js"></script>
     <script src="./assets/js/serve/renderForm.js"></script>
+    <script src="./assets/js/serve/dataProcessing.js"></script>
     <script src="./assets/js/serve/hitsuyoniojite.js"></script>
+    <script src="./assets/js/serve/algorithm.js"></script>
     <script src="./assets/js/serve/newAlgorithm.js"></script>
     <script src="./assets/vendors/apexchart/apexcharts.js"></script>
     <script src="./assets/js/ui-apexchart.js"></script>
