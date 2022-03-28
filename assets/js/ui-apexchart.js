@@ -1,6 +1,5 @@
 let defaultChart = {
-  series: [
-    {
+  series: [{
       name: "Actual Data",
       data: [31, 40, 28, 51],
     },
@@ -33,49 +32,47 @@ let defaultChart = {
     x: {
       format: "dd/MM/yy HH:mm",
     },
-  },    
+  },
 }
 
 let areaOptionsMonth = {
-series: [
-      {
-        name: "Actual Data",
-        data: [31, 40, 28, 51],
-      },
-      {
-        name: "SES",
-        data: [11, 32, 45, 32],
-      },
+  series: [{
+      name: "Actual Data",
+      data: [31, 40, 28, 51],
+    },
+    {
+      name: "SES",
+      data: [11, 32, 45, 32],
+    },
+  ],
+  chart: {
+    height: 420,
+    type: "area",
+  },
+  dataLabels: {
+    enabled: false,
+  },
+  stroke: {
+    curve: "smooth",
+  },
+  xaxis: {
+    type: "month",
+    categories: [
+      "January",
+      "February",
+      "March",
+      "April",
     ],
-    chart: {
-      height: 420,
-      type: "area",
+  },
+  tooltip: {
+    x: {
+      format: "dd/MM/yy HH:mm",
     },
-    dataLabels: {
-      enabled: false,
-    },
-    stroke: {
-      curve: "smooth",
-    },
-    xaxis: {
-      type: "month",
-      categories: [
-        "January",
-        "February",
-        "March",
-        "April",
-      ],
-    },
-    tooltip: {
-      x: {
-        format: "dd/MM/yy HH:mm",
-      },
-    },    
+  },
 };
 
 let areaOptionsYear = {
-  series: [
-    {
+  series: [{
       name: "Actual Data",
       data: [51, 40, 28],
     },
@@ -119,8 +116,8 @@ defaultBtn1.classList.add("chart-active");
 function showChart(e) {
   let checkElClass = e.classList;
 
-  if(checkElClass.contains("month-btn")){
-    if(checkElClass.contains("chart-active")) {
+  if (checkElClass.contains("month-btn")) {
+    if (checkElClass.contains("chart-active")) {
       areaMonthly.updateOptions(areaOptionsMonth);
     } else {
       areaMonthly.updateOptions(areaOptionsMonth);
@@ -128,14 +125,14 @@ function showChart(e) {
       defaultBtn2.classList.remove("chart-active");
 
     }
-  } else if(checkElClass.contains("year-btn")) {
-    if(checkElClass.contains("chart-active")){
+  } else if (checkElClass.contains("year-btn")) {
+    if (checkElClass.contains("chart-active")) {
       areaMonthly.updateOptions(areaOptionsYear);
     } else {
       areaMonthly.updateOptions(areaOptionsYear);
       e.classList.add("chart-active");
       defaultBtn1.classList.remove("chart-active");
-    }   
+    }
 
   } else {
     alert("maybe there is an error")
