@@ -1,0 +1,33 @@
+Dashboard Sequence
+1:
+list update terakhir (semua provinsi)
+list provinsi
+list default provinsi
+list data covid19 provinsi
+list required data covid19 provinsi
+list total bulan dan tahun semua provinsi
+list forecasting bulan atau tahun ==> buat ke line Chart
+
+2
+list update terakhir (semua provinsi)
+list provinsi
+list summary untuk semua provinsi ==> buat ke Card
+
+3
+list update terakhir (semua provinsi)
+list provinsi
+list default provinsi
+list data covid19 provinsi
+list required data covid19 provinsi
+list total bulan dan tahun semua provinsi
+list forecasting bulan atau tahun ==> Tahun yang Aktif
+
+4
+list update terakhir (semua provinsi)
+list provinsi
+list summary untuk semua provinsi ==> buat ke Maps
+
+5
+list update terakhir (semua provinsi)
+list provinsi
+list summary untuk semua provinsi ==>buat ke Card Dan Tabel

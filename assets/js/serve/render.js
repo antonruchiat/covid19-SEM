@@ -2,109 +2,166 @@ var main = 'mainPages',
     globalDomOverlay = '',
     dataTabel = [];
 
-const meinKosu = (data, order) => {
+const meinKosuxxx = (data, order) => {
     return new Promise((resolve) => {
         console.log(data);
-        $(`#${main}`).html('');
-        const bgCards = ['text-secondary', 'color-lavender-purple', 'color-light-orange', 'color-careys-pink',
-            'color-lavender-purple', 'color-light-success'
-        ];
-        const iconCards = ['icofont-patient-file', 'icofont-doctor-alt', 'icofont-icu', 'icofont-hospital',
-            'icofont-brand-designbump', 'icofont-ui-clock'
-        ];
-        const arrLabels = ['Total Schedule Month', 'Total Doctors', 'Total Rooms', 'Total Department', 'Total Shift', 'Total Day Off'];
+        // console.log(data);
+        // $(`#${main}`).html('');
+        // const bgCards = ['text-secondary', 'color-lavender-purple', 'color-light-orange', 'color-careys-pink',
+        //     'color-lavender-purple', 'color-light-success'
+        // ];
+        // const iconCards = ['icofont-patient-file', 'icofont-doctor-alt', 'icofont-icu', 'icofont-hospital',
+        //     'icofont-brand-designbump', 'icofont-ui-clock'
+        // ];
+        // const arrLabels = ['Total Schedule Month', 'Total Doctors', 'Total Rooms', 'Total Department', 'Total Shift', 'Total Day Off'];
 
         resolve(function () {
-            $(`#${main}`).html(`<div class="page-heading">
-                                    <h3>Dashboard</h3>
-                                </div>
-                                
-                                <div class="page-content">
-                                    <section class="row">
-                                        <div class="col-12 col-lg-12">
-                                            <div class="row" id="TopTabulatedData">
-                                                <div class="col-6 col-lg-3 col-md-6">
-                                                    <div class="card">
-                                                        <div class="card-body px-3 py-4-5">
-                                                            <div class="row">
-                                                                <div class="col-md-4">
-                                                                    <div class="stats-icon purple">
-                                                                        <i class="icon dripicons-archive"></i>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="col-md-8">
-                                                                    <h6 class="text-muted font-semibold">Schedule</h6>
-                                                                    <h6 class="font-extrabold mb-0">112.000</h6>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-6 col-lg-3 col-md-6">
-                                                    <div class="card">
-                                                        <div class="card-body px-3 py-4-5">
-                                                            <div class="row">
-                                                                <div class="col-md-4">
-                                                                    <div class="stats-icon blue">
-                                                                        <i class="iconly-boldProfile"></i>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="col-md-8">
-                                                                    <h6 class="text-muted font-semibold">Dosen</h6>
-                                                                    <h6 class="font-extrabold mb-0">183.000</h6>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-6 col-lg-3 col-md-6">
-                                                    <div class="card">
-                                                        <div class="card-body px-3 py-4-5">
-                                                            <div class="row">
-                                                                <div class="col-md-4">
-                                                                    <div class="stats-icon green">
-                                                                        <i class="icon dripicons-store"></i>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="col-md-8">
-                                                                    <h6 class="text-muted font-semibold">Ruangan</h6>
-                                                                    <h6 class="font-extrabold mb-0">80.000</h6>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-6 col-lg-3 col-md-6">
-                                                    <div class="card">
-                                                        <div class="card-body px-3 py-4-5">
-                                                            <div class="row">
-                                                                <div class="col-md-4">
-                                                                    <div class="stats-icon red">
-                                                                        <i class="iconly-boldBookmark"></i>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="col-md-8">
-                                                                    <h6 class="text-muted font-semibold">Semester</h6>
-                                                                    <h6 class="font-extrabold mb-0">112</h6>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
+            // $(`#${main}`).html(`<div class="page-heading">
+            //                         <h3>Dashboard</h3>
+            //                     </div>
 
-                                    </section>
-                                    <section class="row">
-                                        <div class="col-md-12 col-lg-12 col-xl-12">
-                                            ${myBGSVG_}
-                                        </div>
-                                    </section>
-                                </div>`);
-            implementChartJS(data);
+            //                     <div class="page-content">
+            //                         <section class="row">
+            //                             <div class="col-12 col-lg-12">
+            //                                 <div class="row" id="TopTabulatedData">
+            //                                     <div class="col-6 col-lg-3 col-md-6">
+            //                                         <div class="card">
+            //                                             <div class="card-body px-3 py-4-5">
+            //                                                 <div class="row">
+            //                                                     <div class="col-md-4">
+            //                                                         <div class="stats-icon purple">
+            //                                                             <i class="icon dripicons-archive"></i>
+            //                                                         </div>
+            //                                                     </div>
+            //                                                     <div class="col-md-8">
+            //                                                         <h6 class="text-muted font-semibold">Schedule</h6>
+            //                                                         <h6 class="font-extrabold mb-0">112.000</h6>
+            //                                                     </div>
+            //                                                 </div>
+            //                                             </div>
+            //                                         </div>
+            //                                     </div>
+            //                                     <div class="col-6 col-lg-3 col-md-6">
+            //                                         <div class="card">
+            //                                             <div class="card-body px-3 py-4-5">
+            //                                                 <div class="row">
+            //                                                     <div class="col-md-4">
+            //                                                         <div class="stats-icon blue">
+            //                                                             <i class="iconly-boldProfile"></i>
+            //                                                         </div>
+            //                                                     </div>
+            //                                                     <div class="col-md-8">
+            //                                                         <h6 class="text-muted font-semibold">Dosen</h6>
+            //                                                         <h6 class="font-extrabold mb-0">183.000</h6>
+            //                                                     </div>
+            //                                                 </div>
+            //                                             </div>
+            //                                         </div>
+            //                                     </div>
+            //                                     <div class="col-6 col-lg-3 col-md-6">
+            //                                         <div class="card">
+            //                                             <div class="card-body px-3 py-4-5">
+            //                                                 <div class="row">
+            //                                                     <div class="col-md-4">
+            //                                                         <div class="stats-icon green">
+            //                                                             <i class="icon dripicons-store"></i>
+            //                                                         </div>
+            //                                                     </div>
+            //                                                     <div class="col-md-8">
+            //                                                         <h6 class="text-muted font-semibold">Ruangan</h6>
+            //                                                         <h6 class="font-extrabold mb-0">80.000</h6>
+            //                                                     </div>
+            //                                                 </div>
+            //                                             </div>
+            //                                         </div>
+            //                                     </div>
+            //                                     <div class="col-6 col-lg-3 col-md-6">
+            //                                         <div class="card">
+            //                                             <div class="card-body px-3 py-4-5">
+            //                                                 <div class="row">
+            //                                                     <div class="col-md-4">
+            //                                                         <div class="stats-icon red">
+            //                                                             <i class="iconly-boldBookmark"></i>
+            //                                                         </div>
+            //                                                     </div>
+            //                                                     <div class="col-md-8">
+            //                                                         <h6 class="text-muted font-semibold">Semester</h6>
+            //                                                         <h6 class="font-extrabold mb-0">112</h6>
+            //                                                     </div>
+            //                                                 </div>
+            //                                             </div>
+            //                                         </div>
+            //                                     </div>
+            //                                 </div>
+            //                             </div>
+
+            //                         </section>
+            //                         <section class="row">
+            //                             <div class="col-md-12 col-lg-12 col-xl-12">
+            //                                 ${myBGSVG_}
+            //                             </div>
+            //                         </section>
+            //                     </div>`);
+            // implementChartJS(data);
         }());
     });
 }
+
+const meinKosu = async () => {
+    let dataProvinces = await gettingProvince('https://data.covid19.go.id/public/api/prov_list.json');
+    let individualData = await individualProvince(dataProvinces.makeDefaultProvinsi);
+    const requiredData = await dataRequired(dataProvinces.resultProvinsi, individualData)
+
+    // // let covidProvinsi = [...requiredData];
+    // // let clonecovidProvinsi = Array.from(requiredData);
+
+    // let clonecovidProvinsi = requiredData.map((item) => {
+    //     return {
+    //         ...item,
+    //     };
+    // });
+
+    let actualData = await gettingActualCovid19(requiredData);
+    let forecastMonth = await startingSESbyMonth(actualData, 2022);
+    await renderChartAsync(forecastMonth);
+
+    console.log(requiredData);
+    console.log(actualData);
+    console.log(forecastMonth);
+
+    return individualData;
+    // return await contSec1();
+    // contSec2
+    // contSec3
+    // contSec5
+    // .append()
+}
+
+const renderChartAsync = data => {
+    return new Promise((resolve) => {
+
+        $(".main-content-wrapper").addClass('p-0');
+        resolve(function () {
+            $(`#forecastChart`).html('');
+            $(`#forecastChart`).html(`<div class="map-status-wrap">
+                                        <div class="map-status-colors">
+                                            <h4>Using SES Line Area Chart</h4>
+                                        </div>
+
+                                        <div class="map-status" id="area"></div>
+                                      </div>`);
+
+            const mapReports = document.querySelectorAll('.map-report');
+
+            if (mapReports) {
+                mapReports.forEach((item, indx) => {
+                    mapReport(item, 'BD');
+                })
+            }
+        }())
+    });
+}
+
 
 const meinKosu1 = (data, order) => {
     return new Promise((resolve) => {
