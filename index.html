@@ -19,6 +19,9 @@
     <link href="./assets/css/select2.min.css" rel="stylesheet" />
     <link href="./assets/css/bootstrap.min.css" rel="stylesheet" />
     <link href="./assets/css/style.css" rel="stylesheet" />
+    <link href="./assets/css/anruc.css" rel="stylesheet">
+    <link href="./assets/css/kiya.css" rel="stylesheet">
+    <link rel="stylesheet" href="assets/vendors/apexchart/apexcharts.css">
     <link href="./assets/css/anruc.css" rel="stylesheet" />
     <link href="./assets/vendors/apexchart/apexcharts.css" rel="stylesheet" />
     <link href="./assets/js/toastr/build/toastr.css" rel="stylesheet" />
@@ -31,8 +34,8 @@
     </div>
 
 
-    <header class="header-wrapper">
-        <div class="container">
+    <header class="header-wrapper fixed-top navbar-sett">
+        <div class="container navbar-fixed-top">
             <div class="row justify-content-between align-items-center">
                 <div class="col-md-2 logo-brand">
                     <div class="logo-wrap">
@@ -40,12 +43,16 @@
                     </div>
                 </div>
 
-                <div class="col-md-4 col-lg-4">
+
+                <!-- <div class="col-md-4">
+                 <div class="col-md-4 col-lg-4">
                     <div class="last-update-wrap">
                         <p class="mb-0">Update: <span class="last-update"></span></p>
                     </div>
-                </div>
+                </div> -->
 
+
+                <div class="col" >
                 <div class="col-md-6 col-lg-6">
                     <div class="navbar-wrap">
                         <nav class="menubar">
@@ -76,6 +83,13 @@
         <div class="content-section-1">
             <div class="container">
                 <div class="row">
+                    <div class="col-xl-12" id="">
+                        <div class="mtn-25 worldwide-stats" id="">
+                            <div class="row grouping">
+                                <div class="col-xl-3">
+                                    <div class="cases-card dashboard-cases">
+                                        <div class="tracker-block border-card">
+                                            <!-- <div class="tracker-block" id="minMarginFirst"> -->
 
                     <div class="col-xl-9" id="forecastChart">
                         <div class="map-status-wrap">
@@ -96,63 +110,60 @@
                                         <div class="tracker-block-style-1">
                                             <div class="tracker-block">
                                                 <div class="tracker-block__icon">
-                                                    <img src="assets/img/corona-icon-red.png" alt="corona-icon" />
+                                                    <img src="assets/img/Group 1.svg" alt="corona-icon" />
                                                 </div>
                                                 <div class="tracker-block__content">
                                                     <h4>Coronavirus Cases</h4>
-                                                    <h2><span class="cases-no infected">0,000,000</span> <span
-                                                            class="new-no">(+<span
-                                                                class="today_infected">000,000</span>)</span>
+                                                    <h2><span class="cases-no infected">0,000,000</span> <div
+                                                            class="new-no">(+<span class="today_infected">000,000</span>)</div>
                                                     </h2>
                                                 </div>
+                                            <!-- </div> -->
+                                        </div> 
+                                    </div>
+                                </div>
+                                <div class="col-xl-3">
+                                    <div class="cases-card">
+                                        <div class="tracker-block border-card">
+                                            <div class="tracker-block__icon">
+                                                <img src="assets/img/Group 3.svg" alt="corona-icon" />
+                                            </div>
+                                            <div class="tracker-block__content">
+                                                <h4>Total Recovered</h4>
+                                                <h2><span class="cases-no recovered">0,000,000</span> <div
+                                                        class="new-no">(+<span
+                                                            class="today_recovered">000,000</span>)</div>
+                                                </h2>
                                             </div>
                                         </div>
                                     </div>
-
-                                    <div class="col-md-12">
-                                        <div class="tracker-block-style-1">
-                                            <div class="tracker-block">
-                                                <div class="tracker-block__icon">
-                                                    <img src="assets/img/corona-icon-green.png" alt="corona-icon" />
-                                                </div>
-                                                <div class="tracker-block__content">
-                                                    <h4>Total Recovered</h4>
-                                                    <h2><span class="cases-no recovered">0,000,000</span> <span
-                                                            class="new-no">(+<span
-                                                                class="today_recovered">000,000</span>)</span>
-                                                    </h2>
-                                                </div>
+                                </div>
+                                
+                                <div class="col-xl-3">
+                                    <div class="cases-card">
+                                        <div class="tracker-block border-card">
+                                            <div class="tracker-block__icon">
+                                                <img src="assets/img/Group 1.svg" alt="corona-icon" />
+                                            </div>
+                                            <div class="tracker-block__content">
+                                                <h4>Total Death</h4>
+                                                <h2><span class="cases-no deaths">0,000,000</span> <div
+                                                        class="new-no">(+<span class="today_deaths">000,000</span>)</div>
+                                                </h2>
                                             </div>
                                         </div>
                                     </div>
-
-                                    <div class="col-md-12">
-                                        <div class="tracker-block-style-1">
-                                            <div class="tracker-block">
-                                                <div class="tracker-block__icon">
-                                                    <img src="assets/img/corona-icon-red.png" alt="corona-icon" />
-                                                </div>
-                                                <div class="tracker-block__content">
-                                                    <h4>Total Death</h4>
-                                                    <h2><span class="cases-no deaths">0,000,000</span> <span
-                                                            class="new-no">(+<span
-                                                                class="today_deaths">000,000</span>)</span>
-                                                    </h2>
-                                                </div>
+                                </div>
+                                
+                                <div class="col-xl-3">
+                                    <div class="cases-card">
+                                        <div class="tracker-block border-card">
+                                            <div class="tracker-block__icon">
+                                                <img src="assets/img/Group 1.svg" alt="corona-icon" />
                                             </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="col-md-12">
-                                        <div class="tracker-block-style-1">
-                                            <div class="tracker-block">
-                                                <div class="tracker-block__icon">
-                                                    <img src="assets/img/corona-icon-red.png" alt="corona-icon" />
-                                                </div>
-                                                <div class="tracker-block__content">
-                                                    <h4>Active Cases</h4>
-                                                    <h2><span class="cases-no current_cases">0,000,000</span></h2>
-                                                </div>
+                                            <div class="tracker-block__content">
+                                                <h4>Active Cases</h4>
+                                                <h2><span class="cases-no current_cases">0,000,000</span></h2>
                                             </div>
                                         </div>
                                     </div>
@@ -160,259 +171,181 @@
                             </div>
                         </div>
                     </div>
-
+                    <div class="col-xl-12 chart-area" id="removePadding">
+                        <div class="card" id="borderRmv">
+                            <div class="header-card-wrapper">
+                                <h4 class="card-title-chart">Forecasting Line Chart</h4>
+                                <span class="switch-btn"><button class="line-btn month-btn" onclick="showChart(this)">Monthly</button><button class="line-btn year-btn" onclick="showChart(this)">Yearly</button></span> 
+                            </div>
+                            <div class="card-body" id="broken1">
+                                <div id="area"></div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
 
         <div class="content-section-2">
             <div class="container">
-                <div class="row">
-                    <div class="col-xl-12">
-                        <div class="today-view report-item worldwide-stats">
-                            <h4>Forecasting Timelines</h4>
-
-                            <div id="carouselExampleCaptions" class="carousel slide" data-ride="carousel">
-                                <ol class="carousel-indicators">
-                                    <li data-target="#carouselExampleCaptions" data-slide-to="0" class="active"></li>
-                                    <li data-target="#carouselExampleCaptions" data-slide-to="1"></li>
-                                </ol>
-
-                                <div class="carousel-inner">
-                                    <div class="carousel-item active"
-                                        style="display: flex; justify-content: space-between;">
-                                        <div class="col text-center">
+                <div class="today-view report-item worldwide-stats">
+                    <h4>Forecasting Timelines</h4>
+                    <div id="multi-item-example" class="carousel slide carousel-multi-item" data-ride="carousel">
+                        <!-- Controls-->
+                        <span class="controls-top">
+                            <a class="btn-floating-left" href="#multi-item-example" data-slide="prev"><i class="fas fa-chevron-left"></i></a>
+                            <a class="btn-floating-right" href="#multi-item-example" data-slide="next"><i class="fas fa-chevron-right"></i></a>
+                        </span>
+                        <!--/.Controls -->
+                    
+                        <!--Slides-->
+                        <div class="carousel-inner" role="listbox">
+                            <div class="row">
+                                <!--First slide-->
+                                <div class="carousel-item active">
+                                        <div class="col-md-2 text-center today-forecast" style="float:left">
                                             <div class="card mb-2 timelines">
                                                 <div class="card-body today-timeline">
-                                                    <i class="fa-solid fa-arrow-trend-down fa-lg"></i>
-                                                    <h4 class="card-title">Sunday <br> <span class="date-timeline">
-                                                            27 Feb 2022
-                                                        </span></h4>
-                                                    <h4 class="tracker-block__top-total-cases infected">
-                                                        00,000,0
-                                                    </h4>
-                                                    <h6 class="new-no minus">-<span
-                                                            class="today_infected timelines-infected">0000</span>
-                                                    </h6>
+                                                    <i class="fa-solid fa-arrow-trend-down fa-lg"></i>                                       
+                                                    <h4 class="card-title">January</h4>
+                                                    <h4 class="tracker-block__top-total-cases infected">00,000,0</h4>
+                                                    <h6 class="new-no minus">-<span class="today_infected timelines-infected">0000</span></h6>
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="col text-center">
+                                
+                                        <div class="col-md-2 text-center " style="float:left">
                                             <div class="card mb-2 timelines">
                                                 <div class="card-body">
-                                                    <i class="fa-solid fa-arrow-trend-up fa-lg"></i>
-                                                    <h4 class="card-title">Monday <br> <span class="date-timeline">
-                                                            28 Feb 2022
-                                                        </span></h4>
-                                                    <h4 class="tracker-block__top-total-cases infected">
-                                                        00,000,0
-                                                    </h4>
-                                                    <h6 class="new-no plus">+<span
-                                                            class="today_infected timelines-infected">0000</span>
-                                                    </h6>
+                                                    <i class="fa-solid fa-arrow-trend-up fa-lg"></i>                                       
+                                                    <h4 class="card-title">February</h4>
+                                                    <h4 class="tracker-block__top-total-cases infected">00,000,0</h4>
+                                                    <h6 class="new-no plus">+<span class="today_infected timelines-infected">0000</span></h6>
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="col text-center">
+                                
+                                        <div class="col-md-2 text-center " style="float:left">
                                             <div class="card mb-2 timelines">
                                                 <div class="card-body">
-                                                    <i class="fa-solid fa-arrow-trend-down fa-lg"></i>
-                                                    <h4 class="card-title">Tuesday <br> <span class="date-timeline">
-                                                            01 Mar 2022
-                                                        </span></h4>
-                                                    <h4 class="tracker-block__top-total-cases infected">
-                                                        00,000,0
-                                                    </h4>
-                                                    <h6 class="new-no minus">-<span
-                                                            class="today_infected timelines-infected">0000</span>
-                                                    </h6>
+                                                    <i class="fa-solid fa-arrow-trend-down fa-lg"></i>                                       
+                                                    <h4 class="card-title">March</h4>
+                                                    <h4 class="tracker-block__top-total-cases infected">00,000,0</h4>
+                                                    <h6 class="new-no minus">-<span class="today_infected timelines-infected">0000</span></h6>
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="col text-center">
+                                        
+                                        <div class="col-md-2 text-center " style="float:left">
                                             <div class="card mb-2 timelines">
                                                 <div class="card-body">
-                                                    <i class="fa-solid fa-arrow-trend-down fa-lg"></i>
-                                                    <h4 class="card-title">Wednesday <br> <span class="date-timeline">
-                                                            02 Mar
-                                                            2022 </span></h4>
-                                                    <h4 class="tracker-block__top-total-cases infected">
-                                                        00,000,0
-                                                    </h4>
-                                                    <h6 class="new-no minus">-<span
-                                                            class="today_infected timelines-infected">0000</span>
-                                                    </h6>
+                                                    <i class="fa-solid fa-arrow-trend-down fa-lg"></i>                                       
+                                                    <h4 class="card-title">April</h4>
+                                                    <h4 class="tracker-block__top-total-cases infected">00,000,0</h4>
+                                                    <h6 class="new-no minus">-<span class="today_infected timelines-infected">0000</span></h6>
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="col text-center">
+            
+                                        <div class="col-md-2 text-center " style="float:left">
                                             <div class="card mb-2 timelines">
                                                 <div class="card-body">
-                                                    <i class="fa-solid fa-arrow-trend-down fa-lg"></i>
-                                                    <h4 class="card-title">Thursday <br> <span class="date-timeline"> 03
-                                                            Mar
-                                                            2022 </span></h4>
-                                                    <h4 class="tracker-block__top-total-cases infected">
-                                                        00,000,0
-                                                    </h4>
-                                                    <h6 class="new-no minus">-<span
-                                                            class="today_infected timelines-infected">0000</span>
-                                                    </h6>
+                                                    <i class="fa-solid fa-arrow-trend-down fa-lg"></i>                                       
+                                                    <h4 class="card-title">May</h4>
+                                                    <h4 class="tracker-block__top-total-cases infected">00,000,0</h4>
+                                                    <h6 class="new-no minus">-<span class="today_infected timelines-infected">0000</span></h6>
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="col text-center">
+                                        
+                                        <div class="col-md-2 text-center " style="float:left">
                                             <div class="card mb-2 timelines">
                                                 <div class="card-body">
-                                                    <i class="fa-solid fa-arrow-trend-up fa-lg"></i>
-                                                    <h4 class="card-title">Friday <br> <span class="date-timeline">
-                                                            04 Mar 2022
-                                                        </span></h4>
-                                                    <h4 class="tracker-block__top-total-cases infected">
-                                                        00,000,0
-                                                    </h4>
-                                                    <h6 class="new-no plus">+<span
-                                                            class="today_infected timelines-infected">0000</span>
-                                                    </h6>
+                                                    <i class="fa-solid fa-arrow-trend-up fa-lg"></i>                                       
+                                                    <h4 class="card-title">June</h4>
+                                                    <h4 class="tracker-block__top-total-cases infected">00,000,0</h4>
+                                                    <h6 class="new-no plus">+<span class="today_infected timelines-infected">0000</span></h6>
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="col text-center">
+                                        <!--/.First slide-->
+        
+                                    </div>
+                        
+
+                                    <!--Second slide-->
+                                    <div class="carousel-item">
+                                        <div class="col-md-2 text-center " style="float:left">
                                             <div class="card mb-2 timelines">
                                                 <div class="card-body">
-                                                    <i class="fa-solid fa-arrow-trend-up fa-lg"></i>
-                                                    <h4 class="card-title">Saturday <br> <span class="date-timeline"> 05
-                                                            Mar
-                                                            2022 </span></h4>
-                                                    <h4 class="tracker-block__top-total-cases infected">
-                                                        00,000,0
-                                                    </h4>
-                                                    <h6 class="new-no plus">+<span
-                                                            class="today_infected timelines-infected">0000</span>
-                                                    </h6>
+                                                    <i class="fa-solid fa-arrow-trend-up fa-lg"></i>                                       
+                                                    <h4 class="card-title">July</h4>
+                                                    <h4 class="tracker-block__top-total-cases infected">00,000,0</h4>
+                                                    <h6 class="new-no plus">+<span class="today_infected timelines-infected">0000</span></h6>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-2 text-center " style="float:left">
+                                            <div class="card mb-2 timelines">
+                                                <div class="card-body">
+                                                    <i class="fa-solid fa-arrow-trend-up fa-lg"></i>                                       
+                                                    <h4 class="card-title">August</h4>
+                                                    <h4 class="tracker-block__top-total-cases infected">00,000,0</h4>
+                                                    <h6 class="new-no plus">+<span class="today_infected timelines-infected">0000</span></h6>
+                                                </div>
+                                            </div>
+                                        </div>
+                                
+                                        <div class="col-md-2 text-center " style="float:left">
+                                            <div class="card mb-2 timelines">
+                                                <div class="card-body">
+                                                    <i class="fa-solid fa-arrow-trend-up fa-lg"></i>                                       
+                                                    <h4 class="card-title">September</h4>
+                                                    <h4 class="tracker-block__top-total-cases infected">00,000,0</h4>
+                                                    <h6 class="new-no plus">+<span class="today_infected timelines-infected">0000</span></h6>
+                                                </div>
+                                            </div>
+                                        </div>
+                                
+                                        <div class="col-md-2 text-center " style="float:left">
+                                            <div class="card mb-2 timelines">
+                                                <div class="card-body">
+                                                    <i class="fa-solid fa-arrow-trend-up fa-lg"></i>                                       
+                                                    <h4 class="card-title">Oktober</h4>
+                                                    <h4 class="tracker-block__top-total-cases infected">00,000,0</h4>
+                                                    <h6 class="new-no plus">+<span class="today_infected timelines-infected">0000</span></h6>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="col-md-2 text-center " style="float:left">
+                                            <div class="card mb-2 timelines">
+                                                <div class="card-body">
+                                                    <i class="fa-solid fa-arrow-trend-up fa-lg"></i>                                       
+                                                    <h4 class="card-title">November</h4>
+                                                    <h4 class="tracker-block__top-total-cases infected">00,000,0</h4>
+                                                    <h6 class="new-no plus">+<span class="today_infected timelines-infected">0000</span></h6>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="col-md-2 text-center " style="float:left">
+                                            <div class="card mb-2 timelines">
+                                                <div class="card-body">
+                                                    <i class="fa-solid fa-arrow-trend-up fa-lg"></i>                                       
+                                                    <h4 class="card-title">December</h4>
+                                                    <h4 class="tracker-block__top-total-cases infected">00,000,0</h4>
+                                                    <h6 class="new-no plus">+<span class="today_infected timelines-infected">0000</span></h6>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="carousel-item" style="display: flex; justify-content: space-between;">
-                                        <div class="col text-center">
-                                            <div class="card mb-2 timelines">
-                                                <div class="card-body today-timeline">
-                                                    <i class="fa-solid fa-arrow-trend-down fa-lg"></i>
-                                                    <h4 class="card-title">Sunday <br> <span class="date-timeline">
-                                                            27 Feb 2022
-                                                        </span></h4>
-                                                    <h4 class="tracker-block__top-total-cases infected">
-                                                        00,000,0
-                                                    </h4>
-                                                    <h6 class="new-no minus">-<span
-                                                            class="today_infected timelines-infected">0000</span>
-                                                    </h6>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col text-center">
-                                            <div class="card mb-2 timelines">
-                                                <div class="card-body">
-                                                    <i class="fa-solid fa-arrow-trend-up fa-lg"></i>
-                                                    <h4 class="card-title">Monday <br> <span class="date-timeline">
-                                                            28 Feb 2022
-                                                        </span></h4>
-                                                    <h4 class="tracker-block__top-total-cases infected">
-                                                        00,000,0
-                                                    </h4>
-                                                    <h6 class="new-no plus">+<span
-                                                            class="today_infected timelines-infected">0000</span>
-                                                    </h6>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col text-center">
-                                            <div class="card mb-2 timelines">
-                                                <div class="card-body">
-                                                    <i class="fa-solid fa-arrow-trend-down fa-lg"></i>
-                                                    <h4 class="card-title">Tuesday <br> <span class="date-timeline">
-                                                            01 Mar 2022
-                                                        </span></h4>
-                                                    <h4 class="tracker-block__top-total-cases infected">
-                                                        00,000,0
-                                                    </h4>
-                                                    <h6 class="new-no minus">-<span
-                                                            class="today_infected timelines-infected">0000</span>
-                                                    </h6>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col text-center">
-                                            <div class="card mb-2 timelines">
-                                                <div class="card-body">
-                                                    <i class="fa-solid fa-arrow-trend-down fa-lg"></i>
-                                                    <h4 class="card-title">Wednesday <br> <span class="date-timeline">
-                                                            02 Mar
-                                                            2022 </span></h4>
-                                                    <h4 class="tracker-block__top-total-cases infected">
-                                                        00,000,0
-                                                    </h4>
-                                                    <h6 class="new-no minus">-<span
-                                                            class="today_infected timelines-infected">0000</span>
-                                                    </h6>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col text-center">
-                                            <div class="card mb-2 timelines">
-                                                <div class="card-body">
-                                                    <i class="fa-solid fa-arrow-trend-down fa-lg"></i>
-                                                    <h4 class="card-title">Thursday <br> <span class="date-timeline"> 03
-                                                            Mar
-                                                            2022 </span></h4>
-                                                    <h4 class="tracker-block__top-total-cases infected">
-                                                        00,000,0
-                                                    </h4>
-                                                    <h6 class="new-no minus">-<span
-                                                            class="today_infected timelines-infected">0000</span>
-                                                    </h6>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col text-center">
-                                            <div class="card mb-2 timelines">
-                                                <div class="card-body">
-                                                    <i class="fa-solid fa-arrow-trend-up fa-lg"></i>
-                                                    <h4 class="card-title">Friday <br> <span class="date-timeline">
-                                                            04 Mar 2022
-                                                        </span></h4>
-                                                    <h4 class="tracker-block__top-total-cases infected">
-                                                        00,000,0
-                                                    </h4>
-                                                    <h6 class="new-no plus">+<span
-                                                            class="today_infected timelines-infected">0000</span>
-                                                    </h6>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col text-center">
-                                            <div class="card mb-2 timelines">
-                                                <div class="card-body">
-                                                    <i class="fa-solid fa-arrow-trend-up fa-lg"></i>
-                                                    <h4 class="card-title">Saturday <br> <span class="date-timeline"> 05
-                                                            Mar
-                                                            2022 </span></h4>
-                                                    <h4 class="tracker-block__top-total-cases infected">
-                                                        00,000,0
-                                                    </h4>
-                                                    <h6 class="new-no plus">+<span
-                                                            class="today_infected timelines-infected">0000</span>
-                                                    </h6>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
+                                    <!--/.Second slide-->
                                 </div>
-
+                                <!--/.Slides-->
                             </div>
                         </div>
-
                     </div>
                 </div>
             </div>
@@ -426,8 +359,7 @@
                         <div class="today-view report-item worldwide-stats">
                             <h4>Today's View</h4>
 
-                            <div class="tracker-block tracker-block--3 text-center flexing" style="border-radius: unset;
-                            border: 0.7px solid rgba(204, 204, 204, 0.514);">
+                            <div class="tracker-block tracker-block--3 text-center flexing">
                                 <div class="tracker-block__top flex-left">
                                     <h4>Coronavirus (COVID-19)</h4>
                                     <p>Updated <span class="last-update"></span> minutes ago</p>
@@ -457,14 +389,13 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    <!-- </div> -->
 
-                    <div class="col-xl-12">
-                        <div class="map-status-wrap" id="map-status-report" style="border-radius: unset;
-                        border: 0.7px solid rgba(204, 204, 204, 0.514);">
+                    <!-- <div class="col-xl-12"> -->
+                        <div class="map-status-wrap" id="map-status-report">
                             <div class="map-status">
                                 <svg version="1.1" xmlns="http://www.w3.org/2000/svg"
-                                    xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="7 160 750 700"
+                                    xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="7 120 785 700"
                                     style="enable-background:new 0 0 800 600;" xml:space="preserve">
                                     <style type="text/css">
                                         .st0 {
@@ -3107,8 +3038,6 @@
                     </div>
                 </div>
             </div>
-
-
         </div>
     </main>
 
@@ -3126,9 +3055,6 @@
                 </div>
             </div>
             <div class="overlayFormBody">
-
-
-
             </div>
             <div class="overlayFormFooter">
                 <button type="button" class="btn btn-secondary mr-1" id="forEverySave">
@@ -3195,6 +3121,23 @@
     <script src="./assets/js/serve/hitsuyoniojite.js"></script>
     <script src="./assets/js/serve/algorithm.js"></script>
     <script src="./assets/js/serve/newAlgorithm.js"></script>
+    <script src="./assets/vendors/apexchart/apexcharts.js"></script>
+    <script src="./assets/js/ui-apexchart.js"></script>
+    <script>
+        // var prevScrollpos = 0;
+        window.onscroll = function() {
+            var currentScrollPos = window.pageYOffset;
+            if (currentScrollPos == 0) {
+                document.querySelector(".navbar-sett").style.boxShadow = "unset";
+            } 
+            else {
+                document.querySelector(".navbar-sett").style.boxShadow = "1px 10px 48px -8px rgba(115,115,115,.3)";
+                                                                       
+            }
+
+            prevScrollpos = currentScrollPos;
+        }
+    </script>
 </body>
 
 </html>

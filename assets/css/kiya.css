@@ -1,0 +1,99 @@
+/* dashboard CSS */
+
+.navbar-sett {
+    background-color: #ffff;
+    /* box-shadow: 1px 10px 48px -8px rgba(115,115,115,.3);
+-webkit-box-shadow: 1px 10px 48px -8px rgba(115,115,115,.3);
+-moz-box-shadow: 1px 10px 48px -8px rgba(115,115,115,.3); */
+}
+
+#borderRmv {
+    border: none;
+    padding: 1rem 1.5rem .5rem 1.5rem;
+}
+
+#removePadding {
+    margin-top: 1.5rem;
+}
+
+.border-card {
+    border-top: none;
+    border-bottom: none;
+    border-right: none;
+    border-radius: 12px;
+    border-left: 7px solid #008FFB;
+}
+
+.card-title-chart {
+    font-size: 1rem;
+    font-weight: 700;
+}
+
+.chart-area {
+    border-radius: 12px;
+}
+
+.grouping {
+    margin-top: 3rem;
+}
+
+#broken1 {
+    padding-left: 0;
+    padding-right: 0;
+}
+
+.header-card-wrapper {
+    display: flex;
+    padding: 1rem 0;
+    justify-content: space-between;
+}
+
+.switch-btn {
+    background-color: #008FFB;
+    padding: .3rem .4rem;
+    border-radius: 27px;
+}
+
+.line-btn {
+    width: 80px;
+    height: 26px;
+    border-radius: 12px;
+    font-size: 12px;
+    text-align: center;
+    color: #ffff;
+    font-weight: 500;
+    /* margin-bottom: 1rem; */
+}
+
+.chart-active {
+    color: #008FFB;
+    background-color: #F7F8FC;
+}
+
+.month-btn {
+    margin-right: .5rem;
+}
+
+.carousel-inner {
+    padding-top: 1.2rem;
+}
+
+.today-forecast{
+    top: 20px;
+}
+
+.map-status-wrap {
+    border-bottom-left-radius: 17px;
+    border-bottom-right-radius: 17px;
+}
+/* end of dashboard CSS */
+/* SES CSS */
+.badge-item__title {
+    border-top-left-radius: 17px;
+    border-bottom-left-radius: 17px;
+}
+
+.badge-item {
+    border-radius: 17px;
+}
+/* End of SES CSS */
