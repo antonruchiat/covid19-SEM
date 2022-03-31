@@ -8,6 +8,7 @@
 "use strict";
 
 $(document).ready(function (e) {
+    $(".map-status").html(indoMaps);
     // gettingMenuAsync(meinKosu, 'meinKosu');
 });
 

@@ -1,7 +1,36 @@
-const sumTotal = dataArr =>
-    dataArr.reduce((sum, {
-        KASUS
-    }) => sum + KASUS, 0);
+const convertNumMonth = month => {
+    let stringMonths = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+
+    month = month - 1;
+
+    return stringMonths[month];
+}
+
+const gettingRequireMonth = () => {
+    let months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+    let date = new Date();
+
+    let currentMonthYear = months[date.getMonth()] + '-' + date.getFullYear();
+    let itsMonth = currentMonthYear.split("-")[0];
+    let areIndex = months.indexOf(itsMonth);
+
+    let tmpMissedMonth = [];
+    let tmpNotMissedMonth = [];
+
+    months.forEach((item, idx) => {
+        if (idx > areIndex + 1) {
+            tmpNotMissedMonth.push(item);
+        } else if (idx <= areIndex + 1) {
+            tmpMissedMonth.push(item);
+        }
+
+    });
+
+    return {
+        notMissedMonth: tmpNotMissedMonth,
+        missedMonth: tmpMissedMonth,
+    };
+}
 
 const yearMonth = (milisecond, type) => {
     if (milisecond === undefined || milisecond === null) {
@@ -19,10 +48,6 @@ const yearMonth = (milisecond, type) => {
     } else {
         return `${year}-${month}-${day}`;
     }
-}
-
-const to2Digit = num => {
-    return ('0' + num).slice(-2);
 }
 
 const dateMilisecond = () => {
@@ -50,11 +75,21 @@ const currentYearMonth = () => {
     };
 }
 
+const sumTotal = dataArr =>
+    dataArr.reduce((sum, {
+        KASUS
+    }) => sum + KASUS, 0);
+
+const to2Digit = num => {
+    return ('0' + num).slice(-2);
+}
+
 async function gettingProvince(origin, requestOptions = {
     method: 'GET',
     redirect: 'follow'
 }) {
     try {
+        showLoad();
         let response = await fetch(origin, requestOptions);
         const data = await response.json();
         let resultProvinsi = data.list_data.map(a => a.key);
@@ -64,6 +99,7 @@ async function gettingProvince(origin, requestOptions = {
             makeDefaultProvinsi.push(element.replace(/\s/gi, '_'));
         });
 
+        hideLoad();
         return {
             resultProvinsi: resultProvinsi,
             makeDefaultProvinsi: makeDefaultProvinsi,
@@ -80,6 +116,7 @@ const individualProvince = async (defaultProvince, requestOptions = {
     redirect: 'follow'
 }) => {
     try {
+        showLoad();
         let dataIndividualProvinsi = [];
 
         await Promise.all(defaultProvince.map(async (item) => {
@@ -88,7 +125,7 @@ const individualProvince = async (defaultProvince, requestOptions = {
             let data = await result.json();
             dataIndividualProvinsi.push(data);
         }));
-
+        hideLoad();
         return dataIndividualProvinsi;
     } catch (rejectedReason) {
         console.log(rejectedReason);
@@ -101,11 +138,12 @@ const gettingUpdateDataCovid19 = async (origin = '', requestOptions = {
     redirect: 'follow'
 }) => {
     try {
+        showLoad();
         origin = `https://data.covid19.go.id/public/api/update.json`;
-
         let response = await fetch(origin, requestOptions);
         const data = await response.json();
 
+        hideLoad();
         return data;
     } catch (rejectedReason) {
         console.log(rejectedReason);
@@ -270,6 +308,184 @@ const gettingActualCovid19 = prov => {
     });
 }
 
+const gettingActualCovid19Global = actualDataProv => {
+    return new Promise((resolve) => {
+        let globalActual = {
+            list_perkembangan: {},
+            country: "Indonesia",
+        };
+
+        actualDataProv.forEach(element => {
+            for (let key in element) {
+                if (element.hasOwnProperty(key)) {
+                    if (key === 'list_perkembangan') {
+                        for (let key1 in element[key]) {
+                            if (element[key].hasOwnProperty(key1)) {
+                                for (let key2 in element[key][key1]) {
+                                    if (element[key][key1].hasOwnProperty(key2)) {
+                                        if (key2 === 'listMonth') {
+                                            for (let key3 in element[key][key1][key2]) {
+                                                if (element[key][key1][key2].hasOwnProperty(key3)) {
+                                                    // const total = sumTotal(element[key][key1][key2][key3]);
+                                                    // element[key][key1][key2][key3].total = total;
+                                                    // let check = result[index].list_forecast.hasOwnProperty([year]);
+
+                                                    let checkYear = globalActual.list_perkembangan.hasOwnProperty([key1]);
+
+                                                    if (checkYear) {
+                                                        // sudah Ada, cek bulan
+                                                        let checkMonth = globalActual.list_perkembangan[key1][key2].hasOwnProperty([key3]);
+
+                                                        if (checkMonth) {
+
+                                                        } else {
+                                                            globalActual.list_perkembangan[key1][key2][key3] = {
+                                                                month: key3
+                                                            };
+                                                        }
+                                                    } else {
+                                                        globalActual.list_perkembangan[key1] = {
+                                                            origTime: element[key][key1].origTime,
+                                                            listMonth: {
+                                                                [key3]: {
+                                                                    month: key3
+                                                                },
+                                                            },
+                                                        }
+                                                    }
+
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        });
+
+
+        let total = 0;
+        let total1 = 0;
+        let total2 = 0;
+        actualDataProv.forEach((element, index) => {
+            for (let key in element) {
+                if (element.hasOwnProperty(key)) {
+                    if (key === 'list_perkembangan') {
+                        for (let key1 in element[key]) {
+                            if (element[key].hasOwnProperty(key1)) {
+                                for (let key2 in element[key][key1]) {
+                                    if (element[key][key1].hasOwnProperty(key2)) {
+                                        if (key2 === 'listMonth') {
+                                            for (let key3 in element[key][key1][key2]) {
+                                                if (element[key][key1][key2].hasOwnProperty(key3)) {
+
+
+                                                    for (let item in globalActual) {
+                                                        if (globalActual.hasOwnProperty.call(globalActual, item)) {
+                                                            if (item === key) {
+                                                                for (let item1 in globalActual[item]) {
+                                                                    if (globalActual[item].hasOwnProperty.call(globalActual[item], item1)) {
+                                                                        if (item1 === key1) {
+                                                                            for (const item2 in globalActual[item][item1]) {
+                                                                                if (globalActual[item][item1].hasOwnProperty.call(globalActual[item][item1], item2)) {
+                                                                                    if (key2 === item2) {
+                                                                                        for (const item3 in globalActual[item][item1][item2]) {
+                                                                                            if (globalActual[item][item1][item2].hasOwnProperty.call(globalActual[item][item1][item2], item3)) {
+                                                                                                if (parseInt(key1) === 2020) {
+                                                                                                    if (element.provinsi !== 'GORONTALO' &&
+                                                                                                        element.provinsi !== 'NUSA TENGGARA TIMUR' &&
+                                                                                                        item3 === '2020-03' && key3 === item3) {
+                                                                                                        total += element[key][key1][key2][key3].total;
+                                                                                                        if (index === (actualDataProv.length - 2)) {
+                                                                                                            globalActual[item][item1][item2][item3].total = total;
+                                                                                                            // total = 0;
+                                                                                                        }
+                                                                                                    } else {
+                                                                                                        if (key3 === item3) {
+                                                                                                            total1 += element[key][key1][key2][key3].total;
+                                                                                                            if (index === (actualDataProv.length - 1)) {
+                                                                                                                globalActual[item][item1][item2][item3].total = total1;
+                                                                                                                // total1 = 0;
+                                                                                                            }
+                                                                                                        }
+                                                                                                    }
+                                                                                                } else {
+                                                                                                    if (key3 === item3) {
+                                                                                                        // console.log(`${globalActual[item][item1][item2][item3]} === ${element[key][key1][key2][key3]}`);
+                                                                                                        // console.log(`${globalActual[item][item1][item2][item3]} === ${key3}`);
+                                                                                                        total2 += element[key][key1][key2][key3].total;
+                                                                                                        if (index === (actualDataProv.length - 1)) {
+                                                                                                            globalActual[item][item1][item2][item3].total = total2;
+                                                                                                        }
+                                                                                                    }
+                                                                                                }
+                                                                                            }
+                                                                                        }
+                                                                                    }
+                                                                                }
+                                                                            }
+                                                                        }
+                                                                    }
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+
+
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+
+            if (index === (actualDataProv.length - 2)) {
+                total = 0;
+            }
+
+            if (index === (actualDataProv.length - 1)) {
+                total1 = 0;
+                total2 = 0;
+            }
+        });
+
+
+        for (let item in globalActual) {
+            if (globalActual.hasOwnProperty.call(globalActual, item)) {
+                if (item === 'list_perkembangan') {
+                    let totalYear = 0;
+                    for (let item1 in globalActual[item]) {
+                        if (globalActual[item].hasOwnProperty.call(globalActual[item], item1)) {
+                            for (const item2 in globalActual[item][item1]) {
+                                if (globalActual[item][item1].hasOwnProperty.call(globalActual[item][item1], item2)) {
+                                    if (item2 === 'listMonth') {
+                                        for (const item3 in globalActual[item][item1][item2]) {
+                                            if (globalActual[item][item1][item2].hasOwnProperty.call(globalActual[item][item1][item2], item3)) {
+                                                totalYear += globalActual[item][item1][item2][item3].total;
+                                                // console.log(globalActual[item][item1][item2][item3].total);
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                            globalActual[item][item1].total = totalYear;
+                        }
+                    }
+                }
+            }
+        }
+
+        resolve(globalActual);
+    });
+}
+
 const gettingHistoryData = (dataProv, year) => {
     return new Promise((resolve) => {
         let dataHistory = [];
@@ -302,6 +518,31 @@ const gettingHistoryData = (dataProv, year) => {
         resolve(dataHistory);
     });
 }
+
+const gettingHistoryDataGlobal = (dataCountry, year) => {
+    return new Promise((resolve) => {
+        let dataHistory = {};
+
+        for (let key in dataCountry) {
+            if (dataCountry.hasOwnProperty.call(dataCountry, key)) {
+                if (key === 'list_perkembangan') {
+                    for (let key1 in dataCountry[key]) {
+                        if (dataCountry[key].hasOwnProperty.call(dataCountry[key], key1)) {
+                            if (parseInt(key1) === parseInt(year)) {
+                                dataHistory.country = dataCountry.country;
+                                dataHistory[key1] = dataCountry[key][key1];
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        resolve(dataHistory);
+    });
+}
+
+
+
 
 const SESalgoritm = (dataHistory, year) => {
     return new Promise((resolve) => {
@@ -386,7 +627,83 @@ const SESalgoritm = (dataHistory, year) => {
     });
 }
 
-const startingSESbyMonth = async (dataProv, year) => {
+const SESalgoritmGlobal = (dataCountry, year) => {
+    return new Promise((resolve) => {
+        let dataForecast = [];
+        console.log(dataCountry);
+        for (const key in dataCountry) {
+            if (dataCountry.hasOwnProperty.call(dataCountry, key)) {
+                if (key !== 'country') {
+                    for (const key1 in dataCountry[key]) {
+                        if (dataCountry[key].hasOwnProperty.call(dataCountry[key], key1)) {
+                            if (key1 === 'listMonth') {
+                                for (let key2 in dataCountry[key][key1]) {
+                                    if (dataCountry[key][key1].hasOwnProperty.call(dataCountry[key][key1], key2)) {
+                                        let itemExists = dataForecast.some(item => item.country == dataCountry.country);
+                                        let index = dataForecast.findIndex(ai => ai.country == dataCountry.country);
+
+                                        if (parseInt(key) === parseInt(year)) {
+                                            if (!itemExists) {
+                                                dataForecast.push({
+                                                    country: dataCountry.country,
+                                                    list_forecast: {
+                                                        [key]: [{
+                                                            month: key2,
+                                                            forecast: dataCountry[key][key1][key2].total,
+                                                            actual: dataCountry[key][key1][key2].total,
+                                                            error: (dataCountry[key][key1][key2].total ? (dataCountry[key][key1][key2].total - dataCountry[key][key1][key2].total) : null),
+                                                        }]
+                                                    },
+                                                });
+                                            } else {
+                                                if (itemExists) {
+                                                    const existsYear = dataForecast[index].list_forecast.hasOwnProperty([key]);
+                                                    let tmpIndex = key2.split("-")[1];
+
+                                                    if (existsYear) {
+                                                        let cheklength = dataForecast[index].list_forecast[key].length;
+
+                                                        if (cheklength > 1) {
+                                                            tmpIndex = tmpIndex - 1;
+                                                            tmpIndex = to2Digit(tmpIndex);
+                                                            tmpIndex = `${key2.split("-")[0]}-${tmpIndex}`;
+
+                                                            dataForecast[index].list_forecast[key].push({
+                                                                month: key2,
+                                                                forecast: dataForecast[index].list_forecast[key][cheklength - 1].forecast + (0.9 * (dataCountry[key][key1][tmpIndex].total - dataForecast[index].list_forecast[key][cheklength - 1].forecast)),
+                                                                actual: dataCountry[key][key1][key2].total,
+                                                                error: (dataCountry[key][key1][key2].total ? (dataCountry[key][key1][key2].total - (dataForecast[index].list_forecast[key][cheklength - 1].forecast + (0.9 * (dataCountry[key][key1][tmpIndex].total - dataForecast[index].list_forecast[key][cheklength - 1].forecast)))) : null),
+                                                            });
+                                                        } else if (cheklength === 1) {
+                                                            tmpIndex = tmpIndex - 1;
+                                                            tmpIndex = to2Digit(tmpIndex);
+                                                            tmpIndex = `${key2.split("-")[0]}-${tmpIndex}`;
+
+                                                            dataForecast[index].list_forecast[key].push({
+                                                                month: key2,
+                                                                forecast: dataForecast[index].list_forecast[key][cheklength - 1].forecast + (0.9 * (dataCountry[key][key1][tmpIndex].total - dataForecast[index].list_forecast[key][cheklength - 1].forecast)),
+                                                                actual: dataCountry[key][key1][key2].total,
+                                                                error: (dataCountry[key][key1][key2].total ? (dataCountry[key][key1][key2].total - (dataForecast[index].list_forecast[key][cheklength - 1].forecast + (0.9 * (dataCountry[key][key1][tmpIndex].total - dataForecast[index].list_forecast[key][cheklength - 1].forecast)))) : null),
+                                                            });
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        resolve(dataForecast);
+    });
+}
+
+const startingSESprovByMonth = async (dataProv, year) => {
     try {
         let result;
         let currentYearMont = currentYearMonth();
@@ -523,7 +840,142 @@ const startingSESbyMonth = async (dataProv, year) => {
     }
 }
 
-const startingSESbyYear = async (dataProv, year) => {
+const startingSESglobalByMonth = async (dataCountry, year) => {
+    try {
+        let result;
+        let currentYearMont = currentYearMonth();
+
+        let dataHistory = await gettingHistoryDataGlobal(dataCountry, year);
+        let isCheckEmpty = await isEmptyObject_v1(dataHistory);
+
+        if (isCheckEmpty) {
+            dataHistory = await gettingHistoryDataGlobal(dataCountry, year - 1);
+            result = await SESalgoritmGlobal(dataHistory, year - 1);
+            if (((parseInt(year) - parseInt(currentYearMont.year)) === 1) && parseInt(currentYearMont.month) === 12) {
+                result.forEach(element => {
+                    for (let key in element) {
+                        if (element.hasOwnProperty.call(element, key)) {
+                            if (key !== 'country') {
+
+                                for (let key1 in element[key]) {
+                                    if (element[key].hasOwnProperty.call(element[key], key1)) {
+
+                                        let itemExists = result.some(item => item.country == element.country);
+                                        let index = result.findIndex(ai => ai.country == element.country);
+
+                                        if (itemExists) {
+                                            let checkYear = result[index].list_forecast.hasOwnProperty([year]);
+                                            if (!checkYear) {
+                                                result[index].list_forecast[year] = [{
+                                                    month: `${key1.split("-")[0]}-01`,
+                                                    forecast: result[index].list_forecast[year - 1][11].forecast + (0.9 * (dataHistory[indexCheckProv][year - 1].listMonth["2021-12"].total - result[index].list_forecast[year - 1][11].forecast)),
+                                                    actual: null,
+                                                    error: (result[index].list_forecast[year].actual ? (result[index].list_forecast[year].actual - result[index].list_forecast[year].forecast) : null),
+                                                }];
+                                            }
+                                        }
+                                    }
+                                }
+
+                            }
+                        }
+                    }
+                });
+            } else if (((parseInt(year) - parseInt(currentYearMont.year)) === 1) && parseInt(currentYearMont.month) < 12) {
+                result.forEach(element => {
+                    for (let key in element) {
+                        if (element.hasOwnProperty.call(element, key)) {
+                            if (key !== 'country') {
+
+                                for (let key1 in element[key]) {
+                                    if (element[key].hasOwnProperty.call(element[key], key1)) {
+                                        if (element[key][key1].length < 12) {
+                                            element[key][key1].forEach((item, idxItem) => {
+                                                if (parseInt(idxItem) === element[key][key1].length - 1) {
+                                                    let itemExists = result.some(item => item.country == element.country);
+                                                    let index = result.findIndex(ai => ai.country == element.country);
+
+                                                    if (itemExists) {
+                                                        let tmpIndex = item.month.split("-")[1];
+                                                        tmpIndex = parseInt(tmpIndex) + 1;
+                                                        tmpIndex = to2Digit(tmpIndex);
+                                                        tmpIndex = `${item.month.split("-")[0]}-${tmpIndex}`;
+
+                                                        result[index].list_forecast[key1].push({
+                                                            month: tmpIndex,
+                                                            forecast: item.forecast + (0.9 * (item.actual - item.forecast)),
+                                                            actual: null,
+                                                            error: (result[index].list_forecast[key1].actual ? (result[index].list_forecast[key1].actual - result[index].list_forecast[key1].forecast) : null),
+                                                        });
+                                                    }
+                                                }
+                                            });
+                                        }
+                                    }
+                                }
+
+                            }
+                        }
+                    }
+                });
+            } else {
+                return toastr.success(`Jangkauan Bulan Forecasting Terlalu Jauh`);
+            }
+        } else {
+            if (parseInt(year) < parseInt(currentYearMont.year)) {
+                result = await SESalgoritmGlobal(dataHistory, year);
+            } else if (parseInt(year) === parseInt(currentYearMont.year) && parseInt(currentYearMont.month) < 12) {
+                result = await SESalgoritmGlobal(dataHistory, year);
+                result.forEach(element => {
+                    for (let key in element) {
+                        if (element.hasOwnProperty.call(element, key)) {
+                            if (key !== 'country') {
+                                for (let key1 in element[key]) {
+                                    if (element[key].hasOwnProperty.call(element[key], key1)) {
+                                        if (element[key][key1].length < 12) {
+                                            element[key][key1].forEach((item, idxItem) => {
+                                                if (parseInt(idxItem) === element[key][key1].length - 1) {
+                                                    let itemExists = result.some(item => item.country == element.country);
+                                                    let index = result.findIndex(ai => ai.country == element.country);
+
+                                                    if (itemExists) {
+                                                        let tmpIndex = item.month.split("-")[1];
+                                                        tmpIndex = parseInt(tmpIndex) + 1;
+                                                        tmpIndex = to2Digit(tmpIndex);
+                                                        tmpIndex = `${item.month.split("-")[0]}-${tmpIndex}`;
+
+                                                        result[index].list_forecast[key1].push({
+                                                            month: tmpIndex,
+                                                            forecast: item.forecast + (0.9 * (item.actual - item.forecast)),
+                                                            actual: null,
+                                                            error: (result[index].list_forecast[key1].actual ? (result[index].list_forecast[key1].actual - result[index].list_forecast[key1].forecast) : null),
+                                                        });
+                                                    }
+                                                }
+                                            });
+                                        }
+                                    }
+                                }
+
+                            }
+                        }
+                    }
+                });
+            } else if (parseInt(year) === parseInt(currentYearMont.year) && parseInt(currentYearMont.month) === 12) {
+                result = await SESalgoritm(dataHistory, year);
+            } else {
+                return toastr.success(`Jangkauan Bulan Forecasting Terlalu Jauh`);
+            }
+        }
+
+        return result;
+    } catch (rejectedReason) {
+        console.log(rejectedReason);
+        return toastr.error('Error NetWork');
+    }
+}
+
+const startingSESprovByYear = async (dataProv, year) => {
     try {
         let dataHistory = [];
         let dataForecast = [];
@@ -653,6 +1105,120 @@ const startingSESbyYear = async (dataProv, year) => {
 
         // console.log(dataHistory);
         // console.log(dataForecast);
+
+        return dataForecast;
+    } catch (rejectedReason) {
+        console.log(rejectedReason);
+        return toastr.error('Error NetWork');
+    }
+}
+
+const startingSESglobalByYear = async (dataCountry, year) => {
+    try {
+        console.log(dataCountry)
+        let dataHistory = {};
+        let dataForecast = [];
+        let currentYearMont = currentYearMonth();
+
+        if ((((parseInt(year) - parseInt(currentYearMont.year)) <= 1) && parseInt(year) > 2019)) {
+
+            for (let key in dataCountry) {
+                if (dataCountry.hasOwnProperty.call(dataCountry, key)) {
+                    if (key === 'list_perkembangan') {
+                        for (let key1 in dataCountry[key]) {
+                            if (dataCountry[key].hasOwnProperty.call(dataCountry[key], key1)) {
+                                if (parseInt(key1) <= parseInt(year)) {
+                                    const exists = dataHistory.hasOwnProperty(dataCountry.country);
+                                    if (exists) {
+                                        dataHistory[key1] = dataCountry[key][key1];
+                                    } else {
+                                        dataHistory.country = dataCountry.country;
+                                        dataHistory[key1] = dataCountry[key][key1];
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+
+            console.log(dataHistory);
+            let isCheckEmpty = await isEmptyObject_v1(dataHistory);
+
+            if (!isCheckEmpty) {
+                for (let key in dataHistory) {
+                    if (dataHistory.hasOwnProperty.call(dataHistory, key)) {
+                        if (key !== 'country') {
+                            for (let key1 in dataHistory[key]) {
+                                if (dataHistory[key].hasOwnProperty.call(dataHistory[key], key1)) {
+                                    if (key1 === 'total') {
+                                        let exists = dataForecast.some(item => item.country === dataHistory.country);
+                                        let index = dataForecast.findIndex(ai => ai.country === dataHistory.country);
+
+                                        if (exists) {
+                                            let existsYear = dataForecast[index].list_forecast.hasOwnProperty([key]);
+                                            if (!existsYear) {
+                                                let cheklength = Object.keys(dataForecast[index].list_forecast).length;
+                                                if (cheklength > 0) {
+                                                    dataForecast[index].list_forecast[key] = {
+                                                        forecast: dataForecast[index].list_forecast[parseInt(key) - 1].forecast + (0.9 * (dataHistory[parseInt(key) - 1].total - dataForecast[index].list_forecast[parseInt(key) - 1].forecast)),
+                                                        actual: dataHistory[key].total,
+                                                        error: (dataHistory[key].total ? (dataHistory[key].total - (dataForecast[index].list_forecast[parseInt(key) - 1].forecast + (0.9 * (dataHistory[parseInt(key) - 1].total - dataForecast[index].list_forecast[parseInt(key) - 1].forecast)))) : null),
+                                                    }
+                                                }
+                                            }
+                                        } else {
+                                            dataForecast.push({
+                                                country: dataHistory.country,
+                                                list_forecast: {
+                                                    [key]: {
+                                                        forecast: dataHistory[key].total,
+                                                        actual: dataHistory[key].total,
+                                                        error: (dataHistory[key].total ? (dataHistory[key].total - dataHistory[key].total) : null),
+                                                    }
+                                                },
+                                            });
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+
+                if ((parseInt(year) - parseInt(currentYearMont.year)) === 1) {
+                    for (let key in dataHistory) {
+                        if (dataHistory.hasOwnProperty.call(dataHistory, key)) {
+                            if (key !== 'country') {
+                                for (let key1 in dataHistory[key]) {
+                                    if (dataHistory[key].hasOwnProperty.call(dataHistory[key], key1)) {
+                                        if (key1 === 'total') {
+                                            let exists = dataForecast.some(item => item.country === dataHistory.country);
+                                            let index = dataForecast.findIndex(ai => ai.country === dataHistory.country);
+                                            if (exists) {
+                                                let existsYear = dataForecast[index].list_forecast.hasOwnProperty([year]);
+                                                if (!existsYear) {
+                                                    dataForecast[index].list_forecast[year] = {
+                                                        forecast: dataForecast[index].list_forecast[parseInt(year) - 1].forecast + (0.9 * (dataHistory[parseInt(year) - 1].total - dataForecast[index].list_forecast[parseInt(year) - 1].forecast)),
+                                                        actual: null,
+                                                        error: (this.actual ? (this.actual - this.forecast) : null),
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        } else {
+            return toastr.success(`Jangkauan Tahun Forecasting Terlalu Jauh`);
+        }
+
+        // console.log(dataHistory);
+        console.log(dataForecast);
 
         return dataForecast;
     } catch (rejectedReason) {

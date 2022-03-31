@@ -108,59 +108,311 @@ const meinKosuxxx = (data, order) => {
 }
 
 const meinKosu = async () => {
+    const dataUpdateCovid19 = await gettingUpdateDataCovid19();
     let dataProvinces = await gettingProvince('https://data.covid19.go.id/public/api/prov_list.json');
     let individualData = await individualProvince(dataProvinces.makeDefaultProvinsi);
-    const requiredData = await dataRequired(dataProvinces.resultProvinsi, individualData)
+    const requiredData = await dataRequired(dataProvinces.resultProvinsi, individualData);
+    let actualDataProv = await gettingActualCovid19(requiredData);
+    let actualGlobal = await gettingActualCovid19Global(actualDataProv);
 
-    // // let covidProvinsi = [...requiredData];
-    // // let clonecovidProvinsi = Array.from(requiredData);
+    let forecastMonthGlobal = await startingSESglobalByMonth(actualGlobal, 2022);
+    let montlyChartData = await geetingMonthlyChart(forecastMonthGlobal);
 
-    // let clonecovidProvinsi = requiredData.map((item) => {
-    //     return {
-    //         ...item,
-    //     };
-    // });
 
-    let actualData = await gettingActualCovid19(requiredData);
-    let forecastMonth = await startingSESbyMonth(actualData, 2022);
-    await renderChartAsync(forecastMonth);
+    // provinsi
+    let forecastYearlyProv = await startingSESprovByYear(actualDataProv, 2023);
 
+
+    await renderSummaryCovid19(dataUpdateCovid19);
+    await renderChartAsync(montlyChartData, 'monthly');
+    await renderMapsProv(actualDataProv, dataUpdateCovid19);
+    await renderCovid19Prov(individualData, forecastYearlyProv);
+
+
+
+    console.log(individualData);
     console.log(requiredData);
-    console.log(actualData);
-    console.log(forecastMonth);
+    console.log(actualDataProv);
+    console.log(actualGlobal);
+    console.log(dataUpdateCovid19);
+    console.log(forecastYearlyProv);
 
     return individualData;
-    // return await contSec1();
-    // contSec2
-    // contSec3
-    // contSec5
-    // .append()
 }
 
-const renderChartAsync = data => {
+const renderSummaryCovid19 = data => {
     return new Promise((resolve) => {
-
-        $(".main-content-wrapper").addClass('p-0');
-        resolve(function () {
-            $(`#forecastChart`).html('');
-            $(`#forecastChart`).html(`<div class="map-status-wrap">
-                                        <div class="map-status-colors">
-                                            <h4>Using SES Line Area Chart</h4>
-                                        </div>
-
-                                        <div class="map-status" id="area"></div>
-                                      </div>`);
-
-            const mapReports = document.querySelectorAll('.map-report');
-
-            if (mapReports) {
-                mapReports.forEach((item, indx) => {
-                    mapReport(item, 'BD');
-                })
+        $("#summaryLatesDataCovid").html('');
+        let labelCard = ['Coronavirus Cases', 'Total Recovered', 'Total Death', 'Active Cases'];
+        let collection = data.update.total;
+        let rows = '';
+        Object.entries(collection).map((item, index) => {
+            let numberIndex;
+            if (index === 1) {
+                numberIndex = 3;
+            } else {
+                numberIndex = 1;
             }
+            if (index === 0) {
+                rows += `<div class="col-xl-3">
+                            <div class="cases-card dashboard-cases">
+                                <div class="tracker-block border-card">
+                                    <div class="tracker-block__icon">
+                                        <img src="./assets/img/Group ${numberIndex}.svg" alt="corona-icon"/>
+                                    </div>
+                                    <div class="tracker-block__content">
+                                        <h4>${labelCard[index]}</h4>
+                                        <h2>
+                                            <span class="cases-no infected">${item[1]}</span>
+                                        </h2>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>`;
+            } else if (index === 1) {
+                rows += `<div class="col-xl-3">
+                            <div class="cases-card dashboard-cases">
+                                <div class="tracker-block border-card">
+                                    <div class="tracker-block__icon">
+                                        <img src="./assets/img/Group ${numberIndex}.svg" alt="corona-icon"/>
+                                    </div>
+                                    <div class="tracker-block__content">
+                                        <h4>${labelCard[index]}</h4>
+                                        <h2>
+                                            <span class="cases-no infected">${Object.entries(collection)[2][1]}</span>
+                                        </h2>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>`;
+            } else if (index === 2) {
+                rows += `<div class="col-xl-3">
+                            <div class="cases-card dashboard-cases">
+                                <div class="tracker-block border-card">
+                                    <div class="tracker-block__icon">
+                                        <img src="./assets/img/Group ${numberIndex}.svg" alt="corona-icon"/>
+                                    </div>
+                                    <div class="tracker-block__content">
+                                        <h4>${labelCard[index]}</h4>
+                                        <h2>
+                                            <span class="cases-no infected">${Object.entries(collection)[3][1]}</span>
+                                        </h2>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>`;
+            } else if (index === 3) {
+                rows += `<div class="col-xl-3">
+                            <div class="cases-card dashboard-cases">
+                                <div class="tracker-block border-card">
+                                    <div class="tracker-block__icon">
+                                        <img src="./assets/img/Group ${numberIndex}.svg" alt="corona-icon"/>
+                                    </div>
+                                    <div class="tracker-block__content">
+                                        <h4>${labelCard[index]}</h4>
+                                        <h2>
+                                            <span class="cases-no infected">${Object.entries(collection)[1][1]}</span>
+                                        </h2>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>`;
+            }
+        });
+        resolve(function () {
+            $(`#summaryLatesDataCovid`).html(rows);
         }())
     });
 }
+
+const renderMapsProv = (data, dataSummary) => {
+    return new Promise((resolve) => {
+        $("#summaryUpdateCovid").html('');
+        $("#floatingMapsProv").html('');
+        $("#indicatorMapsProv").html('');
+
+        let dataResult = [];
+        let total = 0;
+        data.forEach(element => {
+            for (let key in element) {
+                if (element.hasOwnProperty(key)) {
+                    if (key === 'list_perkembangan') {
+                        total = 0;
+                        for (let key1 in element[key]) {
+                            if (element[key].hasOwnProperty(key1)) {
+                                total += element[key][key1].totalYear;
+                            }
+                        }
+                    }
+                }
+            }
+            dataResult.push({
+                provinsi: element.provinsi,
+                total: total,
+            });
+        });
+
+        let rows = `<div class="tracker-block__top flex-left">
+                        <h4>Coronavirus (COVID-19)</h4>
+                        <p>Updated <span class="last-update"></span> minutes ago</p>
+                        <h2 class="tracker-block__top-total-cases infected">${dataSummary.update.total.jumlah_positif}
+                        </h2>
+                        <h6 class="new-no">+<span class="today_infected">${dataSummary.update.penambahan.jumlah_positif}</span>
+                            (24h)</h6>
+                    </div>
+
+                    <div class="tracker-block__bottom flex-right">
+                        <div class="tracker-block__bottom-wrap">
+                            <div class="tracker-block__bottom__item">
+                                <h5 class="tracker-block__bottom__item-title title-deaths">
+                                    Deaths</h5>
+                                <h2 class="tracker-block__bottom__item-no deaths">
+                                    ${dataSummary.update.total.jumlah_meninggal}</h2>
+                                <h6 class="new-no">+<span class="today_deaths">${dataSummary.update.penambahan.jumlah_meninggal}</span> (24h)</h6>
+                            </div>
+                            <div class="tracker-block__bottom__item">
+                                <h5 class="tracker-block__bottom__item-title title-active">
+                                    Active Cases</h5>
+                                <h2 class="tracker-block__bottom__item-no current_cases">
+                                    ${dataSummary.update.total.jumlah_dirawat}</h2>
+                                <h6 class="new-no">+<span class="today_active_cases">${dataSummary.update.penambahan.jumlah_dirawat}</span>
+                                    (24h)</h6>
+                            </div>
+                            <div class="tracker-block__bottom__item recovered-item">
+                                <h5 class="tracker-block__bottom__item-title title-recovered">
+                                    Recovered</h5>
+                                <h2 class="tracker-block__bottom__item-no recovered">
+                                </h2>
+                                <h6 class="new-no">+<span class="today_recovered">${dataSummary.update.penambahan.jumlah_sembuh}</span> (24h)
+                                </h6>
+                            </div>
+                        </div>
+
+                    </div>`;
+        let rows1 = indoMaps;
+        let rows2 = `<li><span class="minCovid"></span>&#60;9000000</li>
+                     <li><span class="midCovid"></span>&#62;9000000</li>
+                     <li><span class="maxCovid"></span>&#62;15500000</li>`;
+
+        resolve(function () {
+            $(`#summaryUpdateCovid`).html(rows);
+            $(`#floatingMapsProv`).html(rows1);
+            $(`#indicatorMapsProv`).html(rows2);
+
+            dataResult.forEach(element => {
+                $(`#${element.provinsi.replaceAll(" ", "_")}`).removeClass('stDef');
+
+                if (element.total > 15500000) {
+                    $(`#${element.provinsi.replaceAll(" ", "_")}`).addClass('st3');
+                }
+
+                if ((element.total > 9000000)) {
+                    $(`#${element.provinsi.replaceAll(" ", "_")}`).addClass('st2');
+                }
+
+                if (element.total > 1000000) {
+                    $(`#${element.provinsi.replaceAll(" ", "_")}`).addClass('st1');
+                }
+
+                if (element.total <= 1000000) {
+                    $(`#${element.provinsi.replaceAll(" ", "_")}`).addClass('st0');
+                }
+
+            });
+        }())
+    });
+}
+
+const renderCovid19Prov = (individualData, dataForecast) => {
+    return new Promise((resolve) => {
+        $("#caseCovidProvince").html('');
+        let rows = '',
+            row1 = '';
+
+        dataForecast.forEach(element => {
+            let total = 0;
+            for (const key in element.list_forecast) {
+                if (element.list_forecast.hasOwnProperty.call(element.list_forecast, key)) {
+                    if (element.list_forecast[key].actual === null) {
+                        element.list_forecast[key].actual = 0;
+                    }
+                    total += element.list_forecast[key].actual
+                }
+            }
+            element.total_kasus = total;
+        });
+
+        individualData.forEach(element => {
+            dataForecast.forEach(element1 => {
+                if (element.provinsi === element1.provinsi) {
+                    element1.kasus_baru = element.kasus_total;
+                    element1.meninggal_persen = element.meninggal_persen;
+                    element1.sembuh_persen = element.sembuh_persen;
+                    element1.last_date = element.last_date;
+                }
+            });
+        });
+
+        dataForecast.forEach(element => {
+            rows += `<li>
+                        <h6 class="country-name">${element.provinsi}</h6>
+                        <span class="cases-no infected">${element.total_kasus}</span>
+                     </li>`;
+
+            row1 += `<tr class="country-item odd" role="row">
+                        <td class="sorting_1">
+                            ${element.provinsi}
+                        </td>
+                        <td>${element.total_kasus}</td>
+                        <td>${element.list_forecast[2023].forecast}</td>
+                        <td>${element.meninggal_persen.toFixed(2)}%</td>
+                        <td>${element.sembuh_persen.toFixed(2)}%</td>
+                        <td>${element.kasus_baru}</td>
+                     </tr>`;
+        });
+
+        resolve(function () {
+            $(`#caseCovidProvince`).html(`<div class="col-lg-3">
+                                                <div class="cases-by-country radius" id="cases-by-country">
+                                                    <div class="cases-by-country__top">
+                                                        <div class="header-content d-flex">
+                                                            <h4>Cases by Province</h4>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="cases-by-country__bottom">
+                                                        <ul class="cases-country-lists">
+                                                            ${rows}
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            
+                                            <div class="col-lg-9">
+                                                <div class="list-view table-responsive" id="list-view">
+                                                    <table class="list-view__table display table">
+                                                        <thead class="list-view__head">
+                                                            <tr>
+                                                                <th>Province</th>
+                                                                <th>Total Cases</th>
+                                                                <th>Forecasting</th>
+                                                                <th>Deaths %</th>
+                                                                <th>Recovered %</th>
+                                                                <th>New Cases</th>
+                                                            </tr>
+                                                        </thead>
+
+                                                        <tbody class="list-view__body">
+                                                            ${row1}
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </div>`);
+        }());
+    });
+}
+
+
 
 
 const meinKosu1 = (data, order) => {

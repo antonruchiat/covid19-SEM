@@ -1,5 +1,7 @@
 // API BASE URL
-const BASE_URL = "https://corona.lmao.ninja/";
+// const BASE_URL = "https://corona.lmao.ninja/";
+const BASE_URL = "https://disease.sh/";
+// https://disease.sh/v3/covid-19/countries
 
 /**
  *  Function for Fetch Data
@@ -18,7 +20,7 @@ async function getData(url) {
  * @returns {Promise<void>}
  */
 const makeSelectOption = async (select, selectedCountry) => {
-    let countries = await getData(BASE_URL + 'v2/countries/');
+    let countries = await getData(BASE_URL + 'v3/covid-19/countries/');
     let wwOptionDom = document.createElement('option');
     let location = window.location.href.split('/');
     const path = location.pop();
@@ -72,7 +74,7 @@ const makeSelectOption = async (select, selectedCountry) => {
  * @param selectorID
  */
 const getLastUpdatedTime = async (selectorID, format) => {
-    const data = await getData(BASE_URL + `v2/all`);
+    const data = await getData(BASE_URL + `v3/covid-19/all`);
     const diff_time = (dt2, dt1) => {
         let diff = (dt2.getTime() - dt1.getTime()) / 1000;
         diff /= (60);
@@ -144,14 +146,14 @@ const reportWithDropdown = async (selectorID, specificCountry) => {
     let findThisSelect = selectorID.querySelector('select[name=country]');
     await makeSelectOption(findThisSelect, specificCountry);
     let data, yesterdayData;
-    data = await getData(BASE_URL + `v2/${findThisSelect.value || 'all'}`);
-    yesterdayData = await getData(BASE_URL + `v2/${findThisSelect.value || 'all'}?yesterday=true`);
+    data = await getData(BASE_URL + `v3/covid-19/${findThisSelect.value || 'all'}`);
+    yesterdayData = await getData(BASE_URL + `v3/covid-19/${findThisSelect.value || 'all'}?yesterday=true`);
 
     insertData(selectorID, data, yesterdayData);
 
     jQuery(findThisSelect).on('change', async (e) => {
-        data = await getData(BASE_URL + `v2/${e.target.value}`);
-        yesterdayData = await getData(BASE_URL + `v2/${e.target.value}?yesterday=true`);
+        data = await getData(BASE_URL + `v3/covid-19/${e.target.value}`);
+        yesterdayData = await getData(BASE_URL + `v3/covid-19/${e.target.value}?yesterday=true`);
         insertData(selectorID, data, yesterdayData);
     });
 };
@@ -163,8 +165,8 @@ const reportWithDropdown = async (selectorID, specificCountry) => {
  * @returns {Promise<void>}
  */
 const countryReport = async (selectID, countryName) => {
-    let countryData = await getData(BASE_URL + `v2/countries/${countryName}`);
-    let yesterdayCountryData = await getData(BASE_URL + `v2/countries/${countryName}?yesterday=true`);
+    let countryData = await getData(BASE_URL + `v3/covid-19/countries/${countryName}`);
+    let yesterdayCountryData = await getData(BASE_URL + `v3/covid-19/countries/${countryName}?yesterday=true`);
     insertData(selectID, countryData, yesterdayCountryData);
 };
 
@@ -174,7 +176,7 @@ const countryReport = async (selectID, countryName) => {
  */
 
 const casesByCountry = async () => {
-    const data = await getData(BASE_URL + 'v2/countries');
+    const data = await getData(BASE_URL + 'v3/covid-19/countries');
     let noListsShow = 11;
     const countryLists = document.querySelector('.cases-country-lists');
     const btnShowAll = document.querySelector('.btn-show-all');
@@ -207,8 +209,8 @@ const casesByCountry = async () => {
  */
 
 const worldwideReport = async (selectID) => {
-    let worldwideData = await getData(BASE_URL + 'v2/all');
-    let yesterdayWorldwideData = await getData(BASE_URL + 'v2/all?yesterday=true');
+    let worldwideData = await getData(BASE_URL + 'v3/covid-19/all');
+    let yesterdayWorldwideData = await getData(BASE_URL + 'v3/covid-19/all?yesterday=true');
     insertData(selectID, worldwideData, yesterdayWorldwideData);
 };
 
@@ -218,7 +220,7 @@ const worldwideReport = async (selectID) => {
  */
 
 const reportListView = async (selectorID, search) => {
-    const listData = await getData(BASE_URL + 'v2/countries');
+    const listData = await getData(BASE_URL + 'v3/covid-19/countries');
 
     function createListTableColumn(data, appendParent) {
         const td = document.createElement('td');
@@ -453,7 +455,7 @@ const mapReport = (selector, countryName = 'USA') => {
             cn: '#52BA9A'
         },
         onRegionClick: async (element, code) => {
-            const cdata = await getData(BASE_URL + `v2/countries/${code}`);
+            const cdata = await getData(BASE_URL + `v3/covid-19/countries/${code}`);
             let findThisSelect = selector.querySelector('select[name=country]');
             const findClickedCountryOption = findThisSelect.querySelector(`.${code.toUpperCase()}`);
             findClickedCountryOption.selected = true;
@@ -471,7 +473,7 @@ const mapReport = (selector, countryName = 'USA') => {
 
 const chartReport = async (selectorId) => {
     const selectMenu = selectorId.querySelector("select");
-    const countries = await getData(BASE_URL + 'v2/countries/');
+    const countries = await getData(BASE_URL + 'v3/covid-19/countries/');
     const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
 
     // Make Select option Dropdown Menu
@@ -581,7 +583,7 @@ const chartReport = async (selectorId) => {
  * @returns {Promise<void>}
  */
 const worldwidrWithPieChart = async () => {
-    const data = await getData(BASE_URL + 'v2/all');
+    const data = await getData(BASE_URL + 'v3/covid-19/all');
     const deathRate = (data.deaths * 100) / data.cases;
     const recoveredRate = (data.recovered * 100) / data.cases;
     const activeCasesRate = (data.active * 100) / data.cases;
@@ -615,7 +617,7 @@ const worldwidrWithPieChart = async () => {
  */
 
 const mapStatus = async function (selectorID) {
-    const countriesData = await getData(BASE_URL + 'v2/countries');
+    const countriesData = await getData(BASE_URL + 'v3/covid-19/countries');
     const map = selectorID.querySelector('#map-status');
     const mostCases = "#006491";
     const mediumCases = "#4A97B9";
@@ -652,7 +654,7 @@ const mapStatus = async function (selectorID) {
         showTooltip: true,
         colors: mapColors,
         onLabelShow: async function (event, label, code) {
-            const cdata = await getData(BASE_URL + `v2/countries/${code}`);
+            const cdata = await getData(BASE_URL + `v3/covid-19/covid-19/countries/${code}`);
             const ddd = `${cdata.country}: ${cdata.cases}`;
             if (label.length) {
                 label[0].innerText = ddd;

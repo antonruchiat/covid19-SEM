@@ -500,11 +500,11 @@ function selectMenu(idmenu) {
 
     if (idmenu === 'meinKosu') {
         // gettingMenuAsync(meinKosu, 'meinKosu');
+        meinKosu();
     } else if (idmenu === 'meinKosu1') {
-        // meinKosu();
-        gettingMenuAsync(meinKosu1, 'meinKosu1');
+        // gettingMenuAsync(meinKosu1, 'meinKosu1');
     } else if (idmenu === 'meinKosu2') {
-        gettingMenuAsync(meinKosu2, 'meinKosu2');
+        // gettingMenuAsync(meinKosu2, 'meinKosu2');
     } else if (idmenu === 'meinKosu3') {
 
         // return gettingUpdateDataCovid19();
@@ -607,6 +607,15 @@ $(document).on('click', '.deleteRoom', () => {
     deleteItem('modifiedRoom', 'delete');
 });
 
+
+
+$(document).on('click', '#btnMonth', () => {
+    renderChartOption('monthly');
+});
+
+$(document).on('click', '#btnYear', () => {
+    renderChartOption('yearly');
+});
 
 
 // $("#SettingApps").click(() => {

@@ -686,6 +686,16 @@ function isEmptyObject(obj) {
     return JSON.stringify(obj) === '{}';
 }
 
+const isEmptyObject_v1 = obj => {
+    return new Promise((resolve) => {
+        const isEmpty = Object.keys(obj).length === 0;
+        // console.log(isEmpty); // 👉️ true
+
+        // return isEmpty;
+        resolve(isEmpty);
+    });
+}
+
 const sanitalitationText = data => {
     return data.replace(/(\r\n|\n|\r)/gm, "").trim();
 }
