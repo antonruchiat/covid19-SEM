@@ -473,36 +473,12 @@ $(document).ready(function (e) {
 
 
 function selectMenu(idmenu) {
-    // var bykbold = $('.bold').length;
-    // for (let i = 0; i <= bykbold; i++) {
-    //     $('.menu' + i).removeClass('active');
-    // }
-
-    // if (idmenu == 'meinKosu') {
-    //     $('.menu0').addClass('active');
-    // } else if (idmenu == 'meinKosu1') {
-    //     $('.menu1').addClass('active');
-    // } else if (idmenu == 'meinKosu2') {
-    //     $('.menu2').addClass('active');
-    // } else if (idmenu == 'meinKosu3') {
-    //     $('.menu3').addClass('active');
-    // } else if (idmenu == 'meinKosu4') {
-    //     $('.menu4').addClass('active');
-    // } else if (idmenu == 'meinKosu5') {
-    //     $('.menu5').addClass('active');
-    // } else if (idmenu == 'meinKosu6') {
-    //     $('.menu6').addClass('active');
-    // } else if (idmenu == 'meinKosu7') {
-    //     $('.menu7').addClass('active');
-    // } else if (idmenu == 'meinKosu8') {
-    //     $('.menu8').addClass('active');
-    // }
-
     if (idmenu === 'meinKosu') {
         // gettingMenuAsync(meinKosu, 'meinKosu');
         meinKosu();
     } else if (idmenu === 'meinKosu1') {
         // gettingMenuAsync(meinKosu1, 'meinKosu1');
+        meinKosu1();
     } else if (idmenu === 'meinKosu2') {
         // gettingMenuAsync(meinKosu2, 'meinKosu2');
     } else if (idmenu === 'meinKosu3') {

@@ -112,3 +112,15 @@
 .maxCovid {
     background-color: #DA1212;
 }
+
+.minCovidTab {
+    background-color: #C06C84;
+}
+
+.midCovidTab {
+    background-color: #6C5B7B;
+}
+
+.maxCovidTab {
+    background-color: #355C7D;
+}

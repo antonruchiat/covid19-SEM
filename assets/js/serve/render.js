@@ -1,143 +1,45 @@
 var main = 'mainPages',
     globalDomOverlay = '',
-    dataTabel = [];
+    dataTabel = [],
+    dataResultSelectProv = [];
 
-const meinKosuxxx = (data, order) => {
+const meinKosuTemplate = (data, order) => {
     return new Promise((resolve) => {
-        console.log(data);
-        // console.log(data);
-        // $(`#${main}`).html('');
-        // const bgCards = ['text-secondary', 'color-lavender-purple', 'color-light-orange', 'color-careys-pink',
-        //     'color-lavender-purple', 'color-light-success'
-        // ];
-        // const iconCards = ['icofont-patient-file', 'icofont-doctor-alt', 'icofont-icu', 'icofont-hospital',
-        //     'icofont-brand-designbump', 'icofont-ui-clock'
-        // ];
-        // const arrLabels = ['Total Schedule Month', 'Total Doctors', 'Total Rooms', 'Total Department', 'Total Shift', 'Total Day Off'];
-
-        resolve(function () {
-            // $(`#${main}`).html(`<div class="page-heading">
-            //                         <h3>Dashboard</h3>
-            //                     </div>
-
-            //                     <div class="page-content">
-            //                         <section class="row">
-            //                             <div class="col-12 col-lg-12">
-            //                                 <div class="row" id="TopTabulatedData">
-            //                                     <div class="col-6 col-lg-3 col-md-6">
-            //                                         <div class="card">
-            //                                             <div class="card-body px-3 py-4-5">
-            //                                                 <div class="row">
-            //                                                     <div class="col-md-4">
-            //                                                         <div class="stats-icon purple">
-            //                                                             <i class="icon dripicons-archive"></i>
-            //                                                         </div>
-            //                                                     </div>
-            //                                                     <div class="col-md-8">
-            //                                                         <h6 class="text-muted font-semibold">Schedule</h6>
-            //                                                         <h6 class="font-extrabold mb-0">112.000</h6>
-            //                                                     </div>
-            //                                                 </div>
-            //                                             </div>
-            //                                         </div>
-            //                                     </div>
-            //                                     <div class="col-6 col-lg-3 col-md-6">
-            //                                         <div class="card">
-            //                                             <div class="card-body px-3 py-4-5">
-            //                                                 <div class="row">
-            //                                                     <div class="col-md-4">
-            //                                                         <div class="stats-icon blue">
-            //                                                             <i class="iconly-boldProfile"></i>
-            //                                                         </div>
-            //                                                     </div>
-            //                                                     <div class="col-md-8">
-            //                                                         <h6 class="text-muted font-semibold">Dosen</h6>
-            //                                                         <h6 class="font-extrabold mb-0">183.000</h6>
-            //                                                     </div>
-            //                                                 </div>
-            //                                             </div>
-            //                                         </div>
-            //                                     </div>
-            //                                     <div class="col-6 col-lg-3 col-md-6">
-            //                                         <div class="card">
-            //                                             <div class="card-body px-3 py-4-5">
-            //                                                 <div class="row">
-            //                                                     <div class="col-md-4">
-            //                                                         <div class="stats-icon green">
-            //                                                             <i class="icon dripicons-store"></i>
-            //                                                         </div>
-            //                                                     </div>
-            //                                                     <div class="col-md-8">
-            //                                                         <h6 class="text-muted font-semibold">Ruangan</h6>
-            //                                                         <h6 class="font-extrabold mb-0">80.000</h6>
-            //                                                     </div>
-            //                                                 </div>
-            //                                             </div>
-            //                                         </div>
-            //                                     </div>
-            //                                     <div class="col-6 col-lg-3 col-md-6">
-            //                                         <div class="card">
-            //                                             <div class="card-body px-3 py-4-5">
-            //                                                 <div class="row">
-            //                                                     <div class="col-md-4">
-            //                                                         <div class="stats-icon red">
-            //                                                             <i class="iconly-boldBookmark"></i>
-            //                                                         </div>
-            //                                                     </div>
-            //                                                     <div class="col-md-8">
-            //                                                         <h6 class="text-muted font-semibold">Semester</h6>
-            //                                                         <h6 class="font-extrabold mb-0">112</h6>
-            //                                                     </div>
-            //                                                 </div>
-            //                                             </div>
-            //                                         </div>
-            //                                     </div>
-            //                                 </div>
-            //                             </div>
-
-            //                         </section>
-            //                         <section class="row">
-            //                             <div class="col-md-12 col-lg-12 col-xl-12">
-            //                                 ${myBGSVG_}
-            //                             </div>
-            //                         </section>
-            //                     </div>`);
-            // implementChartJS(data);
-        }());
+        resolve(function () {}());
     });
 }
 
 const meinKosu = async () => {
-    const dataUpdateCovid19 = await gettingUpdateDataCovid19();
-    let dataProvinces = await gettingProvince('https://data.covid19.go.id/public/api/prov_list.json');
-    let individualData = await individualProvince(dataProvinces.makeDefaultProvinsi);
-    const requiredData = await dataRequired(dataProvinces.resultProvinsi, individualData);
-    let actualDataProv = await gettingActualCovid19(requiredData);
-    let actualGlobal = await gettingActualCovid19Global(actualDataProv);
+    try {
+        const dataUpdateCovid19 = await gettingUpdateDataCovid19();
+        let dataProvinces = await gettingProvince('https://data.covid19.go.id/public/api/prov_list.json');
+        let individualData = await individualProvince(dataProvinces.makeDefaultProvinsi);
+        const requiredData = await dataRequired(dataProvinces.resultProvinsi, individualData);
+        let actualDataProv = await gettingActualCovid19(requiredData);
+        let actualGlobal = await gettingActualCovid19Global(actualDataProv);
 
-    let forecastMonthGlobal = await startingSESglobalByMonth(actualGlobal, 2022);
-    let montlyChartData = await geetingMonthlyChart(forecastMonthGlobal);
-
-
-    // provinsi
-    let forecastYearlyProv = await startingSESprovByYear(actualDataProv, 2023);
+        let forecastMonthGlobal = await startingSESglobalByMonth(actualGlobal, 2022);
+        let montlyChartData = await geetingMonthlyChart(forecastMonthGlobal);
 
 
-    await renderSummaryCovid19(dataUpdateCovid19);
-    await renderChartAsync(montlyChartData, 'monthly');
-    await renderMapsProv(actualDataProv, dataUpdateCovid19);
-    await renderCovid19Prov(individualData, forecastYearlyProv);
+        // provinsi
+        let forecastYearlyProv = await startingSESprovByYear(actualDataProv, 2023);
 
+        // console.log(individualData);
+        // console.log(requiredData);
+        // console.log(actualDataProv);
+        // console.log(actualGlobal);
+        // console.log(dataUpdateCovid19);
+        // console.log(forecastYearlyProv);
 
-
-    console.log(individualData);
-    console.log(requiredData);
-    console.log(actualDataProv);
-    console.log(actualGlobal);
-    console.log(dataUpdateCovid19);
-    console.log(forecastYearlyProv);
-
-    return individualData;
+        await renderSummaryCovid19(dataUpdateCovid19);
+        await renderChartAsync(montlyChartData, 'monthly');
+        await renderMapsProv(actualDataProv, dataUpdateCovid19);
+        return await renderCovid19Prov(individualData, forecastYearlyProv);
+    } catch (rejectedReason) {
+        console.log(rejectedReason);
+        return toastr.error('Error NetWork');
+    }
 }
 
 const renderSummaryCovid19 = data => {
@@ -413,67 +315,220 @@ const renderCovid19Prov = (individualData, dataForecast) => {
 }
 
 
+const meinKosu1 = async () => {
+    try {
+        const dataUpdateCovid19 = await gettingUpdateDataCovid19();
+        let dataProvinces = await gettingProvince('https://data.covid19.go.id/public/api/prov_list.json');
+        let individualData = await individualProvince(dataProvinces.makeDefaultProvinsi);
+        const requiredData = await dataRequired(dataProvinces.resultProvinsi, individualData);
+        let actualDataProv = await gettingActualCovid19(requiredData);
+        let forecastYearlyProv = await startingSESprovByYear(actualDataProv, 2023);
+        return await renderMapsProvTab(actualDataProv, individualData, forecastYearlyProv);
+    } catch (rejectedReason) {
+        console.log(rejectedReason);
+        return toastr.error('Error NetWork');
+    }
+}
 
 
-const meinKosu1 = (data, order) => {
+const renderMapsProvTab = (actualData, individualData, dataForecast) => {
     return new Promise((resolve) => {
+        let dataResult = [];
+        let total = 0,
+            rows1 = `<option data-id="anruc">
+                        select province
+                     </option>`;
 
-        $(".main-content-wrapper").addClass('p-0');
+
+        dataForecast.forEach(element => {
+            let total = 0;
+            for (const key in element.list_forecast) {
+                if (element.list_forecast.hasOwnProperty.call(element.list_forecast, key)) {
+                    if (element.list_forecast[key].actual === null) {
+                        element.list_forecast[key].actual = 0;
+                    }
+                    total += element.list_forecast[key].actual
+                }
+            }
+            element.total_kasus = total;
+        });
+
+        individualData.forEach(element => {
+            dataForecast.forEach(element1 => {
+                if (element.provinsi === element1.provinsi) {
+                    element1.kasus_baru = element.kasus_total;
+                    element1.meninggal_persen = element.meninggal_persen;
+                    element1.sembuh_persen = element.sembuh_persen;
+                    element1.last_date = element.last_date;
+                }
+            });
+        });
+
+
+        actualData.forEach(element => {
+            for (let key in element) {
+                if (element.hasOwnProperty(key)) {
+                    if (key === 'list_perkembangan') {
+                        total = 0;
+                        for (let key1 in element[key]) {
+                            if (element[key].hasOwnProperty(key1)) {
+                                total += element[key][key1].totalYear;
+                            }
+                        }
+                    }
+                }
+            }
+            dataResult.push({
+                provinsi: element.provinsi,
+                total: total,
+            });
+        });
+
+        dataResult.forEach(element => {
+            rows1 += `<option data-id="${element.provinsi}">
+                              ${element.provinsi}
+                      </option>`;
+        });
+
+        let rows = `<li><span class="minCovidTab"></span>&#60;9000000</li>
+                     <li><span class="midCovidTab"></span>&#62;9000000</li>
+                     <li><span class="maxCovidTab"></span>&#62;15500000</li>`;
+
         resolve(function () {
-            globalBigData = data;
             $(`#${main}`).html('');
             $(`#${main}`).html(`<div class="map-widget map-report position-relative map-report" style="display: flex; flex-direction: row-reverse">
 
                                     <div class="corona-map-tracker">
                                         ${myMAPv}
+
+                                        <div class="map-status-colors status-menu" style="margin-top: -30px;">
+                                            <ul class="colors d-flex">
+                                                ${rows}
+                                            </ul>
+                                        </div>
                                     </div>
 
                                     <div class="map-content-wrap tracker-block tracker-block--4">
                                         <div class="tracker-block__body">
                                             <div class="select-country">
-                                                <label for="select3" class="sr-only">Country</label>
-                                                <select class="country" name="country"></select>
+                                                <label for="selectProv" class="sr-only">Country</label>
+                                                <select class="country" id="selectProv" onchange="gettingSelectProv()">
+                                                    ${rows1}
+                                                </select>
                                             </div>
-                                            <div class="track-item">
-                                                <p class="track-item__title">Total Cases</p>
-                                                <h4 class="track-item__no infected">00,000</h4>
+
+                                            <div id="forAnrucDev">
+                                                <div class="track-item">
+                                                    <p class="track-item__title">Total Cases</p>
+                                                    <h4 class="track-item__no infected">00,000</h4>
+                                                </div>
+                                                <div class="track-item">
+                                                    <p class="track-item__title">Last 24 Hours</p>
+                                                    <h4 class="track-item__no today_infected">00,000</h4>
+                                                </div>
+                                                <div class="track-item">
+                                                    <p class="track-item__title">Deaths <span>(<span class="deaths-rate"></span>%)</span></p>
+                                                    <h4 class="track-item__no deaths">00,000</h4>
+                                                </div>
+                                                <div class="track-item">
+                                                    <p class="track-item__title">New Deaths</p>
+                                                    <h4 class="track-item__no today_deaths">00,000</h4>
+                                                </div>
+                                                <div class="track-item">
+                                                    <p class="track-item__title">Recovered <span>(<span class="recover-rate"></span>%)</span></p>
+                                                    <h4 class="track-item__no recovered">00,000</h4>
+                                                </div>
                                             </div>
-                                            <div class="track-item">
-                                                <p class="track-item__title">Last 24 Hours</p>
-                                                <h4 class="track-item__no today_infected">00,000</h4>
-                                            </div>
-                                            <div class="track-item">
-                                                <p class="track-item__title">Deaths <span>(<span class="deaths-rate"></span>%)</span></p>
-                                                <h4 class="track-item__no deaths">00,000</h4>
-                                            </div>
-                                            <div class="track-item">
-                                                <p class="track-item__title">New Deaths</p>
-                                                <h4 class="track-item__no today_deaths">00,000</h4>
-                                            </div>
-                                            <div class="track-item">
-                                                <p class="track-item__title">Recovered <span>(<span class="recover-rate"></span>%)</span></p>
-                                                <h4 class="track-item__no recovered">00,000</h4>
-                                            </div>
+                                            
                                         </div>
                                     </div>
             
                                 </div>`);
 
 
-            /*
-             **  Map Report Activation
-             */
+            dataResult.forEach(element => {
+                $(`#${element.provinsi.replaceAll(" ", "_")}`).removeClass('mapTabDef');
 
-            const mapReports = document.querySelectorAll('.map-report');
+                if (element.total > 15500000) {
+                    $(`#${element.provinsi.replaceAll(" ", "_")}`).addClass('mapTab3');
+                }
 
-            if (mapReports) {
-                mapReports.forEach((item, indx) => {
-                    mapReport(item, 'BD');
-                })
-            }
-        }())
+                if ((element.total > 9000000)) {
+                    $(`#${element.provinsi.replaceAll(" ", "_")}`).addClass('mapTab2');
+                }
+
+                if (element.total > 1000000) {
+                    $(`#${element.provinsi.replaceAll(" ", "_")}`).addClass('mapTab1');
+                }
+
+                if (element.total <= 1000000) {
+                    $(`#${element.provinsi.replaceAll(" ", "_")}`).addClass('mapTab0');
+                }
+            });
+
+            dataResultSelectProv = dataForecast;
+        }());
     });
 }
+
+const gettingSelectProv = async () => {
+    try {
+        let data = $("#selectProv").val();
+        let dataId = $("#selectProv").find('option:selected').data('id');
+
+        if (dataId !== 'anruc' || data !== 'select province') {
+            let indexProv = dataResultSelectProv.findIndex(ai => ai.provinsi === dataId);
+            dataResultSelectProv.forEach(element => {
+                $(`#${element.provinsi.replaceAll(" ", "_")}`).removeClass('mapTabSelected3');
+                $(`#${element.provinsi.replaceAll(" ", "_")}`).removeClass('mapTabSelected2');
+                $(`#${element.provinsi.replaceAll(" ", "_")}`).removeClass('mapTabSelected1');
+            });
+
+
+            if (dataResultSelectProv[indexProv].total_kasus > 15500000) {
+                $(`#${dataId.replaceAll(" ", "_")}`).addClass('mapTabSelected3');
+            }
+
+            if ((dataResultSelectProv[indexProv].total_kasus > 9000000)) {
+                $(`#${dataId.replaceAll(" ", "_")}`).addClass('mapTabSelected2');
+            }
+
+            if (dataResultSelectProv[indexProv].total_kasus > 1000000) {
+                $(`#${dataId.replaceAll(" ", "_")}`).addClass('mapTabSelected1');
+            }
+
+            let rows = `<div class="track-item">
+                            <p class="track-item__title">Total Cases</p>
+                            <h4 class="track-item__no infected">${dataResultSelectProv[indexProv].total_kasus}</h4>
+                        </div>
+                        <div class="track-item">
+                            <p class="track-item__title">Forecasting (2023)</p>
+                            <h4 class="track-item__no today_infected">${dataResultSelectProv[indexProv].list_forecast[2023].forecast}</h4>
+                        </div>
+                        <div class="track-item">
+                            <p class="track-item__title">New Cases (${dataResultSelectProv[indexProv].last_date})</p>
+                            <h4 class="track-item__no today_deaths">${dataResultSelectProv[indexProv].kasus_baru}</h4>
+                        </div>
+                        <div class="track-item">
+                            <p class="track-item__title">Deaths <span>(${dataResultSelectProv[indexProv].last_date})</span></p>
+                            <h4 class="track-item__no deaths">${dataResultSelectProv[indexProv].meninggal_persen.toFixed(2)}<span class="deaths-rate"></span> %</h4>
+                        </div>
+                        <div class="track-item">
+                            <p class="track-item__title">Recovered <span>(${dataResultSelectProv[indexProv].last_date})</span></p>
+                            <h4 class="track-item__no recovered">${dataResultSelectProv[indexProv].sembuh_persen.toFixed(2)}<span class="recover-rate"></span> %</h4>
+                        </div>`;
+
+            return $("#forAnrucDev").html(rows);
+        } else {
+            return toastr.warning('Please Select the Province First!')
+        }
+
+    } catch (rejectedReason) {
+        console.log(rejectedReason);
+        return toastr.error('Error NetWork');
+    }
+}
+
 
 const meinKosu2 = (data, order) => {
     return new Promise((resolve) => {
