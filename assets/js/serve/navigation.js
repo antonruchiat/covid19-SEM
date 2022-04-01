@@ -480,6 +480,7 @@ function selectMenu(idmenu) {
         // gettingMenuAsync(meinKosu1, 'meinKosu1');
         meinKosu1();
     } else if (idmenu === 'meinKosu2') {
+        meinKosu2();
         // gettingMenuAsync(meinKosu2, 'meinKosu2');
     } else if (idmenu === 'meinKosu3') {
 
