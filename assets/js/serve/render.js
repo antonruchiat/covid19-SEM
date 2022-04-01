@@ -892,263 +892,266 @@ const meinKosu2iii = (data, order) => {
         resolve(function () {
             $(`#${main}`).html('');
             $(`#${main}`).html(`<div class="badge-tracker-wrap">
-                                    <div class="container">
-                                        <div class="row">
-                                            <div class="col-lg-12 m-auto">
-                            
-                                                <div class="badge-tracker-item">
-                                                    <div class="title-top" style="margin-top: 30px;">
-                                                        <h3>Forecasting COVID-19 Using Single Exponential Smoothing Method</h3>
-                                                    </div>
-                                                
-                                                    <div class="badge-item badge-bg-yellow worldwide-stats">
-                                                        <div class="badge-item__title badge-item__title--3 badge-title-bg-black">
-                                                            <p style="font-size: 14px;">COVID-19 Country Update</p>
-                                                        </div>
-                                                        <div class="badge-item__body">
-                                                            <div class="badge-item__block">
-                                                                <p>Active cases: <span class="infected">00,000</span></p>
-                                                            </div>
-                                                            <div class="badge-item__block">
-                                                                <p>Deaths: <span class="deaths">00,000</span></p>
-                                                            </div>
-                                                            <div class="badge-item__block">
-                                                                <p>Recovered: <span class="recovered">00,000</span></p>
-                                                            </div>
-                                                            <div class="badge-item__block">
-                                                                <p>New: <span class="today_infected">00,000</span></p>
-                                                            </div>
-                                                        </div>
-                                                    </div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12 m-auto">
+    
+                        <div class="badge-tracker-item">
+                            <div class="title-top" style="margin-top: 30px;">
+                                <h3>Forecasting COVID-19 Using Single Exponential Smoothing Method</h3>
+                            </div>
+                        
+                            <div class="badge-item badge-bg-yellow worldwide-stats">
+                                <div class="badge-item__title badge-item__title--3 badge-title-bg-black">
+                                    <p style="font-size: 14px;">COVID-19 Country Update</p>
+                                </div>
+                                <div class="badge-item__body">
+                                    <div class="badge-item__block">
+                                        <p>Active cases: <span class="infected">00,000</span></p>
+                                    </div>
+                                    <div class="badge-item__block">
+                                        <p>Deaths: <span class="deaths">00,000</span></p>
+                                    </div>
+                                    <div class="badge-item__block">
+                                        <p>Recovered: <span class="recovered">00,000</span></p>
+                                    </div>
+                                    <div class="badge-item__block">
+                                        <p>New: <span class="today_infected">00,000</span></p>
+                                    </div>
+                                </div>
+                            </div>
 
-                                                    <div class="badge-content-wrapper">
-                                                        <div class="badge-item worldwide-stats">
-                                                            <div class="badge-item__title">
-                                                                <div class="tracker-block__header with-option">
-                                                                    <div class="select-country">
-                                                                        <label for="forecastProvince" class="sr-only">Select Province</label>
-                                                                        <select class="country" name="country" id="forecastProvince"></select>
-                                                                    </div>
-                                                                </div>
-                                                                    <div id="forAnrucDev">
-                                                                        <div class="track-item">
-                                                                            <p class="track-item__title">Total Cases</p>
-                                                                            <h4 class="track-item__no infected">00,000</h4>
-                                                                        </div>
-                                                                        <div class="track-item">
-                                                                            <p class="track-item__title">Last 24 Hours</p>
-                                                                            <h4 class="track-item__no today_infected">00,000</h4>
-                                                                        </div>
-                                                                        <div class="track-item">
-                                                                            <p class="track-item__title">Deaths <span>(<span class="deaths-rate"></span>%)</span></p>
-                                                                            <h4 class="track-item__no deaths">00,000</h4>
-                                                                        </div>
-                                                                        <div class="track-item">
-                                                                            <p class="track-item__title">New Deaths</p>
-                                                                            <h4 class="track-item__no today_deaths">00,000</h4>
-                                                                        </div>
-                                                                        <div class="track-item">
-                                                                            <p class="track-item__title">Recovered <span>(<span class="recover-rate"></span>%)</span></p>
-                                                                            <h4 class="track-item__no recovered">00,000</h4>
-                                                                        </div>
-                                                                    </div>
-                                                            </div>
-                                                            <div class="badge-item__body">
-                                                                <div class="list-view-border table-responsive" id="list-view">
-                                                                    <table class="display table">
-                                                                        <thead class="list-view-head">
-                                                                            <tr>
-                                                                                <th>Cases Date</th>
-                                                                                <th>Confirmed Cases</th>
-                                                                                <th>Forecasting Using Alpha X</th>
-                                                                            </tr>
-                                                                        </thead>
-                            
-                                                                        <tbody class="list-view-ses">
-                                                                            <tr>
-                                                                                <td>asdsafsafa</td>
-                                                                                <td>asdsafsafa</td>
-                                                                                <td>asdsafsafa</td>
-                                                                            </tr>
-                                                                            <tr>
-                                                                                <td>asdsafsafa</td>
-                                                                                <td>asdsafsafa</td>
-                                                                                <td>asdsafsafa</td>
-                                                                            </tr>
-                                                                            <tr>
-                                                                                <td>asdsafsafa</td>
-                                                                                <td>asdsafsafa</td>
-                                                                                <td>asdsafsafa</td>
-                                                                            </tr>
-                                                                            <tr>
-                                                                                <td>asdsafsafa</td>
-                                                                                <td>asdsafsafa</td>
-                                                                                <td>asdsafsafa</td>
-                                                                            </tr>
-                                                                            <tr>
-                                                                                <td>asdsafsafa</td>
-                                                                                <td>asdsafsafa</td>
-                                                                                <td>asdsafsafa</td>
-                                                                            </tr>
-                                                                            <tr>
-                                                                                <td>asdsafsafa</td>
-                                                                                <td>asdsafsafa</td>
-                                                                                <td>asdsafsafa</td>
-                                                                            </tr>
-                                                                            <tr>
-                                                                                <td>asdsafsafa</td>
-                                                                                <td>asdsafsafa</td>
-                                                                                <td>asdsafsafa</td>
-                                                                            </tr>
-                                                                        </tbody>
-                            
-                                                                    </table>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
+                            <div class="badge-content-wrapper">
+                                <div class="ses-global-btn">
+                                    <button class="ses-global-month-btn ses-global-active" onclick="sesGlobal(this)" data-toggle="tooltip" data-placement="top" title="Monthly">M</button>
+                                    <button class="ses-global-year-btn" onclick="sesGlobal(this)" data-toggle="tooltip" data-placement="bottom" title="Yearly"">Y</button>
+                                </div> 
+                                <div class="badge-item worldwide-stats">
+                                    <div class="badge-item__title">
+                                            <div id="forAnrucDev">
+                                                <div class="track-item">
+                                                    <p class="track-item__title">Total Cases</p>
+                                                    <h4 class="track-item__no infected">00,000</h4>
                                                 </div>
-
-
-                                                <div class="badge-tracker-item">
-                                                    <div class="title-top" style="margin-top: 30px;">
-                                                        <h3>Forecasting COVID-19 Using Single Exponential Smoothing Method</h3>
-                                                    </div>
-                                                
-                                                    <div class="badge-item badge-bg-yellow worldwide-stats">
-                                                        <div class="badge-item__title badge-item__title--3 badge-title-bg-black">
-                                                            <p style="font-size: 14px;">COVID-19 Province Update</p>
-                                                        </div>
-                                                        <div class="badge-item__body">
-                                                            <div class="badge-item__block">
-                                                                <p>Active cases: <span class="infected">00,000</span></p>
-                                                            </div>
-                                                            <div class="badge-item__block">
-                                                                <p>Deaths: <span class="deaths">00,000</span></p>
-                                                            </div>
-                                                            <div class="badge-item__block">
-                                                                <p>Recovered: <span class="recovered">00,000</span></p>
-                                                            </div>
-                                                            <div class="badge-item__block">
-                                                                <p>New: <span class="today_infected">00,000</span></p>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-
-                                                    <div class="badge-content-wrapper">
-                                                        <div class="badge-item worldwide-stats">
-                                                            <div class="badge-item__title">
-                                                                <div class="tracker-block__header with-option">
-                                                                    <div class="select-country">
-                                                                        <label for="forecastProvince" class="sr-only">Select Province</label>
-                                                                        <select class="country" name="country" id="forecastProvince"></select>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            <div class="badge-item__body">
-                                                                <div class="list-view-border table-responsive" id="list-view">
-                                                                    <table class="display table">
-                                                                        <thead class="list-view-head">
-                                                                            <tr>
-                                                                                <th>Cases Date</th>
-                                                                                <th>Confirmed Cases</th>
-                                                                                <th>Forecasting Using Alpha X</th>
-                                                                            </tr>
-                                                                        </thead>
-                            
-                                                                        <tbody class="list-view-ses">
-                                                                            <tr>
-                                                                                <td>asdsafsafa</td>
-                                                                                <td>asdsafsafa</td>
-                                                                                <td>asdsafsafa</td>
-                                                                            </tr>
-                                                                            <tr>
-                                                                                <td>asdsafsafa</td>
-                                                                                <td>asdsafsafa</td>
-                                                                                <td>asdsafsafa</td>
-                                                                            </tr>
-                                                                            <tr>
-                                                                                <td>asdsafsafa</td>
-                                                                                <td>asdsafsafa</td>
-                                                                                <td>asdsafsafa</td>
-                                                                            </tr>
-                                                                            <tr>
-                                                                                <td>asdsafsafa</td>
-                                                                                <td>asdsafsafa</td>
-                                                                                <td>asdsafsafa</td>
-                                                                            </tr>
-                                                                            <tr>
-                                                                                <td>asdsafsafa</td>
-                                                                                <td>asdsafsafa</td>
-                                                                                <td>asdsafsafa</td>
-                                                                            </tr>
-                                                                            <tr>
-                                                                                <td>asdsafsafa</td>
-                                                                                <td>asdsafsafa</td>
-                                                                                <td>asdsafsafa</td>
-                                                                            </tr>
-                                                                            <tr>
-                                                                                <td>asdsafsafa</td>
-                                                                                <td>asdsafsafa</td>
-                                                                                <td>asdsafsafa</td>
-                                                                            </tr>
-                                                                        </tbody>
-                            
-                                                                    </table>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
+                                                <div class="track-item">
+                                                    <p class="track-item__title">Last 24 Hours</p>
+                                                    <h4 class="track-item__no today_infected">00,000</h4>
                                                 </div>
-                            
-                                                <div class="badge-tracker-item">
-                                                    <div class="title-top">
-                                                        <h2>Chart</h2>
-                                                    </div>
-                            
-                                                    <div class="mini-chart-content" id="country-report">
-                                                        <div class="tracker-block tracker-block--6">
-                                                            <div class="tracker-block__body">
-                                                                <div class="track-item">
-                                                                    <div class="track-item-report">
-                                                                        <p class="track-item__title track-item__title-active">Active Cases</p>
-                                                                        <h4 class="track-item__no current_cases">00,000,0</h4>
-                                                                    </div>
-                                                                    <div class="track-item-chart">
-                                                                        <canvas id="active_cases_chart"></canvas>
-                                                                    </div>
-                                                                </div>
-                            
-                                                                <div class="track-item">
-                                                                    <div class="track-item-report">
-                                                                        <p class="track-item__title track-item__title-deaths">Deaths</p>
-                                                                        <h4 class="track-item__no deaths">00,000,0</h4>
-                                                                    </div>
-                            
-                                                                    <div class="track-item-chart">
-                                                                        <canvas id="deaths_chart"></canvas>
-                                                                    </div>
-                                                                </div>
-                            
-                                                                <div class="track-item">
-                                                                    <div class="track-item-report">
-                                                                        <p class="track-item__title track-item__title-recovered">Recovered</p>
-                                                                        <h4 class="track-item__no recovered">00,000,0</h4>
-                                                                    </div>
-                            
-                                                                    <div class="track-item-chart">
-                                                                        <canvas id="recovered_chart"></canvas>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
+                                                <div class="track-item">
+                                                    <p class="track-item__title">Deaths <span>(<span class="deaths-rate"></span>%)</span></p>
+                                                    <h4 class="track-item__no deaths">00,000</h4>
                                                 </div>
+                                                <div class="track-item">
+                                                    <p class="track-item__title">New Deaths</p>
+                                                    <h4 class="track-item__no today_deaths">00,000</h4>
+                                                </div>
+                                                <div class="track-item">
+                                                    <p class="track-item__title">Recovered <span>(<span class="recover-rate"></span>%)</span></p>
+                                                    <h4 class="track-item__no recovered">00,000</h4>
+                                                </div>
+                                            </div>
+                                    </div>
+                                    <div class="badge-item__body">
+                                        <div class="helper"></div>
+                                        <div class="list-view table-responsive" id="targetGlobal">
+                                            <table class="display table global-table">
+                                                <thead class="list-view-head">
+                                                    <tr>
+                                                        <th id="globalHeading">Cases Date</th>
+                                                        <th>Confirmed Cases</th>
+                                                        <th>Forecasting Using Alpha X</th>
+                                                    </tr>
+                                                </thead>
+                    
+                                                <tbody class="list-view-ses">
+                                                    <tr>
+                                                        <td class="row-data">asdsafsafa</td>
+                                                        <td class="row-data">asdsafsafa</td>
+                                                        <td class="row-data">asdsafsafa</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="row-data">asdsafsafa</td>
+                                                        <td class="row-data">asdsafsafa</td>
+                                                        <td class="row-data">asdsafsafa</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="row-data">asdsafsafa</td>
+                                                        <td class="row-data">asdsafsafa</td>
+                                                        <td class="row-data">asdsafsafa</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="row-data">asdsafsafa</td>
+                                                        <td class="row-data">asdsafsafa</td>
+                                                        <td class="row-data">asdsafsafa</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="row-data">asdsafsafa</td>
+                                                        <td class="row-data">asdsafsafa</td>
+                                                        <td class="row-data">asdsafsafa</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="row-data">asdsafsafa</td>
+                                                        <td class="row-data">asdsafsafa</td>
+                                                        <td class="row-data">asdsafsafa</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="row-data">asdsafsafa</td>
+                                                        <td class="row-data">asdsafsafa</td>
+                                                        <td class="row-data">asdsafsafa</td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="badge-tracker-item">
+                            <div class="title-top" style="margin-top: 30px;">
+                                <h3>Forecasting COVID-19 Using Single Exponential Smoothing Method</h3>
+                            </div>
+                        
+                            <div class="badge-item badge-bg-yellow worldwide-stats">
+                                <div class="badge-item__title badge-item__title--3 badge-title-bg-black">
+                                    <p style="font-size: 14px;">COVID-19 Province Update</p>
+                                </div>
+                                <div class="badge-item__body">
+                                    <div class="badge-item__block">
+                                        <p>Active cases: <span class="infected">00,000</span></p>
+                                    </div>
+                                    <div class="badge-item__block">
+                                        <p>Deaths: <span class="deaths">00,000</span></p>
+                                    </div>
+                                    <div class="badge-item__block">
+                                        <p>Recovered: <span class="recovered">00,000</span></p>
+                                    </div>
+                                    <div class="badge-item__block">
+                                        <p>New: <span class="today_infected">00,000</span></p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="badge-content-wrapper">
+                                <div class="ses-province-btn ">
+                                    <button class="ses-province-month-btn ses-global-active" onclick="sesProvince(this)" data-toggle="tooltip" data-placement="top" title="Monthly">M</button>
+                                    <button class="ses-province-year-btn" onclick="sesProvince(this)" data-toggle="tooltip" data-placement="bottom" title="Yearly"">Y</button>
+                                </div> 
+                                <div class="badge-item worldwide-stats">
+                                    <div class="badge-item__title">
+                                        <div class="tracker-block__header with-option">
+                                            <div class="select-country">
+                                                <label for="forecastProvince" class="sr-only">Select Province</label>
+                                                <select class="country" name="country" id="forecastProvince"></select>
                                             </div>
                                         </div>
                                     </div>
-                                </div>`);
-            miniChart();
+                                    <div class="badge-item__body">
+                                        <div class="list-view-border table-responsive" id="targetProvince">
+                                            <table class="display table global-table">
+                                                <thead class="list-view-head">
+                                                    <tr>
+                                                        <th id="provinceHeading">Cases Date</th>
+                                                        <th>Confirmed Cases</th>
+                                                        <th>Forecasting Using Alpha X</th>
+                                                    </tr>
+                                                </thead>
+                    
+                                                <tbody class="list-view-ses">
+                                                    <tr>
+                                                        <td class="row-data-province">asdsafsafa</td>
+                                                        <td class="row-data-province">asdsafsafa</td>
+                                                        <td class="row-data-province">asdsafsafa</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="row-data-province">asdsafsafa</td>
+                                                        <td class="row-data-province">asdsafsafa</td>
+                                                        <td class="row-data-province">asdsafsafa</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="row-data-province">asdsafsafa</td>
+                                                        <td class="row-data-province">asdsafsafa</td>
+                                                        <td class="row-data-province">asdsafsafa</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="row-data-province">asdsafsafa</td>
+                                                        <td class="row-data-province">asdsafsafa</td>
+                                                        <td class="row-data-province">asdsafsafa</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="row-data-province">asdsafsafa</td>
+                                                        <td class="row-data-province">asdsafsafa</td>
+                                                        <td class="row-data-province">asdsafsafa</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="row-data-province">asdsafsafa</td>
+                                                        <td class="row-data-province">asdsafsafa</td>
+                                                        <td class="row-data-province">asdsafsafa</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="row-data-province">asdsafsafa</td>
+                                                        <td class="row-data-province">asdsafsafa</td>
+                                                        <td class="row-data-province">asdsafsafa</td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+    
+                        <div class="badge-tracker-item">
+                            <div class="title-top">
+                                <h2>Chart</h2>
+                            </div>
+    
+                            <div class="mini-chart-content" id="country-report">
+                                <div class="tracker-block tracker-block--6">
+                                    <div class="tracker-block__body">
+                                        <div class="track-item">
+                                            <div class="track-item-report">
+                                                <p class="track-item__title track-item__title-active">Active Cases</p>
+                                                <h4 class="track-item__no current_cases">00,000,0</h4>
+                                            </div>
+                                            <div class="track-item-chart">
+                                                <canvas id="active_cases_chart"></canvas>
+                                            </div>
+                                        </div>
+    
+                                        <div class="track-item">
+                                            <div class="track-item-report">
+                                                <p class="track-item__title track-item__title-deaths">Deaths</p>
+                                                <h4 class="track-item__no deaths">00,000,0</h4>
+                                            </div>
+    
+                                            <div class="track-item-chart">
+                                                <canvas id="deaths_chart"></canvas>
+                                            </div>
+                                        </div>
+    
+                                        <div class="track-item">
+                                            <div class="track-item-report">
+                                                <p class="track-item__title track-item__title-recovered">Recovered</p>
+                                                <h4 class="track-item__no recovered">00,000,0</h4>
+                                            </div>
+    
+                                            <div class="track-item-chart">
+                                                <canvas id="recovered_chart"></canvas>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>`);
+
+
+        miniChart();
         }())
     });
 }

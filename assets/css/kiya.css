@@ -98,6 +98,102 @@
     border-radius: 17px;
 }
 
+.ses-global-btn {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    right: 0;
+    top: 17%;
+    transform: translateX(100%);
+    width: 30px;
+    height: 70px;
+    background-color: #008FFB;
+    border-radius: 17px;
+    padding: 6px 4px;
+
+}
+
+.ses-province-btn {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    right: 0;
+    top: 48%;
+    transform: translateX(100%);
+    width: 30px;
+    height: 70px;
+    background-color: #008FFB;
+    border-radius: 17px;
+    padding: 6px 4px;
+}
+
+.ses-global-month-btn, .ses-global-year-btn, .ses-province-month-btn, .ses-province-year-btn {
+    width: 100%;
+    height: 30px;
+    border-radius: 17px;
+    font-size: 14px;
+    font-weight: 500;
+    color: #F7F8FC;
+}
+
+.ses-global-active {
+    background-color: #F7F8FC;
+    color: #008FFB;
+}
+
+.animate {
+    -webkit-animation-name: slideInDown;
+    animation-name: slideInDown;
+    -webkit-animation-duration: .7s;
+    animation-duration: .7s;
+    -webkit-animation-fill-mode: both;
+    animation-fill-mode: both;
+}
+
+.global-table{
+    width: 100%;
+}
+
+@-webkit-keyframes slideInDown {
+    0% {
+        -webkit-transform: translateY(-75%);
+        transform: translateY(-75%);
+        visibility: visible;
+        z-index: -99999999999999999999;
+    }
+    70% {
+        -webkit-transform: translateY(-50%);
+        transform: translateY(-30%);
+        visibility: visible;
+        z-index: 1;
+    }
+    100% {
+        -webkit-transform: translateY(0);
+        transform: translateY(0);
+        z-index: 1;
+    }
+}
+@keyframes slideInDown {
+    0% {
+        -webkit-transform: translateY(-50%);
+        transform: translateY(-50%);
+        visibility: visible;
+        z-index: -999999999;
+    }
+    70% {
+        -webkit-transform: translateY(-7%);
+        transform: translateY(-7%);
+        visibility: visible;
+        z-index: 1;
+    }
+    100% {
+        -webkit-transform: translateY(0);
+        transform: translateY(0);
+        z-index: 1;
+    }
+} 
+
+
 /* End of SES CSS */
 
 

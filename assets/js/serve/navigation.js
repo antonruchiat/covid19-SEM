@@ -481,7 +481,8 @@ function selectMenu(idmenu) {
         meinKosu1();
     } else if (idmenu === 'meinKosu2') {
         // gettingMenuAsync(meinKosu2, 'meinKosu2');
-        meinKosu2()
+        // meinKosu2()
+        meinKosu2iii();
     } else if (idmenu === 'meinKosu3') {
 
         // return gettingUpdateDataCovid19();
