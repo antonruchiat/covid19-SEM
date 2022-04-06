@@ -86,8 +86,8 @@ var globalBigData = [],
         'appAdmSetRepassId',
     ];
 
-const _URL = "http://localhost/ajockey/dev/greedy-han/";
-const _URLVALID = "assets/vendors/scripts/engine/override.php?order";
+const _URL = "http://localhost/covid19-SEM/";
+const _URLVALID = "./assets/vendors/scripts/engine/override.php?order";
 
 
 

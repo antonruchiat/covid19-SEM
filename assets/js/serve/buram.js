@@ -256,3 +256,28 @@ console.log(arr3Combination);
 // }
 // TODO!! SOLVE THIS
 // Do you really want to execute "ALTER TABLE `tb_schedul` ADD INDEX(`Id_doctor`);"?
+
+
+
+
+
+
+
+
+
+
+
+
+
+for (const key1 in element.list_perkembangan[key]) {
+    if (element.list_perkembangan[key].hasOwnProperty.call(element.list_perkembangan[key], key1)) {
+        if (key1 === 'listMonth') {
+            for (const key2 in element.list_perkembangan[key][key2]) {
+                if (element.list_perkembangan[key][key2].hasOwnProperty.call(element.list_perkembangan[key][key2], key2)) {
+
+
+                }
+            }
+        }
+    }
+}

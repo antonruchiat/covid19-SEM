@@ -142,7 +142,6 @@ const gettingUpdateDataCovid19 = async (origin = '', requestOptions = {
         origin = `https://data.covid19.go.id/public/api/update.json`;
         let response = await fetch(origin, requestOptions);
         const data = await response.json();
-
         hideLoad();
         return data;
     } catch (rejectedReason) {

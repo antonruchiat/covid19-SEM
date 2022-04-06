@@ -28,32 +28,28 @@ function setupTablePagination(disp) {
     $('#paginatae_infoEE').html('');
     for (i = 0; i < pages; i++) {
         var curr = i == 0 ? 'current' : '';
-        // $('.dataTables_paginate span').append('<a class="paginate_button ' + curr + ' btn' + (i + 1) + '" aria-controls="page-length-option" onclick="pages(\'' + (i + 1) + '\')">' + (i + 1) + '</a>');
-        // rowsIn += `<a class="paginate_button ${curr} btn${i + 1}" onclick="pages(${i+1})">
-        //                 ${i+1}
-        //             </a>`;
-        rowsIn += `<li class="paginate_button page-item active">
-                        <a href="javascript:void(0)" aria-controls="myProjectTable" 
-                        data-dt-idx="1" tabindex="0" class="page-link ${curr} btn${i + 1}" onclick="pages(${i+1})">
-                        ${i+1}
-                        </a>
-                   </li>`;
+
+        if (i === parseInt(pages - 1)) {
+            rowsIn += `<span class="ellipsis">…</span>`;
+            rowsIn += `<a class="paginate_button ${curr} btn${i + 1} pageItemAku" data-dt-idx="${i + 1}" tabindex="0" onclick="pages(${i+1})">${i + 1}</a>`;
+        } else {
+            rowsIn += `<a class="paginate_button ${curr} btn${i + 1} pageItemAku" data-dt-idx="${i+1}" tabindex="0" onclick="pages(${i+1})">
+                            ${i+1}
+                       </a>`;
+        }
     }
-    $('#paginatae_infoEE').html(`<li class="paginate_button page-item previous disabled" id="previousPageItem">
-                                    <a href="javascript:void(0)" aria-controls="myProjectTable"
-                                    data-dt-idx="0" tabindex="0" class="page-link" onclick="prev()">
+
+    $('#paginatae_infoEE').html(`<a class="paginate_button previous disabled" tabindex="-1" onclick="prev()">
                                     Previous
-                                    </a>
-                                </li>
+                                 </a>
 
-                                ${rowsIn}
+                                 <span>
+                                    ${rowsIn}
+                                 </span>
 
-                                <li class="paginate_button page-item next disabled">
-                                    <a href="javascript:void(0)" aria-controls="myProjectTable"
-                                       data-dt-idx="2" tabindex="0" class="page-link" onclick="next()">
-                                        Next
-                                    </a>
-                                </li>`);
+                                 <a class="paginate_button next" tabindex="0" onclick="next()">
+                                    Next
+                                 </a>`);
 
 
     $('#paginattable').html('');
@@ -65,16 +61,18 @@ function setupTablePagination(disp) {
 
 function pages(datake) {
     tersorot = datake;
-    $('.dataTables_paginate .pagination li').removeClass('active');
-    $('.dataTables_paginate .pagination .btn' + datake).addClass('active');
+    $(`.pageItemAku`).removeClass('current');
+    $('.btn' + datake).addClass('current');
 
     var index = 1 + (display) * (datake - 1);
     $('#paginattable').html('');
-    for (i = (index - 1); i < (index + (display - 1)); i++) {
 
+    for (i = (index - 1); i < (index + (display - 1)); i++) {
         $('#paginattable').append('<tr>' + bodyTable[i] + '</tr>');
     }
-    $('#dataTablesInfoPaginat').html('Showing ' + (index) + ' to ' + ((index + (display - 1)) > bodyTable.length ? bodyTable.length : (index + (display - 1))) + ' of ' + bodyTable.length + " entries");
+
+    // $('#dataTablesInfoPaginat').html('Showing ' + (index) + ' to ' + ((index + (display - 1)) > bodyTable.length ? bodyTable.length : (index + (display - 1))) + ' of ' + bodyTable.length + " entries");
+    $('#dataTables_infoEE').html('Showing ' + (index) + ' to ' + ((index + (display - 1)) > bodyTable.length ? bodyTable.length : (index + (display - 1))) + ' of ' + bodyTable.length + " entries");
 }
 
 function prev() {

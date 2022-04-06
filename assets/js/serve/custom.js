@@ -8,7 +8,8 @@
 "use strict";
 
 $(document).ready(function (e) {
-    $(".map-status").html(indoMaps);
+    meinKosu();
+    // $(".map-status").html(indoMaps);
     // gettingMenuAsync(meinKosu, 'meinKosu');
 });
 
@@ -16,6 +17,10 @@ $(document).ready(function (e) {
 //     let checkType = $("#searchText").val();
 //     searchDataTable(checkType);
 // });
+
+// `<li id="meinKosu3">
+// <a href="javascript:void(0)">Coba FeTCH</a>
+// </li>`
 
 
 
