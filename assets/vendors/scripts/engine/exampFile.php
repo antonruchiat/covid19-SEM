@@ -4,16 +4,20 @@
 
 function createProvince_DEF()
 {
+    $def_provinces = [];
     $data = file_get_contents("./Response/Provinces_List/response.json");
     $array = json_decode($data, true);
 
-    $province = array_column($array["list_data"], 'key');
+    $provinces = array_column($array["list_data"], 'key');
 
-    foreach ($province as $key => $value) {
-        $provinse[$key] = str_replace(' ', '_', $value);
+    foreach ($provinces as $key => $value) {
+        array_push($def_provinces, str_replace(' ', '_', $value));
     }
 
-    return $province;
+    return [
+        "resultProvinsi" => $provinces,
+        "makeDefaultProvinsi" => $def_provinces,
+    ];
 }
 
 function createIndividualProvince($provinces)
@@ -35,8 +39,16 @@ function createJSON_file($Path, $file)
 {
     $jsonToFile = json_encode($file);
 
-    $bytesIndividual = file_put_contents("$Path/response.json", $jsonToFile);
+    $bytesIndividual = file_put_contents($Path . "response.json", $jsonToFile);
     // echo $bytesIndividual;
 
     return $bytesIndividual;
 }
+
+// $dataProvince =  createProvince_DEF();
+// $result_provinces = $dataProvince["resultProvinsi"];
+// $result_provinces = createJSON_file('./Response/result_provinces/', $dataProvince["resultProvinsi"]);
+
+
+// $def_provinces = $dataProvince["makeDefaultProvinsi"];
+// $def_provinces = createJSON_file('./Response/default_provinces/', $dataProvince["makeDefaultProvinsi"]);

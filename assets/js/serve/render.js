@@ -2,6 +2,51 @@ var main = 'mainPages',
     dataResultSelectProv = [],
     dataResultMeinKosu2 = [];
 
+const meinKosu_try = async () => {
+    try {
+        let dataUpdateCovid19 = await fetchWithTimeout('https://data.covid19.go.id/public/api/update.json', {
+            timeout: 6000
+        });
+        let dataProvinces = await fetchWithTimeout_Modified('https://data.covid19.go.id/public/api/prov_list.json', {
+            timeout: 6000
+        });
+        let individualData = await fetchWithTimeoutChain({
+            timeout: 10000
+        }, dataProvinces.makeDefaultProvinsi);
+
+
+        const requiredData = await dataRequired(dataProvinces.resultProvinsi, individualData);
+        let actualDataProv = await gettingActualCovid19(requiredData);
+        let actualGlobal = await gettingActualCovid19Global(actualDataProv);
+
+        let forecastMonthGlobal = await startingSESglobalByMonth(actualGlobal, 2022);
+        let montlyChartData = await geetingMonthlyChart(forecastMonthGlobal);
+
+
+        // provinsi
+        let forecastYearlyProv = await startingSESprovByYear(actualDataProv, 2023);
+
+        await renderMeinKosu();
+        await renderSummaryCovid19(dataUpdateCovid19);
+        await renderChartAsync(montlyChartData, 'monthly');
+        await renderMapsProv(actualDataProv, dataUpdateCovid19);
+        return await renderCovid19Prov(individualData, forecastYearlyProv);
+    } catch (rejectedReason) {
+        toastr.warning('please wait, redirecting ...');
+        console.log(rejectedReason);
+        console.log(rejectedReason.name)
+        console.log(rejectedReason.name === 'AbortError');
+        if (rejectedReason.name === 'SyntaxError' ||
+            rejectedReason.name === 'AbortError') {
+            // ReferenceError
+            // SyntaxError
+            // AbortError
+            return await gettingRedirect(reserveMeinKosu, 'meinKosu');
+        }
+        return toastr.error('Error NetWork');
+    }
+}
+
 const meinKosu = async () => {
     try {
         const dataUpdateCovid19 = await gettingUpdateDataCovid19();
@@ -30,22 +75,7 @@ const meinKosu = async () => {
         await renderChartAsync(montlyChartData, 'monthly');
         await renderMapsProv(actualDataProv, dataUpdateCovid19);
         return await renderCovid19Prov(individualData, forecastYearlyProv);
-
-
-        // for backup Data if cracsh link
-        // const response = await fetchWithTimeout('/games', {
-        //     timeout: 6000
-        // });
-        // const data = await response.json();
-        // console.log(data);
-        // return response;
     } catch (rejectedReason) {
-        // toastr.warning('please wait, redirecting ...');
-        // console.log(rejectedReason.name)
-        // console.log(rejectedReason.name === 'AbortError');
-        // if (rejectedReason.name === 'AbortError') {
-        //     return await getRedirecting(reserveMeinKosu, 'meinKosu');
-        // }
         console.log(rejectedReason);
         return toastr.error('Error NetWork');
     }
@@ -546,6 +576,39 @@ const renderCovid19Prov = (individualData, dataForecast) => {
     });
 }
 
+
+const meinKosu1_try = async () => {
+    try {
+        let dataProvinces = await fetchWithTimeout_Modified('https://data.covid19.go.id/public/api/prov_list.json', {
+            timeout: 6000
+        });
+        let individualData = await fetchWithTimeoutChain({
+            timeout: 6000
+        }, dataProvinces.makeDefaultProvinsi);
+
+
+        const requiredData = await dataRequired(dataProvinces.resultProvinsi, individualData);
+        let actualDataProv = await gettingActualCovid19(requiredData);
+
+        let forecastYearlyProv = await startingSESprovByYear(actualDataProv, 2023);
+
+        return await renderMapsProvTab(actualDataProv, individualData, forecastYearlyProv);
+    } catch (rejectedReason) {
+        toastr.warning('please wait, redirecting ...');
+        console.log(rejectedReason);
+        console.log(rejectedReason.name)
+        console.log(rejectedReason.name === 'AbortError');
+        if (rejectedReason.name === 'SyntaxError' ||
+            rejectedReason.name === 'AbortError') {
+            // ReferenceError
+            // SyntaxError
+            // AbortError
+            return await gettingRedirect(reserveMeinKosu1, 'meinKosu1');
+        }
+        return toastr.error('Error NetWork');
+    }
+}
+
 const meinKosu1 = async () => {
     try {
         let dataProvinces = await gettingProvince('https://data.covid19.go.id/public/api/prov_list.json');
@@ -757,11 +820,70 @@ const gettingSelectProv = async () => {
     }
 }
 
+
+
+
+const meinKosu2_try = async () => {
+    try {
+        let dataUpdateCovid19 = await fetchWithTimeout('https://data.covid19.go.id/public/api/update.json', {
+            timeout: 6000
+        });
+        let dataProvinces = await fetchWithTimeout_Modified('https://data.covid19.go.id/public/api/prov_list.json', {
+            timeout: 6000
+        });
+        let individualData = await fetchWithTimeoutChain({
+            timeout: 10000
+        }, dataProvinces.makeDefaultProvinsi);
+
+
+        const requiredData = await dataRequired(dataProvinces.resultProvinsi, individualData);
+        let actualDataProv = await gettingActualCovid19(requiredData);
+        let actualGlobal = await gettingActualCovid19Global(actualDataProv);
+
+        let forecastMonthGlobal = await startingSESglobalByMonth(actualGlobal, 2022);
+        let forecastYearGlobal = await startingSESglobalByYear(actualGlobal, 2023);
+
+
+        // provinsi
+        let forecastMonthlyProv = await startingSESprovByMonth(actualDataProv, 2022);
+        let forecastYearlyProv = await startingSESprovByYear(actualDataProv, 2023);
+
+        let dataSend = {
+            dataUpdateCovid19,
+            individualData,
+            dataProvinces,
+            actualGlobal,
+            actualDataProv,
+            forecastMonthGlobal,
+            forecastYearGlobal,
+            forecastMonthlyProv,
+            forecastYearlyProv
+        }
+
+        return await renderMeinKosu2(dataSend);
+
+    } catch (rejectedReason) {
+        toastr.warning('please wait, redirecting ...');
+        console.log(rejectedReason);
+        console.log(rejectedReason.name)
+        console.log(rejectedReason.name === 'AbortError');
+        if (rejectedReason.name === 'SyntaxError' ||
+            rejectedReason.name === 'AbortError') {
+            // ReferenceError
+            // SyntaxError
+            // AbortError
+            return await gettingRedirect(reserveMeinKosu2, 'meinKosu2');
+        }
+        return toastr.error('Error NetWork');
+    }
+}
+
 const meinKosu2 = async () => {
     try {
         const dataUpdateCovid19 = await gettingUpdateDataCovid19();
         let dataProvinces = await gettingProvince('https://data.covid19.go.id/public/api/prov_list.json');
         let individualData = await individualProvince(dataProvinces.makeDefaultProvinsi);
+
         const requiredData = await dataRequired(dataProvinces.resultProvinsi, individualData);
         let actualDataProv = await gettingActualCovid19(requiredData);
         let actualGlobal = await gettingActualCovid19Global(actualDataProv);

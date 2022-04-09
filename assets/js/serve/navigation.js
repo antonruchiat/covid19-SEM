@@ -6,483 +6,21 @@
  */
 
 "use strict";
-let covidProvinsi = [];
 
 $(document).ready(function (e) {
 
 });
 
-// async function gettingDataBefore(origin, requestOptions = {
-//     method: 'GET',
-//     redirect: 'follow'
-// }) {
-//     try {
-//         let response = await fetch(origin, requestOptions);
-
-//         const data = await response.json();
-//         let resultProvinsi = data.list_data.map(a => a.key);
-
-//         let makeDefaultProvinsi = [];
-//         resultProvinsi.forEach(element => {
-//             makeDefaultProvinsi.push(element.replace(/\s/gi, '_'));
-//         });
-
-//         let dataIndividualProvinsi = [];
-//         await Promise.all(makeDefaultProvinsi.map(async (item) => {
-//             let url = `https://data.covid19.go.id/public/api/prov_detail_${item}.json`;
-//             let result = await fetch(url, requestOptions);
-//             let data = await result.json();
-//             dataIndividualProvinsi.push(data)
-//         }));
-
-
-//         let requiredData = [];
-//         resultProvinsi.forEach((element, idx) => {
-//             dataIndividualProvinsi.forEach((element1, idx1) => {
-//                 element1.list_perkembangan.forEach((element2, idx2) => {
-//                     if (element1.provinsi === element) {
-
-//                         const itemExists = requiredData.some(item => item.provinsi == element1.provinsi);
-//                         const index = requiredData.findIndex(ai => ai.provinsi == element1.provinsi);
-
-//                         if (itemExists) {
-//                             let existsYear = requiredData[index].list_perkembangan.hasOwnProperty(yearMonth(element2.tanggal, "y"));
-//                             if (existsYear) {
-//                                 const existsMonth = requiredData[index].list_perkembangan[yearMonth(element2.tanggal, "y")].listMonth.hasOwnProperty(yearMonth(element2.tanggal, "m"));
-//                                 if (existsMonth) {
-//                                     requiredData[index].list_perkembangan[yearMonth(element2.tanggal, "y")].listMonth[yearMonth(element2.tanggal, "m")].push({
-//                                         AKUMULASI_DIRAWAT_OR_ISOLASI: element2.AKUMULASI_DIRAWAT_OR_ISOLASI,
-//                                         AKUMULASI_KASUS: element2.AKUMULASI_KASUS,
-//                                         AKUMULASI_MENINGGAL: element2.AKUMULASI_MENINGGAL,
-//                                         AKUMULASI_SEMBUH: element2.AKUMULASI_SEMBUH,
-//                                         DIRAWAT_OR_ISOLASI: element2.DIRAWAT_OR_ISOLASI,
-//                                         KASUS: element2.KASUS,
-//                                         MENINGGAL: element2.MENINGGAL,
-//                                         SEMBUH: element2.SEMBUH,
-//                                         TANGGAL: yearMonth(element2.tanggal, "d"),
-//                                     });
-//                                 } else {
-//                                     requiredData[index].list_perkembangan[yearMonth(element2.tanggal, "y")].listMonth[yearMonth(element2.tanggal, "m")] = [{
-//                                         AKUMULASI_DIRAWAT_OR_ISOLASI: element2.AKUMULASI_DIRAWAT_OR_ISOLASI,
-//                                         AKUMULASI_KASUS: element2.AKUMULASI_KASUS,
-//                                         AKUMULASI_MENINGGAL: element2.AKUMULASI_MENINGGAL,
-//                                         AKUMULASI_SEMBUH: element2.AKUMULASI_SEMBUH,
-//                                         DIRAWAT_OR_ISOLASI: element2.DIRAWAT_OR_ISOLASI,
-//                                         KASUS: element2.KASUS,
-//                                         MENINGGAL: element2.MENINGGAL,
-//                                         SEMBUH: element2.SEMBUH,
-//                                         TANGGAL: yearMonth(element2.tanggal, "d"),
-//                                     }];
-
-//                                 }
-
-//                             } else {
-//                                 requiredData[index].list_perkembangan[yearMonth(element2.tanggal, "y")] = {
-//                                     origTime: element2.tanggal,
-//                                     listMonth: {
-//                                         [yearMonth(element2.tanggal, "m")]: [{
-//                                             AKUMULASI_DIRAWAT_OR_ISOLASI: element2.AKUMULASI_DIRAWAT_OR_ISOLASI,
-//                                             AKUMULASI_KASUS: element2.AKUMULASI_KASUS,
-//                                             AKUMULASI_MENINGGAL: element2.AKUMULASI_MENINGGAL,
-//                                             AKUMULASI_SEMBUH: element2.AKUMULASI_SEMBUH,
-//                                             DIRAWAT_OR_ISOLASI: element2.DIRAWAT_OR_ISOLASI,
-//                                             KASUS: element2.KASUS,
-//                                             MENINGGAL: element2.MENINGGAL,
-//                                             SEMBUH: element2.SEMBUH,
-//                                             TANGGAL: yearMonth(element2.tanggal, "d"),
-//                                         }]
-//                                     },
-//                                 };
-//                             }
-//                         } else {
-//                             requiredData.push({
-//                                 provinsi: element1.provinsi,
-//                                 list_perkembangan: {
-//                                     [yearMonth(element2.tanggal, "y")]: {
-//                                         origTime: element2.tanggal,
-//                                         listMonth: {
-//                                             [yearMonth(element2.tanggal, "m")]: [{
-//                                                 AKUMULASI_DIRAWAT_OR_ISOLASI: element2.AKUMULASI_DIRAWAT_OR_ISOLASI,
-//                                                 AKUMULASI_KASUS: element2.AKUMULASI_KASUS,
-//                                                 AKUMULASI_MENINGGAL: element2.AKUMULASI_MENINGGAL,
-//                                                 AKUMULASI_SEMBUH: element2.AKUMULASI_SEMBUH,
-//                                                 DIRAWAT_OR_ISOLASI: element2.DIRAWAT_OR_ISOLASI,
-//                                                 KASUS: element2.KASUS,
-//                                                 MENINGGAL: element2.MENINGGAL,
-//                                                 SEMBUH: element2.SEMBUH,
-//                                                 TANGGAL: yearMonth(element2.tanggal, "d"),
-//                                             }]
-//                                         },
-//                                     },
-//                                 }
-
-//                             });
-//                         }
-
-//                     }
-
-//                 });
-//             });
-//         });
-
-
-//         covidProvinsi = [...requiredData];
-
-
-//         console.log(data);
-//         console.log(resultProvinsi);
-//         console.log(makeDefaultProvinsi);
-//         console.log(dataIndividualProvinsi);
-//         console.log(covidProvinsi);
-//         let sampleProv = await gettingSES(covidProvinsi);
-//         console.log(sampleProv);
-//         let for2021 = await startingSES(sampleProv, 2024, 'month');
-//         console.log(for2021);
-
-//         return resultProvinsi;
-//     } catch (rejectedReason) {
-//         console.log(rejectedReason);
-//         return toastr.error('Error NetWork');
-//     }
-// }
-
-// const gettingSES = prov => {
-//     return new Promise((resolve) => {
-//         prov.forEach(element => {
-//             for (let key in element) {
-//                 if (element.hasOwnProperty(key)) {
-//                     if (key === 'list_perkembangan') {
-//                         for (let key1 in element[key]) {
-//                             if (element[key].hasOwnProperty(key1)) {
-//                                 for (let key2 in element[key][key1]) {
-//                                     if (element[key][key1].hasOwnProperty(key2)) {
-//                                         if (key2 === 'listMonth') {
-//                                             for (let key3 in element[key][key1][key2]) {
-//                                                 if (element[key][key1][key2].hasOwnProperty(key3)) {
-//                                                     const total = sumTotal(element[key][key1][key2][key3]);
-//                                                     element[key][key1][key2][key3].total = total;
-//                                                 }
-//                                             }
-//                                         }
-//                                     }
-//                                 }
-
-//                             }
-//                         }
-
-//                     }
-//                 }
-//             }
-//         });
-
-//         let totalInYear = 0;
-//         prov.forEach(element => {
-//             for (let key in element) {
-//                 if (element.hasOwnProperty(key)) {
-//                     if (key === 'list_perkembangan') {
-//                         for (let key1 in element[key]) {
-//                             if (element[key].hasOwnProperty(key1)) {
-//                                 for (let key2 in element[key][key1]) {
-//                                     if (element[key][key1].hasOwnProperty(key2)) {
-//                                         if (key2 === 'listMonth') {
-//                                             for (let key3 in element[key][key1][key2]) {
-//                                                 if (element[key][key1][key2].hasOwnProperty(key3)) {
-//                                                     totalInYear += element[key][key1][key2][key3].total;
-//                                                 }
-//                                             }
-//                                         }
-//                                         element[key][key1].totalYear = totalInYear;
-//                                     }
-//                                 }
-
-//                             }
-//                         }
-
-//                     }
-//                 }
-//             }
-//         });
-//         resolve(prov);
-//     });
-// }
-
-// const startingSES = (dataProv, year, type) => {
-//     return new Promise((resolve) => {
-//         let currentYearMont = currentYearMonth();
-//         let result;
-//         let dataHistory;
-//         let dataForecast = [];
-
-//         if (type === 'month') {
-//             dataHistory = gettingHistoryData(dataProv, year);
-
-//             if (dataHistory.length === 0) {
-//                 dataHistory = gettingHistoryData(dataProv, year - 1);
-//                 result = SESalgoritm(dataHistory, year - 1);
-//                 if (((parseInt(year) - parseInt(currentYearMont.year)) === 1) && parseInt(currentYearMont.month) === 12) {
-//                     result.forEach(element => {
-//                         for (let key in element) {
-//                             if (element.hasOwnProperty.call(element, key)) {
-//                                 if (key !== 'provinsi') {
-
-//                                     for (let key1 in element[key]) {
-//                                         if (element[key].hasOwnProperty.call(element[key], key1)) {
-
-//                                             let itemExists = result.some(item => item.provinsi == element.provinsi);
-//                                             let index = result.findIndex(ai => ai.provinsi == element.provinsi);
-
-//                                             if (itemExists) {
-//                                                 let checkYear = result[index].list_forecast.hasOwnProperty([year]);
-//                                                 if (!checkYear) {
-//                                                     result[index].list_forecast[year] = [{
-//                                                         month: `${key2.split("-")[0]}-01`,
-//                                                         forecast: result[index].list_forecast[year - 1][11].forecast + (0.9 * (dataHistory[indexCheckProv][year - 1].listMonth["2021-12"].total - result[index].list_forecast[year - 1][11].forecast)),
-//                                                         actual: null,
-//                                                         error: (result[index].list_forecast[year].actual ? (result[index].list_forecast[year].actual - result[index].list_forecast[year].forecast) : null),
-//                                                     }];
-//                                                 }
-//                                             }
-//                                         }
-//                                     }
-
-//                                 }
-//                             }
-//                         }
-//                     });
-//                 } else if (((parseInt(year) - parseInt(currentYearMont.year)) === 1) && parseInt(currentYearMont.month) < 12) {
-//                     result.forEach(element => {
-//                         for (let key in element) {
-//                             if (element.hasOwnProperty.call(element, key)) {
-//                                 if (key !== 'provinsi') {
-
-//                                     for (let key1 in element[key]) {
-//                                         if (element[key].hasOwnProperty.call(element[key], key1)) {
-//                                             if (element[key][key1].length < 12) {
-//                                                 element[key][key1].forEach((item, idxItem) => {
-//                                                     if (parseInt(idxItem) === element[key][key1].length - 1) {
-//                                                         let itemExists = result.some(item => item.provinsi == element.provinsi);
-//                                                         let index = result.findIndex(ai => ai.provinsi == element.provinsi);
-
-//                                                         if (itemExists) {
-//                                                             let tmpIndex = item.month.split("-")[1];
-//                                                             tmpIndex = parseInt(tmpIndex) + 1;
-//                                                             tmpIndex = to2Digit(tmpIndex);
-//                                                             tmpIndex = `${item.month.split("-")[0]}-${tmpIndex}`;
-
-//                                                             result[index].list_forecast[key1].push({
-//                                                                 month: tmpIndex,
-//                                                                 forecast: item.forecast + (0.9 * (item.actual - item.forecast)),
-//                                                                 actual: null,
-//                                                                 error: (result[index].list_forecast[key1].actual ? (result[index].list_forecast[key1].actual - result[index].list_forecast[key1].forecast) : null),
-//                                                             });
-//                                                         }
-//                                                     }
-//                                                 });
-//                                             }
-//                                         }
-//                                     }
-
-//                                 }
-//                             }
-//                         }
-//                     });
-//                 } else {
-//                     console.log("Data Forecasting Terlalu Jauh");
-//                 }
-//             } else {
-//                 if (parseInt(year) < parseInt(currentYearMont.year)) {
-//                     result = SESalgoritm(dataHistory, year);
-//                 } else if (parseInt(year) === parseInt(currentYearMont.year) && parseInt(currentYearMont.month) < 12) {
-//                     result = SESalgoritm(dataHistory, year);
-//                     result.forEach(element => {
-//                         for (let key in element) {
-//                             if (element.hasOwnProperty.call(element, key)) {
-//                                 if (key !== 'provinsi') {
-//                                     for (let key1 in element[key]) {
-//                                         if (element[key].hasOwnProperty.call(element[key], key1)) {
-//                                             if (element[key][key1].length < 12) {
-//                                                 element[key][key1].forEach((item, idxItem) => {
-//                                                     if (parseInt(idxItem) === element[key][key1].length - 1) {
-//                                                         let itemExists = result.some(item => item.provinsi == element.provinsi);
-//                                                         let index = result.findIndex(ai => ai.provinsi == element.provinsi);
-
-//                                                         if (itemExists) {
-//                                                             let tmpIndex = item.month.split("-")[1];
-//                                                             tmpIndex = parseInt(tmpIndex) + 1;
-//                                                             tmpIndex = to2Digit(tmpIndex);
-//                                                             tmpIndex = `${item.month.split("-")[0]}-${tmpIndex}`;
-
-//                                                             result[index].list_forecast[key1].push({
-//                                                                 month: tmpIndex,
-//                                                                 forecast: item.forecast + (0.9 * (item.actual - item.forecast)),
-//                                                                 actual: null,
-//                                                                 error: (result[index].list_forecast[key1].actual ? (result[index].list_forecast[key1].actual - result[index].list_forecast[key1].forecast) : null),
-//                                                             });
-//                                                         }
-//                                                     }
-//                                                 });
-//                                             }
-//                                         }
-//                                     }
-
-//                                 }
-//                             }
-//                         }
-//                     });
-//                 } else if (parseInt(year) === parseInt(currentYearMont.year) && parseInt(currentYearMont.month) === 12) {
-//                     result = SESalgoritm(dataHistory, year);
-//                 } else {
-//                     console.log("Data Forecasting Terlalu Jauh");
-//                 }
-//             }
-//         } else {
-//             if ((((parseInt(year) - parseInt(currentYearMont.year)) <= 1) && parseInt(year) > 2019)) {
-//                 dataHistory = [];
-//                 dataProv.forEach(element => {
-//                     for (let key in element) {
-//                         if (element.hasOwnProperty(key)) {
-//                             if (key === 'list_perkembangan') {
-//                                 for (let key1 in element[key]) {
-//                                     if (element[key].hasOwnProperty(key1)) {
-//                                         if (parseInt(key1) <= parseInt(year)) {
-//                                             let existsProv = dataHistory.some(item => item.provinsi === element.provinsi);
-//                                             let indexExistsProv = dataHistory.findIndex(ai => ai.provinsi === element.provinsi);
-
-//                                             if (existsProv) {
-//                                                 dataHistory[indexExistsProv][key1] = element[key][key1];
-//                                             } else {
-//                                                 dataHistory.push({
-//                                                     provinsi: element.provinsi,
-//                                                     [key1]: element[key][key1],
-//                                                 });
-//                                             }
-//                                         }
-//                                     }
-//                                 }
-//                             }
-//                         }
-//                     }
-//                 });
-
-//                 if (dataHistory.length > 0) {
-
-//                     dataHistory.forEach(element => {
-//                         for (let key in element) {
-//                             if (element.hasOwnProperty.call(element, key)) {
-//                                 if (key !== 'provinsi') {
-
-//                                     for (let key1 in element[key]) {
-//                                         if (element[key].hasOwnProperty.call(element[key], key1)) {
-
-//                                             if (key1 === 'listMonth') {
-//                                                 for (let key2 in element[key][key1]) {
-//                                                     if (element[key][key1].hasOwnProperty.call(element[key][key1], key2)) {
-//                                                         let existsProv = dataForecast.some(item => item.provinsi === element.provinsi);
-//                                                         let indexProv = dataForecast.findIndex(ai => ai.provinsi === element.provinsi);
-
-//                                                         if (!existsProv) {
-//                                                             dataForecast.push({
-//                                                                 provinsi: element.provinsi,
-//                                                                 list_forecast: {
-//                                                                     [key]: {
-//                                                                         forecast: element[key].totalYear,
-//                                                                         actual: element[key].totalYear,
-//                                                                         error: (element[key].totalYear ? (element[key].totalYear - element[key].totalYear) : null),
-//                                                                     }
-//                                                                 },
-//                                                             });
-//                                                         } else {
-//                                                             if (existsProv) {
-//                                                                 let existsYear = dataForecast[indexProv].list_forecast.hasOwnProperty([key]);
-
-//                                                                 if (!existsYear) {
-//                                                                     let cheklength = Object.keys(dataForecast[indexProv].list_forecast).length;
-//                                                                     if (cheklength > 0) {
-//                                                                         dataForecast[indexProv].list_forecast[key] = {
-//                                                                             forecast: dataForecast[indexProv].list_forecast[parseInt(key) - 1].forecast + (0.9 * (element[parseInt(key) - 1].totalYear - dataForecast[indexProv].list_forecast[parseInt(key) - 1].forecast)),
-//                                                                             actual: element[key].totalYear,
-//                                                                             error: (element[key].totalYear ? (element[key].totalYear - (dataForecast[indexProv].list_forecast[parseInt(key) - 1].forecast + (0.9 * (element[parseInt(key) - 1].totalYear - dataForecast[indexProv].list_forecast[parseInt(key) - 1].forecast)))) : null),
-//                                                                         }
-//                                                                     }
-//                                                                 }
-//                                                             }
-//                                                         }
-
-//                                                     }
-
-//                                                 }
-//                                             }
-
-//                                         }
-//                                     }
-
-//                                 }
-//                             }
-//                         }
-//                     });
-
-//                     if ((parseInt(year) - parseInt(currentYearMont.year)) === 1) {
-//                         dataForecast.forEach(element => {
-//                             for (let key in element) {
-//                                 if (element.hasOwnProperty.call(element, key)) {
-//                                     if (key !== 'provinsi') {
-
-//                                         for (let key1 in element[key]) {
-//                                             if (element[key].hasOwnProperty.call(element[key], key1)) {
-
-//                                                 let existsProv = dataForecast.some(item => item.provinsi === element.provinsi);
-//                                                 let indexProv = dataForecast.findIndex(ai => ai.provinsi === element.provinsi);
-
-//                                                 if (existsProv) {
-//                                                     let existsYear = dataForecast[indexProv].list_forecast.hasOwnProperty([year]);
-
-//                                                     if (!existsYear) {
-//                                                         dataForecast[indexProv].list_forecast[year] = {
-//                                                             forecast: dataForecast[indexProv].list_forecast[year - 1].forecast + (0.9 * (element[key][year - 1].actual - dataForecast[indexProv].list_forecast[year - 1].forecast)),
-//                                                             actual: null,
-//                                                             error: (this.actual ? (this.actual - this.forecast) : null),
-//                                                             // error: ,
-//                                                         }
-//                                                     }
-//                                                 }
-
-//                                             }
-//                                         }
-
-//                                     }
-//                                 }
-//                             }
-//                         });
-//                     }
-
-//                 }
-//             } else {
-//                 console.log("Data Forecasting Terlalu Jauh");
-//             }
-//         }
-
-//         console.log(dataHistory);
-//         console.log(result);
-//         console.log(dataForecast);
-
-//         resolve([]);
-//     });
-// }
-
-
-
-
 function selectMenu(idmenu) {
     if (idmenu === 'meinKosu') {
-        // gettingMenuAsync(meinKosu, 'meinKosu');
-        meinKosu();
+        // meinKosu();
+        meinKosu_try();
     } else if (idmenu === 'meinKosu1') {
-        // gettingMenuAsync(meinKosu1, 'meinKosu1');
-        meinKosu1();
+        // meinKosu1();
+        meinKosu1_try();
     } else if (idmenu === 'meinKosu2') {
-        // gettingMenuAsync(meinKosu2, 'meinKosu2');
-        meinKosu2()
-        // meinKosu2iii();
+        // meinKosu2()
+        meinKosu2_try();
     } else if (idmenu === 'meinKosu3') {
 
         // return gettingUpdateDataCovid19();
@@ -520,70 +58,6 @@ function selectMenu(idmenu) {
     }
 }
 
-async function gettingMenuAsync(paramsMenu, order) {
-    try {
-        let makeDefaultProvinsi = [];
-
-        let requestOptions = {
-            method: 'GET',
-            redirect: 'follow'
-        };
-        let origin = "https://data.covid19.go.id/public/api/prov_list.json";
-        let response = await fetch(origin, requestOptions);
-        const data = await response.json();
-        let resultProvinsi = data.list_data.map(a => a.key);
-
-        resultProvinsi.forEach(element => {
-            makeDefaultProvinsi.push(element.replace(/\s/gi, '_'));
-        });
-
-        // console.log({
-        //     resultProvinsi: resultProvinsi,
-        //     makeDefaultProvinsi: makeDefaultProvinsi,
-        // });
-
-        return await paramsMenu({
-            resultProvinsi: resultProvinsi,
-            makeDefaultProvinsi: makeDefaultProvinsi,
-        }, order);
-
-
-
-        // let data = await fetching(_URLVALID, order);
-        // let data = '';
-        // if (parseInt(data) === 0) {
-        //     return await auth(data);
-        // }
-        // return await paramsMenu(data, order);
-    } catch (rejectedReason) {
-        return toastr.error('Error NetWork');
-    }
-}
-
-
-
-
-//TODO!! Every Close Button
-$(".btnCloseOverlay").click(() => {
-    closeOverlayForm();
-});
-
-$(".btnCloseOverlayDelete").click(() => {
-    closeOverlayDelete();
-});
-
-//TODO!! Navigation Button
-$(document).on('click', '.addRoom', () => {
-    processingData('modifiedRoom', 'new');
-});
-
-$(document).on('click', '.editRoom', () => {
-    processingData('modifiedRoom', 'edit');
-});
-
-$(document).on('click', '.deleteRoom', () => {
-    deleteItem('modifiedRoom', 'delete');
-});
 
 
 
@@ -595,11 +69,301 @@ $(document).on('click', '#btnYear', () => {
     renderChartOption('yearly');
 });
 
+$(document).on('click', '#SESMonthGlobal', () => {
+    console.log(dataResultMeinKosu2);
+    let rows = `<option data-id="anruc1">
+                    Select Year
+                </option>`;
+    $("#sideCardMonthOps").html('');
+    $("#SESYearGlobal").removeClass("ses-global-active");
+    $("#targetGlobal").removeClass("animate");
+    window.requestAnimationFrame(function () {
+        $("#targetGlobal").addClass("animate");
+    });
+    $("#SESMonthGlobal").addClass("ses-global-active");
+
+    let yearOptions = dataResultMeinKosu2.actualGlobal.list_perkembangan;
+    for (const key in yearOptions) {
+        if (yearOptions.hasOwnProperty.call(yearOptions, key)) {
+            rows += `<option data-id="${key}">
+                    ${key}
+                 </option>`;
+        }
+    }
+
+    $("#sideCardMonthOps").html(`<div class="tracker-block__header with-option">
+                                    <div class="select-country">
+                                        <label for="forecastMonthGlobal" class="sr-only">Select Year</label>
+                                        <select class="country" name="forecastMonthGlobal" id="forecastMonthGlobal" onchange="gettingSelectMonthSES()">
+                                          ${rows}
+                                        </select>
+                                    </div>
+                                 </div>
+                                 <div id="forAnrucDev1">
+                                    <div class="track-item">
+                                        <p class="track-item__title">Total Cases</p>
+                                        <h4 class="track-item__no infected">00,000</h4>
+                                    </div>
+                                    <div class="track-item">
+                                        <p class="track-item__title">Last 24 Hours</p>
+                                        <h4 class="track-item__no today_infected">00,000</h4>
+                                    </div>
+                                    <div class="track-item">
+                                        <p class="track-item__title">Deaths <span>(<span class="deaths-rate"></span>%)</span></p>
+                                        <h4 class="track-item__no deaths">00,000</h4>
+                                    </div>
+                                    <div class="track-item">
+                                        <p class="track-item__title">New Deaths</p>
+                                        <h4 class="track-item__no today_deaths">00,000</h4>
+                                    </div>
+                                    <div class="track-item">
+                                        <p class="track-item__title">Recovered <span>(<span class="recover-rate"></span>%)</span></p>
+                                        <h4 class="track-item__no recovered">00,000</h4>
+                                    </div>
+                                 </div>`);
+});
+
+$(document).on('click', '#SESYearGlobal', () => {
+    console.log(dataResultMeinKosu2);
+
+    $("#sideCardMonthOps").html('');
+    $("#SESMonthGlobal").removeClass("ses-global-active");
+    $("#targetGlobal").removeClass("animate");
+    window.requestAnimationFrame(function () {
+        $("#targetGlobal").addClass("animate");
+    });
+    $("#SESYearGlobal").addClass("ses-global-active");
+    let lastProp = Object.keys(dataResultMeinKosu2.forecastYearGlobal[0].list_forecast).pop();
+    console.log(lastProp);
+    $("#sideCardMonthOps").html(`<div class="tracker-block__header with-option">
+                                    <div id="forAnrucDev1">
+                                      <div class="track-item">
+                                          <p class="track-item__title">Total Cases</p>
+                                          <h4 class="track-item__no infected">${dataResultMeinKosu2.dataUpdateCovid19.update.total.jumlah_positif}</h4>
+                                      </div>
+                                      <div class="track-item">
+                                          <p class="track-item__title">Forecast</p>
+                                          <h4 class="track-item__no today_infected">${dataResultMeinKosu2.forecastYearGlobal[0].list_forecast[lastProp].forecast}</h4>
+                                      </div>
+                                      <div class="track-item">
+                                          <p class="track-item__title">Deaths</p>
+                                          <h4 class="track-item__no deaths">${dataResultMeinKosu2.dataUpdateCovid19.update.total.jumlah_meninggal}</h4>
+                                      </div>
+                                      <div class="track-item">
+                                          <p class="track-item__title">Recovered</p>
+                                          <h4 class="track-item__no recovered">${dataResultMeinKosu2.dataUpdateCovid19.update.total.jumlah_sembuh}</h4>
+                                      </div>
+                                      <div class="track-item">
+                                          <p class="track-item__title">Active Cases</p>
+                                          <h4 class="track-item__no recovered">${dataResultMeinKosu2.dataUpdateCovid19.update.total.jumlah_dirawat}</h4>
+                                      </div>
+                                      <div class="track-item">
+                                          <p class="track-item__title">New Cases</p>
+                                          <h4 class="track-item__no today_deaths">${dataResultMeinKosu2.dataUpdateCovid19.update.penambahan.jumlah_positif}</h4>
+                                      </div>
+                                      <div class="track-item">
+                                          <p class="track-item__title">Last Update</p>
+                                          <h4 class="track-item__no today_deaths">${dataResultMeinKosu2.dataUpdateCovid19.update.penambahan.created}</h4>
+                                      </div>
+                                    </div>
+                                 </div>`);
+
+
+    let rows1 = '';
+    dataResultMeinKosu2.forecastYearGlobal.forEach(element => {
+        Object.entries(element.list_forecast).map((item, index) => {
+            if (index === 0) {
+                rows1 += `<tr>
+                      <td class="row-data">${item[0]}</td>
+                      <td class="row-data">${element.list_forecast[item[0]].actual === null ? 0 : element.list_forecast[item[0]].actual}</td>
+                      <td class="row-data">${element.list_forecast[item[0]].actual}</td>
+                      <td class="row-data">${element.list_forecast[item[0]].forecast}</td>
+                    </tr>`;
+            } else {
+                rows1 += `<tr>
+                      <td class="row-data">${item[0]}</td>
+                      <td class="row-data">${element.list_forecast[item[0]].actual === null ? 0 : element.list_forecast[item[0]].actual}</td>
+                      <td class="row-data">${element.list_forecast[item[0]-1].forecast} + 0.9 ( ${element.list_forecast[item[0]-1].actual} - ${element.list_forecast[item[0]-1].forecast} )</td>
+                      <td class="row-data">${element.list_forecast[item[0]].forecast}</td>
+                    </tr>`;
+            }
+        });
+    });
+
+    $("#targetGlobal").html(`<table class="display table global-table">
+                              <thead class="list-view-head">
+                                  <tr>
+                                      <th id="globalHeading">Cases Year</th>
+                                      <th>Confirmed Cases</th>
+                                      <th>Forecasting Using Alpha ${0.9}</th>
+                                      <th>Result Forecast</th>
+                                  </tr>
+                              </thead>
+  
+                              <tbody class="list-view-ses">
+                                  ${rows1}
+                              </tbody>
+                            </table>`);
+});
+
+$(document).on('click', '#SESMonthProv', () => {
+    console.log(dataResultMeinKosu2);
+
+    $("#sectionForecastProvTab3").html('');
+    $("#sectionForecastProvTab3").html(defaultTab3_month);
+
+    $("#sideCardMonthOpsProv").html('');
+    $("#SESYearProv").removeClass("ses-global-active");
+    $("#targetProvince").removeClass("animate");
+    window.requestAnimationFrame(function () {
+        $("#targetProvince").addClass("animate");
+    });
+    $("#SESMonthProv").addClass("ses-global-active");
+
+
+    let yearOptions = dataResultMeinKosu2.actualGlobal.list_perkembangan;
+    let areProvinces = dataResultMeinKosu2.dataProvinces.resultProvinsi;
+    let rows = `<option data-id="anruc3">
+                    Select Year
+                </option>`;
+
+    let rows1 = `<option data-id="anruc2">
+                   Select Province
+                 </option>`;
+
+    for (const key in yearOptions) {
+        if (yearOptions.hasOwnProperty.call(yearOptions, key)) {
+            rows += `<option data-id="${key}">
+                    ${key}
+                 </option>`;
+        }
+    }
+
+    areProvinces.forEach(element => {
+        rows1 += `<option data-id="${element}">
+                  ${element}
+                </option>`;
+    });
+
+    $("#SelectforecastMonthGlobal").html(rows);
+
+    $("#sideCardMonthOpsProv").html(`<div class="tracker-block__header with-option">
+                                        <div class="select-country">
+                                            <label for="selectForecastProvince" class="sr-only">Select Province</label>
+                                            <select class="country" name="country" id="selectForecastProvince" onchange="gettingSelectProvSES('month')">
+                                              ${rows1}
+                                            </select>
+                                        </div>
+                                     </div>
+  
+                                    <div id="forAnrucDev2">
+                                        <div class="track-item">
+                                            <p class="track-item__title">Total Cases</p>
+                                            <h4 class="track-item__no infected">00,000</h4>
+                                        </div>
+                                        <div class="track-item">
+                                            <p class="track-item__title">Last 24 Hours</p>
+                                            <h4 class="track-item__no today_infected">00,000</h4>
+                                        </div>
+                                        <div class="track-item">
+                                            <p class="track-item__title">Deaths <span>(<span class="deaths-rate"></span>%)</span></p>
+                                            <h4 class="track-item__no deaths">00,000</h4>
+                                        </div>
+                                        <div class="track-item">
+                                            <p class="track-item__title">New Deaths</p>
+                                            <h4 class="track-item__no today_deaths">00,000</h4>
+                                        </div>
+                                        <div class="track-item">
+                                            <p class="track-item__title">Recovered <span>(<span class="recover-rate"></span>%)</span></p>
+                                            <h4 class="track-item__no recovered">00,000</h4>
+                                        </div>
+                                     </div>`);
+});
+
+$(document).on('click', '#SESYearProv', () => {
+    console.log(dataResultMeinKosu2);
+
+    $("#sectionForecastProvTab3").html('');
+    $("#sectionForecastProvTab3").html(defaultTab3_year);
+
+    $("#sideCardMonthOpsProv").html('');
+    $("#SESMonthProv").removeClass("ses-global-active");
+    $("#targetProvince").removeClass("animate");
+    window.requestAnimationFrame(function () {
+        $("#targetProvince").addClass("animate");
+    });
+    $("#SESYearProv").addClass("ses-global-active");
+
+
+    let rows = `<div class="badge-item__body">
+                  <div class="badge-item__block">
+                  <p>Active cases: <span class="infected">${dataResultMeinKosu2.dataUpdateCovid19.update.total.jumlah_positif}</span></p>
+                  </div>
+                  <div class="badge-item__block">
+                    <p>Deaths: <span class="deaths">${dataResultMeinKosu2.dataUpdateCovid19.update.total.jumlah_meninggal}</span></p>
+                  </div>
+                  <div class="badge-item__block">
+                    <p>Recovered: <span class="recovered">${dataResultMeinKosu2.dataUpdateCovid19.update.total.jumlah_sembuh}</span></p>
+                  </div>
+                  <div class="badge-item__block">
+                    <p>New: <span class="today_infected">${dataResultMeinKosu2.dataUpdateCovid19.update.penambahan.jumlah_positif}</span></p>
+                  </div>
+                </div>`;
+
+
+    let areProvinces = dataResultMeinKosu2.dataProvinces.resultProvinsi;
+    let rows1 = `<option data-id="anruc2">
+                   Select Province
+                 </option>`;
+
+    areProvinces.forEach(element => {
+        rows1 += `<option data-id="${element}">
+                  ${element}
+                </option>`;
+    });
+
+    $("#summaryCovid19Prov").html(rows);
+    $("#sideCardMonthOpsProv").html(`<div class="tracker-block__header with-option">
+                                        <div class="select-country">
+                                            <label for="selectForecastProvince" class="sr-only">Select Province</label>
+                                            <select class="country" name="country" id="selectForecastProvince" onchange="gettingSelectProvSES()">
+                                                ${rows1}
+                                            </select>
+                                        </div>
+                                     </div>
+  
+                                     <div id="forAnrucDev2">
+                                        <div class="track-item">
+                                            <p class="track-item__title">Total Cases</p>
+                                            <h4 class="track-item__no infected">00,00</h4>
+                                        </div>
+                                        <div class="track-item">
+                                            <p class="track-item__title">Forecast</p>
+                                            <h4 class="track-item__no today_infected">00,00</h4>
+                                        </div>
+                                        <div class="track-item">
+                                            <p class="track-item__title">Deaths</p>
+                                            <h4 class="track-item__no deaths">00,00</h4>
+                                        </div>
+                                        <div class="track-item">
+                                            <p class="track-item__title">Recovered</p>
+                                            <h4 class="track-item__no recovered">00,00</h4>
+                                        </div>
+                                        <div class="track-item">
+                                            <p class="track-item__title">Active Cases</p>
+                                            <h4 class="track-item__no recovered">00,00</h4>
+                                        </div>
+                                        <div class="track-item">
+                                            <p class="track-item__title">New Cases</p>
+                                            <h4 class="track-item__no today_deaths">00,00</h4>
+                                        </div>
+                                        <div class="track-item">
+                                            <p class="track-item__title">Last Update</p>
+                                            <h4 class="track-item__no today_deaths">00,00</h4>
+                                        </div>
+                                     </div>`);
+});
 
 // $("#SettingApps").click(() => {
 //     return resetApp("identity");
-// });
-
-// $(document).on('click', '#updateAppSetting', () => {
-//     processingData('modifiedAppSettings', 'edit');
 // });

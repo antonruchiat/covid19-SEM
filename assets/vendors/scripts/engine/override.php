@@ -1,40 +1,80 @@
 <?php
 header('Access-Control-Allow-Origin: http://localhost/covid19-SEM/');
 error_reporting(0);
-session_start();
 require 'function.php';
 $order = anti_Injection($_REQUEST['order']);
 
-// if ($token === privateHashing(gettodayShort())) {
 switch ($order) {
     case 'meinKosu':
-        $data = file_get_contents("./Response/Update/response.json");
-        $data = json_decode($data, true);
+        $update = file_get_contents("./Response/Update/response.json");
+        $update = json_decode($update, true);
 
-        $province = file_get_contents("./Response/Provinces_List/response.json");
-        $province = json_decode($province, true);
+        $result_province = file_get_contents("./Response/result_provinces/response.json");
+        $result_province = json_decode($result_province, true);
 
-        $individualProvinsi  = file_get_contents("./Response/Province/response.json");
+        $default_province = file_get_contents("./Response/default_provinces/response.json");
+        $default_province = json_decode($default_province, true);
+
+        $individualProvinsi  = file_get_contents("./Response/Individual_Provinces/response.json");
         $individualProvinsi = json_decode($individualProvinsi, true);
 
-        $individualProvinsi1  = file_get_contents("./Response/Provinces_Historical_Daily_Data/response.json");
-        $individualProvinsi1 = json_decode($individualProvinsi1, true);
+        $arr = [
+            "dataUpdateCovid19" => $update,
+            "dataProvinces" => [
+                "resultProvinsi" => $result_province,
+                "makeDefaultProvinsi" => $default_province,
+            ],
+            "individualData" => $individualProvinsi,
+        ];
+
+        echo json_encode($arr);
+
+        break;
+
+    case 'meinKosu1':
+        $result_province = file_get_contents("./Response/result_provinces/response.json");
+        $result_province = json_decode($result_province, true);
+
+        $default_province = file_get_contents("./Response/default_provinces/response.json");
+        $default_province = json_decode($default_province, true);
+
+        $individualProvinsi  = file_get_contents("./Response/Individual_Provinces/response.json");
+        $individualProvinsi = json_decode($individualProvinsi, true);
 
         $arr = [
-            "countSchedule" => "anton",
-            "countDosen" => "ruchiat",
-            "countRooms" => "developer",
-            "countSemester" => "expert",
-            "data" => $data,
-            "province" => $province,
-            "individualProvinsi" => $individualProvinsi,
-            "individualProvinsi1" => $individualProvinsi1,
+            "dataProvinces" => [
+                "resultProvinsi" => $result_province,
+                "makeDefaultProvinsi" => $default_province,
+            ],
+            "individualData" => $individualProvinsi,
+        ];
+
+        echo json_encode($arr);
+        break;
+
+    case 'meinKosu2':
+        $update = file_get_contents("./Response/Update/response.json");
+        $update = json_decode($update, true);
+
+        $result_province = file_get_contents("./Response/result_provinces/response.json");
+        $result_province = json_decode($result_province, true);
+
+        $default_province = file_get_contents("./Response/default_provinces/response.json");
+        $default_province = json_decode($default_province, true);
+
+        $individualProvinsi  = file_get_contents("./Response/Individual_Provinces/response.json");
+        $individualProvinsi = json_decode($individualProvinsi, true);
+
+        $arr = [
+            "dataUpdateCovid19" => $update,
+            "dataProvinces" => [
+                "resultProvinsi" => $result_province,
+                "makeDefaultProvinsi" => $default_province,
+            ],
+            "individualData" => $individualProvinsi,
         ];
 
         echo json_encode($arr);
 
         break;
 }
-// } else {
-//     echo 0;
-// }

@@ -8,9 +8,9 @@
 "use strict";
 
 $(document).ready(function (e) {
-    meinKosu();
+    // meinKosu();
+    meinKosu_try();
     // $(".map-status").html(indoMaps);
-    // gettingMenuAsync(meinKosu, 'meinKosu');
 });
 
 // $(document).on('input', '#searchText', ':text', () => {
@@ -23,9 +23,6 @@ $(document).ready(function (e) {
 // </li>`
 
 
-
-
-// document.body.addEventListener('click', selectMenu('hyojiChuShosai'), true);
 $("#meinKosu").click(() => {
     selectMenu('meinKosu');
 });
